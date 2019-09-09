@@ -10,8 +10,9 @@
 `WebStrom（172+）`
 
 
-### 一、在线安装
-> ##### 动图教程：
+### 一、示列
+> ##### 图片示列教程：
+> ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/2019-09-09_15-02-56.png "样列")
 > ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/2019-09-09_15-01-56.png "样列")
 > ##### 说明文档：
 > ``` 说明文档：
