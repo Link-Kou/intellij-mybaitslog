@@ -5,17 +5,28 @@
 
     <!-- 插件版本 -->
     <version>1.0.0</version>
-
+    <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="172"/>
     <!-- 插件的描述 -->
     <description><![CDATA[
-      项目目录树添加备注信息<br>
-      Add comment information to the project directory tree
+      <h3>English:</h3>
+      <ul>
+      <li>Add comment information to the project directory tree</li>
+      </ul>
+      <h3>中文：</h3>
+      <ul>
+      <li>项目目录树添加备注信息</li>
     ]]></description>
 
     <!-- 插件的功能 -->
     <change-notes><![CDATA[
-      通过配置XML文件来描述目录树备注信息<br>
-      Describes the directory tree remark information by configuring the XML file
+     <p>1.0.0</p>
+      <ul>
+        <li>1.Describes the directory tree remark information by configuring the XML file</li>
+      </ul>
+      <ul>
+        <li>1.通过配置XML文件来描述目录树备注信息</li>
+      </ul>
     ]]></change-notes>
 
 
