@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trees properties="" code="" codeval="" msg="">
+    <model path="/src" title="视图" tooltip="" properties="" code="" codeval="" msg="">
+        <tree path="/main">
+            <tree path="/java/com">
+                <tree path="/plugins" title="插件">
+                    <tree path="/infotip" title="模块名称-信息显示">
+                        <tree path="/parsing" title="读取"/>
+                    </tree>
+                </tree>
+            </tree>
+            <tree path="/resources" title="资源文件夹"/>
+        </tree>
+    </model>
+</trees>

@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.linkkou.plugin.intellij.assistant</id>
     <name>TreeInfotip</name>
-    <vendor email="chinacclk@gmail.com" url="http://www.yourcompany.com">linkkou</vendor>
+    <vendor email="chinacclk@gmail.com" url="https://github.com/Link-Kou/intellij-treeInfotip">linkkou</vendor>
 
     <!-- 插件版本 -->
     <version>1.0.0</version>
