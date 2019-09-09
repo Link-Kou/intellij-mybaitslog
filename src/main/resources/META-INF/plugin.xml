@@ -1,0 +1,38 @@
+<idea-plugin>
+    <id>com.linkkou.plugin.intellij.assistant</id>
+    <name>TreeInfotip</name>
+    <vendor email="chinacclk@gmail.com" url="http://www.yourcompany.com">linkkou</vendor>
+
+    <!-- 插件版本 -->
+    <version>1.0.0</version>
+
+    <!-- 插件的描述 -->
+    <description><![CDATA[
+      项目目录树添加备注信息<br>
+      Add comment information to the project directory tree
+    ]]></description>
+
+    <!-- 插件的功能 -->
+    <change-notes><![CDATA[
+      通过配置XML文件来描述目录树备注信息<br>
+      Describes the directory tree remark information by configuring the XML file
+    ]]></change-notes>
+
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <postStartupActivity implementation="com.plugins.infotip.PluginStartupActivity"/>
+        <treeStructureProvider implementation="com.plugins.infotip.TreeOnlyTextProvider"/>
+        <projectViewNodeDecorator implementation="com.plugins.infotip.IgnoreViewNodeDecorator"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>
