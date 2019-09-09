@@ -12,9 +12,8 @@
 
 ### 一、在线安装
 > ##### 动图教程：
-> ![在线安装](../../raw/master/%E6%95%99%E7%A8%8B%E5%9B%BE%E7%89%87/1-1/%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85.gif "在线安装")
+> ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/2019-09-09_15-01-56.png "样列")
 > ##### 说明文档：
 > ``` 说明文档：
 > 1. 安装完毕后重启生效。
-> 2. 版本更新时不会覆盖现有模板。
 > ```
