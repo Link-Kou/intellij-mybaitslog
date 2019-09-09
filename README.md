@@ -9,6 +9,10 @@
 
 `WebStrom（172+）`
 
+### 在线安装
+ 搜索 TreeInfotip
+### 手动安装
+ 下载项目，安装 plugin.intellij.assistant-1.0.0.zip
 
 ### 一、示列
 > ##### 图片示列教程：
