@@ -2,6 +2,8 @@ package com.plugins.infotip;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupActivity;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
 import com.intellij.psi.PsiTreeChangeEvent;
 import com.intellij.psi.PsiTreeChangeListener;
@@ -49,8 +51,14 @@ public class PluginStartupActivity implements StartupActivity {
             @Override
             public void beforeChildrenChange(@NotNull PsiTreeChangeEvent psiTreeChangeEvent) {
                 if (null != psiTreeChangeEvent) {
-                    if (psiTreeChangeEvent.getFile().getVirtualFile().getName().contains("Directory.xml")) {
-                        ProjectInfo.getParsingConfigureXML(project);
+                    final PsiFile file = psiTreeChangeEvent.getFile();
+                    if (null != file) {
+                        final VirtualFile virtualFile = file.getVirtualFile();
+                        if (null != virtualFile) {
+                            if (virtualFile.getName().contains("Directory.xml")) {
+                                ProjectInfo.getParsingConfigureXML(project);
+                            }
+                        }
                     }
                 }
             }
