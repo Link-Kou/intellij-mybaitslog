@@ -12,4 +12,6 @@
             <tree path="/resources" title="资源文件夹"/>
         </tree>
     </model>
+    <tree path="/builds" title="构建文件" tooltip="" properties="" code="" codeval="" msg=""/>
+    <tree path="/image" title="图片示例" tooltip="" properties="" code="" codeval="" msg=""/>
 </trees>

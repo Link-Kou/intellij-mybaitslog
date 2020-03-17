@@ -3,24 +3,37 @@
 ### TreeInfotip能做什么？
 
 > TreeInfotip是基于IntelliJ 开发的项目目录自定义备注显示，主要通过自定义XML来生成项目目录树备注。
+
 ---
 ### 使用环境
+
 `IntelliJ IDEA Ultimate版（172+）`
 
 `WebStrom（172+）`
 
-### 在线安装
- 搜索 TreeInfotip
-### 手动安装
- 下载项目，安装 plugin.intellij.assistant-1.0.0.zip
+### 源代码构建
 
+    项目管理：Gradle
+    
+    注意：国内网络原因，构建十分费力，耐心一点
+   
+### 在线安装(搜索)
+
+ IDEA或WebStrom -> Preferences -> Plugins -> TreeInfotip
+ 
+### 手动安装
+
+ [plugin.intellij.assistant-1.0.0.zip](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/builds/plugin.intellij.assistant-1.0.0.zip)
+ 
 ### 一、示列
-> ##### 图片示列教程：
-> ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/2019-09-09_15-02-56.png "样列")
-> ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/2019-09-09_15-01-56.png "样列")
+> ##### 图片示列教程：（国内有些网络啊！tmd图片看不了的）
+> ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/image/2019-09-09_15-02-56.png "样列")
+> ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/image/2019-09-09_15-01-56.png "样列")
+> ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/image/2020-03-17_19-50-56.jpg "样列")
 
 
 > ##### 说明文档：
+
 1. 在项目根目录下创建Directory.xml文件(文件名称不能改变)
 
 2. 文件内容示列
