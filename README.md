@@ -28,10 +28,9 @@
 ### 一、示列
 > ##### 图片示列教程：（国内有些网络啊！tmd图片看不了的）
 
- ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/image/2019-09-09_15-01-56.jpg "样列")
  ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/image/2019-09-09_15-02-56.jpg "样列")
- ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/image/2020-03-17_19-50-56.jpg "样列")
-
+ ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/image/2019-09-09_15-01-56.jpg "样列")
+ 
 
 > ##### 说明文档：
 
