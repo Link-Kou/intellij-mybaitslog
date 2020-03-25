@@ -52,9 +52,11 @@ public class RestoreSqlForSelection extends AnAction {
         toolWindow.activate(null);
         final String preparing = ConfigUtil.getPreparing(project);
         final String parameters = ConfigUtil.getParameters(project);
-        String[] sqlArr = sqlText.split("\n");
-        if (isSelectedText(project, sqlText, sqlArr, preparing, parameters)) {
-            setSelectedTextFormat(project, sqlArr, preparing, parameters);
+        if(StringUtils.isNotEmpty(sqlText)){
+            String[] sqlArr = sqlText.split("\n");
+            if (isSelectedText(project, sqlText, sqlArr, preparing, parameters)) {
+                setSelectedTextFormat(project, sqlArr, preparing, parameters);
+            }
         }
     }
 
