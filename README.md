@@ -3,6 +3,8 @@
 
 ### 此项目拷贝与 [https://github.com/kookob/mybatis-log-plugin](https://github.com/kookob/mybatis-log-plugin)
 
+> 原来项目在IDEA的 2019.3 版本的时候出现无法使用的情况。此版本已经修复BUG
+
 > 项目会持续优化BUG，但是不添加新功能。如果原作者持续更新，优先建议使用原作者的
 
 > 由于原作者提供一个收费版本,这里就不在对插件发布到插件市场
@@ -12,7 +14,7 @@
 
 > Mybatislog是基于IntelliJ 开发的项目，用来格式化输出Mybatis的Sql。
 
- ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/image/2020-03-25_09-28-47.jpg "样列")
+ ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/2020-03-25_09-28-47.jpg "样列")
  
  
 ---
