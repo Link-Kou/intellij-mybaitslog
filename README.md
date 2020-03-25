@@ -38,13 +38,7 @@
 ### 手动安装
 
  [plugin.intellij.assistant.mybaitslog-1.0.0.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/builds/plugin.intellij.assistant.mybaitslog-1.0.0.jar)
- 
-### 一、示列
-> ##### 图片示列教程：（国内有些网络啊！tmd图片看不了的）
-
-
- ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/2020-03-18_16-46-20.gif "样列")
- 
+  
 
 > ##### 说明文档：
 
