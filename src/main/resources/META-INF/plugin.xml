@@ -1,19 +1,19 @@
 <idea-plugin>
-    <id>com.linkkou.plugin.intellij.assistant</id>
-    <name>TreeInfotip</name>
+    <id>com.linkkou.plugin.intellij.assistant.mybaitslog</id>
+    <name>MybatisLog</name>
     <vendor email="chinacclk@gmail.com" url="https://github.com/Link-Kou/intellij-treeInfotip">linkkou</vendor>
 
     <!-- 插件版本 -->
-    <version>1.0.1</version>
+    <version>1.0.0</version>
     <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
     <idea-version since-build="172"/>
     <!-- 插件的描述 -->
     <description><![CDATA[
       <ul>
         <h3>English:</h3>
-        <li>Add comment information to the project directory tree</li>
+        <li>Copy with mybatis-log-plugin</li>
         <h3>中文：</h3>
-        <li>项目目录树添加备注信息</li>
+        <li>拷贝 mybatis-log-plugin</li>
       </ul>
     ]]></description>
 
@@ -21,18 +21,8 @@
     <change-notes><![CDATA[
       <ul>
         <p>1.0.0</p>
-        <li> 1.通过配置XML文件来描述目录树备注信息 </li>
-        <li> 1.Describes the directory tree remark information by configuring the XML file </li>
-      </ul>
-      <ul>
-        <p>1.0.1</p>
-        <li> 1.修改配置 </li>
-        <li> 1.Modify the configuration </li>
-      </ul>
-      <ul>
-        <p>1.0.2</p>
-        <li> 1.BUG:查找不到文件报错 </li>
-        <li> 1.BUG:Unable to find file error </li>
+        <li> 1. 修正并运行 mybatis-log-plugin </li>
+        <li> 1. Fix and run mybatis-log-plugin </li>
       </ul>
     ]]></change-notes>
 
@@ -40,16 +30,26 @@
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
     <!-- uncomment to enable plugin in all products-->
+
+    <!--必须为企业版-->
     <depends>com.intellij.modules.lang</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <postStartupActivity implementation="com.plugins.infotip.PluginStartupActivity"/>
-        <treeStructureProvider implementation="com.plugins.infotip.TreeOnlyTextProvider"/>
-        <projectViewNodeDecorator implementation="com.plugins.infotip.IgnoreViewNodeDecorator"/>
+        <consoleFilterProvider implementation="com.plugins.mybaitslog.MyBatisLogProvider"/>
+        <executor implementation="com.plugins.mybaitslog.console.ConsoleRunExecutor" id="MyBatisLogTail"/>
+        <postStartupActivity implementation="com.plugins.mybaitslog.MyBatisLogStartupActivity"/>
     </extensions>
 
     <actions>
-        <!-- Add your actions here -->
+
+        <!-- restore sql from selection -->
+        <action class="com.plugins.mybaitslog.action.RestoreSqlForSelection" id="RestoreSqlAction"
+                text="Restore Sql from Selection"
+                description="Restore Sql from Selection">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="ConsoleEditorPopupMenu" anchor="before" relative-to-action="ConsoleView.ClearAll"/>
+        </action>
+
     </actions>
 </idea-plugin>

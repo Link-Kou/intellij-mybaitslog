@@ -1,10 +1,18 @@
-# TreeInfotip
+# Mybatislog
 
-### TreeInfotip能做什么？
 
-> TreeInfotip是基于IntelliJ 开发的项目目录自定义备注显示，主要通过自定义XML来生成项目目录树备注。
+### 此项目拷贝与 [https://github.com/kookob/mybatis-log-plugin](https://github.com/kookob/mybatis-log-plugin)
 
- ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/image/2020-03-18_16-47-30.jpg "样列")
+> 项目会持续优化BUG，但是不添加新功能。如果原作者持续更新，优先建议使用原作者的
+
+> 由于原作者提供一个收费版本,这里就不在对插件发布到插件市场
+
+
+### Mybatislog能做什么？
+
+> Mybatislog是基于IntelliJ 开发的项目，用来格式化输出Mybatis的Sql。
+
+ ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/image/2020-03-25_09-28-47.jpg "样列")
  
  
 ---
@@ -23,63 +31,19 @@
    
 ### 在线安装(搜索)
 
- IDEA或WebStrom -> Preferences -> Plugins -> TreeInfotip
+  不提供在线插件库安装
  
 ### 手动安装
 
- [plugin.intellij.assistant-1.0.0.zip](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/builds/plugin.intellij.assistant-1.0.0.zip)
+ [plugin.intellij.assistant.mybaitslog-1.0.0.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/builds/plugin.intellij.assistant.mybaitslog-1.0.0.jar)
  
 ### 一、示列
 > ##### 图片示列教程：（国内有些网络啊！tmd图片看不了的）
 
 
- ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/image/2020-03-18_16-46-20.gif "样列")
+ ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/2020-03-18_16-46-20.gif "样列")
  
 
 > ##### 说明文档：
 
-1. 在项目根目录下创建Directory.xml文件(文件名称不能改变)
-
-2. 文件内容示列
-```xml：
-  <?xml version="1.0" encoding="UTF-8"?>
-  <trees>
-      <tree path="/src">
-          <tree path="/main">
-              <tree path="/java/com">
-                  <tree path="/plugins" title="插件">
-                      <tree path="/infotip" title="信息显示">
-                          <tree path="/parsing" title="读取"/>
-                      </tree>
-                  </tree>
-              </tree>
-              <tree path="/resources" title="资源文件夹"/>
-          </tree>
-      </tree>
-      <tree path="/builds" title="构建文件"/>
-      <tree path="/image" title="图片示例"/>
-  </trees>
-```
-
-3. 标签说明
-```xml：
-
-  //trees只能有一个，所有子标签都在此标签里面
-  <trees/>
-
-  //模块（Maven多模块可以采用此标签作为标识） 
-  <model/>
-
-  //普通文件夹
-  <tree/> 文件夹说明
-```
-
-4. 属性说明
-```xml：
-
-    //路径，MAC与Win的路径都是通用的，上下级的标签会拼接上父节点的path属性
-    <path/> 
-
-    //显示的内容
-    <title/> 
-```
+    无
