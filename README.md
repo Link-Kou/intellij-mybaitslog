@@ -23,8 +23,6 @@
 
 `IntelliJ IDEA Ultimate版（172+）`
 
-`WebStrom（172+）`
-
 ### 源代码构建
 
     项目管理：Gradle
