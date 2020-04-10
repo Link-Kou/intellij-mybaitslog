@@ -9,6 +9,6 @@ import javax.swing.*;
  *
  * @author ob
  */
-public class Icons {
-    public static final Icon MyBatisIcon = IconLoader.getIcon("/com/plugins/mybaitslog/icons/mybatis.png", Icons.class);
+public final class Icons {
+    public static final Icon MyBatisIcon = IconLoader.getIcon("/icons/mybatis.png", Icons.class);
 }

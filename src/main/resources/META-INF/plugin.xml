@@ -37,8 +37,8 @@
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
         <consoleFilterProvider implementation="com.plugins.mybaitslog.MyBatisLogProvider"/>
-        <executor implementation="com.plugins.mybaitslog.console.ConsoleRunExecutor" id="MyBatisLogTail"/>
-        <postStartupActivity implementation="com.plugins.mybaitslog.MyBatisLogStartupActivity"/>
+        <toolWindow id="MyBatis Log" secondary="true" icon="/icons/mybatis.png" anchor="bottom"
+                    factoryClass="com.plugins.mybaitslog.MyBatisLogToolWindow"/>
     </extensions>
 
     <actions>

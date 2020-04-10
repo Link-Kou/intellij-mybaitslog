@@ -14,13 +14,21 @@ import java.awt.*;
 
 /**
  * 打印简单工具类
+ *
  * @author ob
  */
 public class PrintUtil {
+
+    private static ConsoleView consoleView;
+
+    public static void setConsoleView(ConsoleView consoleView) {
+        PrintUtil.consoleView = consoleView;
+    }
+
     public static ConsoleViewContentType getOutputAttributes(@Nullable Color foregroundColor, @Nullable Color backgroundColor) {
         //@Nullable Color foregroundColor, @Nullable Color backgroundColor, @Nullable Color effectColor, EffectType effectType, @FontStyle int fontType
         //针对Darcula主题，背景颜色调整
-        if(UIUtil.isUnderDarcula() && backgroundColor != null) {
+        if (UIUtil.isUnderDarcula() && backgroundColor != null) {
             backgroundColor = null;
             foregroundColor = Color.YELLOW;
         }
@@ -28,7 +36,7 @@ public class PrintUtil {
     }
 
     public static void println(Project project, String line, ConsoleViewContentType consoleViewContentType) {
-        ConsoleView consoleView = ConfigUtil.consoleViewMap.get(project.getBasePath());
+        ConsoleView consoleView = PrintUtil.consoleView;
         if (consoleView != null) {
             consoleView.print(line + "\n", consoleViewContentType);
         }
@@ -54,6 +62,7 @@ public class PrintUtil {
 
     /**
      * format sql statements
+     *
      * @param sql
      * @return
      */

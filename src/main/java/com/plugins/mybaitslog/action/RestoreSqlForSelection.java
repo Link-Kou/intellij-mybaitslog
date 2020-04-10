@@ -11,7 +11,6 @@ import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.ui.JBColor;
 import com.plugins.mybaitslog.icons.Icons;
-import com.plugins.mybaitslog.console.ConsoleRunExecutor;
 import com.plugins.mybaitslog.util.ConfigUtil;
 import com.plugins.mybaitslog.util.PrintUtil;
 import com.plugins.mybaitslog.util.RestoreSqlUtil;
@@ -44,15 +43,14 @@ public class RestoreSqlForSelection extends AnAction {
         CaretModel caretModel = e.getData(LangDataKeys.EDITOR).getCaretModel();
         Caret currentCaret = caretModel.getCurrentCaret();
         String sqlText = currentCaret.getSelectedText();
-        ToolWindow toolWindow = ToolWindowManager.getInstance(project).getToolWindow(ConsoleRunExecutor.TOOLWINDOWS_ID);
-        if (!ConfigUtil.active || !toolWindow.isAvailable()) {
-            new ShowLogInConsoleAction(project).showLogInConsole(project);
+        ToolWindow toolWindow = ToolWindowManager.getInstance(project).getToolWindow("MyBatis Log");
+        if (!toolWindow.isAvailable()) {
+            //激活Restore Sql tab
+            toolWindow.activate(null);
         }
-        //激活Restore Sql tab
-        toolWindow.activate(null);
         final String preparing = ConfigUtil.getPreparing(project);
         final String parameters = ConfigUtil.getParameters(project);
-        if(StringUtils.isNotEmpty(sqlText)){
+        if (StringUtils.isNotEmpty(sqlText)) {
             String[] sqlArr = sqlText.split("\n");
             if (isSelectedText(project, sqlText, sqlArr, preparing, parameters)) {
                 setSelectedTextFormat(project, sqlArr, preparing, parameters);

@@ -14,28 +14,6 @@ import java.util.Map;
  */
 public class ConfigUtil {
 
-    public static boolean active = false;
-
-    public static Map<String, ConsoleView> consoleViewMap = new HashMap<>();
-
-    public static void init(Project project) {
-        if (project != null) {
-            setRunning(project, false);
-            setSqlFormat(project, false);
-            setIndexNum(project, 1);
-            setPreparing(project, StringConst.PREPARING);
-            setParameters(project, StringConst.PARAMETERS);
-        }
-    }
-
-    public static void setRunning(Project project, boolean value) {
-        PropertiesComponent.getInstance(project).setValue(StringConst.RUNNINGKEY, value);
-    }
-
-    public static void setSqlFormat(Project project, boolean value) {
-        PropertiesComponent.getInstance(project).setValue(StringConst.SQLFORMATKEY, value);
-    }
-
     public static void setIndexNum(Project project, int value) {
         PropertiesComponent.getInstance(project).setValue(StringConst.INDEXNUMKEY, value, 1);
     }
@@ -60,6 +38,7 @@ public class ConfigUtil {
 
     /**
      * 获取关键字常量配置
+     *
      * @param project 项目
      * @return string
      */
@@ -72,6 +51,7 @@ public class ConfigUtil {
 
     /**
      * 获取关键字常量配置
+     *
      * @param project 项目
      * @return string
      */
@@ -88,10 +68,6 @@ public class ConfigUtil {
 
     public static void setParameters(Project project, String value) {
         PropertiesComponent.getInstance(project).setValue(StringConst.PARAMETERS_KEY, value);
-    }
-
-    public static int getStartup(Project project) {
-        return PropertiesComponent.getInstance(project).getInt(StringConst.STARTUP_KEY, 1);
     }
 
     public static void setStartup(Project project, int value) {
