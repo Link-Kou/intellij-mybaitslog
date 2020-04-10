@@ -16,7 +16,25 @@
 
  ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/2020-03-25_09-28-47.jpg "样列")
  
- 
+```sql
+
+--  1  2020.04.10 23:30:19 CST DEBUG com.cms.dao.ProductTypeConfigTitleDao.queryAll - ==>
+select f_id, f_name, f_preId, f_type, createtime, updatedtime
+ FROM cms.t_product_type_config_title
+ WHERE f_type = 2;
+------------------------------------------------------------------------------------------------------------------------
+--  2  2020.04.10 23:30:20 CST DEBUG com.cms.dao.ProductTypeConfigGroupDao.queryAll - ==>
+select f_id, f_titleId, f_name, f_preId, f_type, createtime, updatedtime
+ FROM cms.t_product_type_config_group
+ WHERE f_type = 2;
+------------------------------------------------------------------------------------------------------------------------
+--  3  2020.04.10 23:30:20 CST DEBUG com.cms.dao.ProductTypeConfigItemDao.queryAll - ==>
+select f_id, f_groupId, f_preId, f_name, f_type, createtime, updatedtime
+ FROM cms.t_product_type_config_item
+ WHERE f_type = 2;
+------------------------------------------------------------------------------------------------------------------------
+
+```
 ---
 
 ### 使用环境
