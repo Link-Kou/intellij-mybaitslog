@@ -45,6 +45,8 @@ public class RestoreSqlForSelection extends AnAction {
         String sqlText = currentCaret.getSelectedText();
         ToolWindow toolWindow = ToolWindowManager.getInstance(project).getToolWindow("MyBatis Log");
         toolWindow.show(null);
+        //激活Restore Sql tab
+        toolWindow.activate(null);
         final String preparing = ConfigUtil.getPreparing(project);
         final String parameters = ConfigUtil.getParameters(project);
         if (StringUtils.isNotEmpty(sqlText)) {
