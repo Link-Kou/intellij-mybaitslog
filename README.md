@@ -45,11 +45,19 @@ select f_id, f_groupId, f_preId, f_name, f_type, createtime, updatedtime
 
 `IntelliJ IDEA Ultimate版（172+）`
 
+```html
+
+  TODO:2020-4-18：测试 2020.1 没有问题
+
+```
+
+
 ### 源代码构建
 
     项目管理：Gradle
     
-    注意：国内网络原因，构建十分费力，耐心一点
+    注意：国内网络原因，构建十分费力,如果不进行扶墙，几乎不可能完成构建
+    （曾经的我是如此的单纯，挂机24小时就是没办法）
    
 ### 在线安装(搜索)
 
@@ -57,7 +65,11 @@ select f_id, f_groupId, f_preId, f_name, f_type, createtime, updatedtime
  
 ### 手动安装
 
- [plugin.intellij.assistant.mybaitslog-1.0.0.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/builds/plugin.intellij.assistant.mybaitslog-1.0.0.jar)
+ 2019.3.X
+ [plugin.intellij.assistant.mybaitslog-2019.3-1.0.0.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/builds/plugin.intellij.assistant.mybaitslog-2019.3-1.0.0.jar)
+ 
+ 2010.1
+ [plugin.intellij.assistant.mybaitslog-2020.1-1.0.0.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/builds/plugin.intellij.assistant.mybaitslog-2020.1-1.0.0.jar)
   
 
 > ##### 说明文档：

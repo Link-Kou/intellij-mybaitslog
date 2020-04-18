@@ -1,14 +1,14 @@
 buildscript {
     repositories {
-        maven { url '/Users/lk/Downloads/ideaIU-2019.3.zip' }
+
+        /*maven { url '/Users/lk/Downloads/ideaIU-2019.3.zip' }
         maven { url '/Users/lk/Downloads/intellij-core-2019.3.zip' }
         maven { url '/Users/lk/Downloads/ideaIU-2019.3-annotations.zip' }
-        maven { url '/Users/lk/Downloads/jbr-11_0_4-osx-x64-b520.11.tar.gz' }
+        maven { url '/Users/lk/Downloads/jbr-11_0_4-osx-x64-b520.11.tar.gz' }*/
+
+        maven { url '/Users/lk/Downloads/IDEA2020/'}
         maven { url 'https://maven.aliyun.com/repository/public/' }
-        maven { url 'https://maven.aliyun.com/repository/google/' }
-        maven { url 'https://maven.aliyun.com/repository/jcenter' }
         maven { url "https://www.jetbrains.com/intellij-repository/releases/" }
-        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/"}
         maven { url "https://dl.bintray.com/jetbrains/intellij-plugin-service/"}
         mavenLocal()
@@ -38,10 +38,8 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
-    maven { url '/Users/lk/Downloads/jbr-11_0_4-osx-x64-b520.11.tar.gz' }
-    maven { url 'https://maven.aliyun.com/repository/public/' }
-    maven { url 'https://maven.aliyun.com/repository/google/' }
-    maven { url 'https://maven.aliyun.com/repository/jcenter' }
+    maven { url '/Users/lk/Downloads/IDEA2020/' }
+    maven { url 'https://maven.aliyun.com/repository/public/'}
     maven { url "https://www.jetbrains.com/intellij-repository/releases" }
 }
 
@@ -52,7 +50,7 @@ dependencies {
 intellij {
     pluginName 'MybatisLog'
     // 开发环境运行时使用的版本
-    version '2019.3'
+    version '2020.1'
     // 沙箱目录位置，用于保存IDEA的设置，默认在build文件下面，防止clean，放在根目录下。
     //sandboxDirectory = "${rootProject.rootDir}/idea-sandbox"
     type 'IU'
