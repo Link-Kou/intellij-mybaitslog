@@ -74,4 +74,5 @@ select f_id, f_groupId, f_preId, f_name, f_type, createtime, updatedtime
 
 > ##### 说明文档：
 
-    无
+    1、插件基于日志来进行打印，如果无法打印SQL语句。排查一下日志
+    2、插件默认随项目启动而启动
