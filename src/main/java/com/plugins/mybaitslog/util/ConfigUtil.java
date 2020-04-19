@@ -18,16 +18,6 @@ public class ConfigUtil {
         PropertiesComponent.getInstance(project).setValue(StringConst.INDEXNUMKEY, value, 1);
     }
 
-    /**
-     * 获取运行Console
-     *
-     * @param project
-     * @return
-     */
-    public static boolean getRunning(Project project) {
-        return PropertiesComponent.getInstance(project).getBoolean(StringConst.RUNNINGKEY);
-    }
-
     public static boolean getSqlFormat(Project project) {
         return PropertiesComponent.getInstance(project).getBoolean(StringConst.SQLFORMATKEY);
     }

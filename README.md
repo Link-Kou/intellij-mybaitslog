@@ -69,7 +69,7 @@ select f_id, f_groupId, f_preId, f_name, f_type, createtime, updatedtime
  [plugin.intellij.assistant.mybaitslog-2019.3-1.0.0.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-2019.3-1.0.0.jar)
  
  2020.1
- [plugin.intellij.assistant.mybaitslog-2020.1-1.0.0.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-2020.1-1.0.0.jar)
+ [plugin.intellij.assistant.mybaitslog-2020.1-1.0.1.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-2020.1-1.0.1.jar)
   
 
 > ##### 说明文档：

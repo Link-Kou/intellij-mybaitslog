@@ -33,44 +33,48 @@ public class MyBatisLogFilter implements Filter {
         if (this.project == null) {
             return null;
         }
-        if (ConfigUtil.getRunning(project)) {
-            //过滤不显示的语句
-            String[] filters = PropertiesComponent.getInstance(project).getValues(StringConst.FILTER_KEY);
-            if (filters != null && filters.length > 0 && StringUtils.isNotBlank(currentLine)) {
-                for (String filter : filters) {
-                    if (StringUtils.isNotBlank(filter) && currentLine.toLowerCase().contains(filter.trim().toLowerCase())) {
-                        return null;
-                    }
+        prints(currentLine, endPoint);
+        return null;
+    }
+
+    private Result prints(final String currentLine, int endPoint) {
+        //过滤不显示的语句
+        String[] filters = PropertiesComponent.getInstance(project).getValues(StringConst.FILTER_KEY);
+        if (filters != null && filters.length > 0 && StringUtils.isNotBlank(currentLine)) {
+            for (String filter : filters) {
+                if (StringUtils.isNotBlank(filter) && currentLine.toLowerCase().contains(filter.trim().toLowerCase())) {
+                    return null;
                 }
             }
-            if (currentLine.contains(ConfigUtil.getPreparing(project))) {
-                preparingLine = currentLine;
-                return null;
+        }
+        if (currentLine.contains(ConfigUtil.getPreparing(project))) {
+            preparingLine = currentLine;
+            return null;
+        }
+        if (StringUtils.isEmpty(preparingLine)) {
+            return null;
+        }
+        parametersLine = currentLine.contains(ConfigUtil.getParameters(project)) ? currentLine : parametersLine + currentLine;
+        if (!parametersLine.endsWith("Parameters: \n") && !parametersLine.endsWith("null\n") && !parametersLine.endsWith(")\n")) {
+            return null;
+        } else {
+            isEnd = true;
+        }
+        if (StringUtils.isNotEmpty(preparingLine) && StringUtils.isNotEmpty(parametersLine) && isEnd) {
+            int indexNum = ConfigUtil.getIndexNum(project);
+            //序号前缀字符串
+            String preStr = "--  " + indexNum + "  " + parametersLine.split(ConfigUtil.getParameters(project))[0].trim();
+            ConfigUtil.setIndexNum(project, ++indexNum);
+            String restoreSql = RestoreSqlUtil.restoreSql(project, preparingLine, parametersLine);
+            PrintUtil.println(project, preStr, ConsoleViewContentType.USER_INPUT);
+            if (ConfigUtil.getSqlFormat(project)) {
+                restoreSql = PrintUtil.format(restoreSql);
             }
-            if (StringUtils.isEmpty(preparingLine)) {
-                return null;
-            }
-            parametersLine = currentLine.contains(ConfigUtil.getParameters(project)) ? currentLine : parametersLine + currentLine;
-            if (!parametersLine.endsWith("Parameters: \n") && !parametersLine.endsWith("null\n") && !parametersLine.endsWith(")\n")) {
-                return null;
-            } else {
-                isEnd = true;
-            }
-            if (StringUtils.isNotEmpty(preparingLine) && StringUtils.isNotEmpty(parametersLine) && isEnd) {
-                int indexNum = ConfigUtil.getIndexNum(project);
-                String preStr = "--  " + indexNum + "  " + parametersLine.split(ConfigUtil.getParameters(project))[0].trim();//序号前缀字符串
-                ConfigUtil.setIndexNum(project, ++indexNum);
-                String restoreSql = RestoreSqlUtil.restoreSql(project, preparingLine, parametersLine);
-                PrintUtil.println(project, preStr, ConsoleViewContentType.USER_INPUT);
-                if (ConfigUtil.getSqlFormat(project)) {
-                    restoreSql = PrintUtil.format(restoreSql);
-                }
-                PrintUtil.println(project, restoreSql);
-                PrintUtil.println(project, StringConst.SPLIT_LINE, ConsoleViewContentType.USER_INPUT);
-                preparingLine = "";
-                parametersLine = "";
-                isEnd = false;
-            }
+            PrintUtil.println(project, restoreSql);
+            PrintUtil.println(project, StringConst.SPLIT_LINE, ConsoleViewContentType.USER_INPUT);
+            preparingLine = "";
+            parametersLine = "";
+            isEnd = false;
         }
         return null;
     }

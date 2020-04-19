@@ -11,6 +11,8 @@ import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 打印简单工具类
@@ -19,10 +21,11 @@ import java.awt.*;
  */
 public class PrintUtil {
 
-    private static ConsoleView consoleView;
+    public static Map<String, ConsoleView> consoleViewMap = new ConcurrentHashMap<>();
 
-    public static void setConsoleView(ConsoleView consoleView) {
-        PrintUtil.consoleView = consoleView;
+
+    public static void setConsoleView(Project project, ConsoleView consoleView) {
+        consoleViewMap.put(project.getBasePath(), consoleView);
     }
 
     public static ConsoleViewContentType getOutputAttributes(@Nullable Color foregroundColor, @Nullable Color backgroundColor) {
@@ -36,7 +39,7 @@ public class PrintUtil {
     }
 
     public static void println(Project project, String line, ConsoleViewContentType consoleViewContentType) {
-        ConsoleView consoleView = PrintUtil.consoleView;
+        ConsoleView consoleView = consoleViewMap.get(project.getBasePath());
         if (consoleView != null) {
             consoleView.print(line + "\n", consoleViewContentType);
         }

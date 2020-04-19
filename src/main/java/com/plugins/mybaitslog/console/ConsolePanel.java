@@ -36,7 +36,7 @@ public class ConsolePanel {
         TextConsoleBuilder consoleBuilder = TextConsoleBuilderFactory.getInstance().createBuilder(project);
         consoleBuilder.filters(myFilterList);
         ConsoleView console = consoleBuilder.getConsole();
-        PrintUtil.setConsoleView(console);
+        PrintUtil.setConsoleView(project, console);
         return console;
     }
 
