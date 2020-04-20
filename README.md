@@ -45,13 +45,6 @@ select f_id, f_groupId, f_preId, f_name, f_type, createtime, updatedtime
 
 `IntelliJ IDEA Ultimate版（172+）`
 
-```html
-
-  TODO:2020-4-18：测试 2020.1 没有问题
-
-```
-
-
 ### 源代码构建
 
     项目管理：Gradle
