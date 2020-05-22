@@ -1,11 +1,7 @@
 package com.plugins.mybaitslog.util;
 
-import com.intellij.execution.ui.ConsoleView;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.project.Project;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 配置项参数
@@ -36,7 +32,11 @@ public class ConfigUtil {
         if (project == null) {
             return StringConst.PREPARING;
         }
-        return PropertiesComponent.getInstance(project).getValue(StringConst.PREPARING_KEY);
+        final String value = PropertiesComponent.getInstance(project).getValue(StringConst.PREPARING_KEY);
+        if (value == null) {
+            return StringConst.PREPARING;
+        }
+        return value;
     }
 
     /**
@@ -49,7 +49,11 @@ public class ConfigUtil {
         if (project == null) {
             return StringConst.PARAMETERS;
         }
-        return PropertiesComponent.getInstance(project).getValue(StringConst.PARAMETERS_KEY);
+        final String value = PropertiesComponent.getInstance(project).getValue(StringConst.PARAMETERS_KEY);
+        if (value == null) {
+            return StringConst.PARAMETERS;
+        }
+        return value;
     }
 
     public static void setPreparing(Project project, String value) {
