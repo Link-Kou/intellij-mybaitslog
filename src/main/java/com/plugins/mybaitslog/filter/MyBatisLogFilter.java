@@ -33,7 +33,9 @@ public class MyBatisLogFilter implements Filter {
         if (this.project == null) {
             return null;
         }
-        prints(currentLine, endPoint);
+        if (currentLine != null) {
+            prints(currentLine, endPoint);
+        }
         return null;
     }
 
