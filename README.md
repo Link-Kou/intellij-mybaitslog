@@ -1,5 +1,6 @@
 # Mybatislog
 
+### 2020.8.7 《IDEA 2020.2 还未测试，近期完成兼容测试。》
 
 ### 此项目拷贝于 [https://github.com/kookob/mybatis-log-plugin](https://github.com/kookob/mybatis-log-plugin)
 
