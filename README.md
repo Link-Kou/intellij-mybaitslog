@@ -1,6 +1,6 @@
 # Mybatislog
 
-### 2020.8.7 《IDEA 2020.2 还未测试，近期完成兼容测试。》
+### 2020.8.11 《IDEA 2020.2 测试通过支持使用。》
 
 ### 此项目拷贝于 [https://github.com/kookob/mybatis-log-plugin](https://github.com/kookob/mybatis-log-plugin)
 
@@ -59,7 +59,7 @@ select f_id, f_groupId, f_preId, f_name, f_type, createtime, updatedtime
  
 ### 手动安装
 
- 2020.1 以下版本都支持
+ 2020.2 以下版本都支持
  [plugin.intellij.assistant.mybaitslog-2020.1-1.0.3.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-2020.1-1.0.3.jar)
   
 
