@@ -69,8 +69,7 @@ public class RestoreSqlForSelection extends AnAction {
                 return true;
             }
         }
-        PrintUtil.println(project, "没有可以格式化内容", ConsoleViewContentType.USER_INPUT);
-        PrintUtil.println(project, StringConst.SPLIT_LINE, ConsoleViewContentType.USER_INPUT);
+        PrintlnUtil.println(project, KeyNameUtil.SQL_NULL, ConsoleViewContentType.USER_INPUT,true);
         return false;
     }
 
@@ -101,13 +100,11 @@ public class RestoreSqlForSelection extends AnAction {
             if (StringUtils.isNotEmpty(preparingLine) && StringUtils.isNotEmpty(parametersLine)) {
                 //SQL还原
                 String[] restoreSql = SqlProUtil.restoreSql(project, preparingLine, parametersLine);
-                PrintUtil.println(project, "-- " + restoreSql[0], ConsoleViewContentType.USER_INPUT);
+                PrintlnUtil.println(project, "-- " + restoreSql[0], ConsoleViewContentType.USER_INPUT);
                 //高亮显示
-                PrintUtil.println(project, restoreSql[1]);
-                PrintUtil.println(project, StringConst.SPLIT_LINE, ConsoleViewContentType.USER_INPUT);
+                PrintlnUtil.printlnSqlType(project, restoreSql[1]);
             } else {
-                PrintUtil.println(project, "没有可以格式化内容", ConsoleViewContentType.USER_INPUT);
-                PrintUtil.println(project, StringConst.SPLIT_LINE, ConsoleViewContentType.USER_INPUT);
+                PrintlnUtil.println(project, KeyNameUtil.SQL_NULL, ConsoleViewContentType.USER_INPUT,true);
             }
         }
     }

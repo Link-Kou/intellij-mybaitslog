@@ -3,7 +3,7 @@ package com.plugins.mybaitslog.action.gui;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.project.Project;
 import com.plugins.mybaitslog.util.ConfigUtil;
-import com.plugins.mybaitslog.util.StringConst;
+import com.plugins.mybaitslog.util.KeyNameUtil;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -33,7 +33,7 @@ public class FilterSetting extends JDialog {
         this.setTitle("Filter Setting");
         this.preparingTextField.setText(ConfigUtil.getPreparing(project));
         this.parametersTextField.setText(ConfigUtil.getParameters(project));
-        int startup = PropertiesComponent.getInstance(project).getInt(StringConst.STARTUP_KEY, 1);
+        int startup = PropertiesComponent.getInstance(project).getInt(KeyNameUtil.DB_STARTUP_KEY, 1);
         startupCheckBox.setSelected(startup == 1);
         setContentPane(contentPane);
         setModal(true);
@@ -55,8 +55,8 @@ public class FilterSetting extends JDialog {
      * @param project 项目
      */
     private void onOK(Project project) {
-        String preparingText = StringConst.PREPARING;
-        String parametersText = StringConst.PARAMETERS;
+        String preparingText = KeyNameUtil.PREPARING;
+        String parametersText = KeyNameUtil.PARAMETERS;
         ConfigUtil.setPreparing(project, preparingText);
         ConfigUtil.setParameters(project, parametersText);
         ConfigUtil.setStartup(project, startupCheckBox.isSelected() ? 1 : 0);

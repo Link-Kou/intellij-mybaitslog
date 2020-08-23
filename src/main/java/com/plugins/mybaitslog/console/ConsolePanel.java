@@ -11,7 +11,7 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
 import com.plugins.mybaitslog.action.gui.FilterSetting;
-import com.plugins.mybaitslog.util.PrintUtil;
+import com.plugins.mybaitslog.util.PrintlnUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -39,7 +39,7 @@ public class ConsolePanel {
         TextConsoleBuilder consoleBuilder = TextConsoleBuilderFactory.getInstance().createBuilder(project);
         consoleBuilder.filters(myFilterList);
         ConsoleView console = consoleBuilder.getConsole();
-        PrintUtil.setConsoleView(project, console);
+        PrintlnUtil.setConsoleView(project, console);
         return console;
     }
 

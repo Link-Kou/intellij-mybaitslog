@@ -49,9 +49,8 @@ public class MyBatisLogFilter implements Filter {
         if (StringUtils.isNotEmpty(preparingLine) && StringUtils.isNotEmpty(parametersLine)) {
             //序号前缀字符串
             String[] restoreSql = SqlProUtil.restoreSql(project, preparingLine, parametersLine);
-            PrintUtil.println(project, "--" + restoreSql[0], ConsoleViewContentType.USER_INPUT);
-            PrintUtil.println(project, restoreSql[1]);
-            PrintUtil.println(project, StringConst.SPLIT_LINE, ConsoleViewContentType.USER_INPUT);
+            PrintlnUtil.println(project, "--" + restoreSql[0], ConsoleViewContentType.USER_INPUT);
+            PrintlnUtil.printlnSqlType(project, restoreSql[1]);
             preparingLine = "";
             parametersLine = "";
         }

@@ -1,8 +1,11 @@
 package com.plugins.mybaitslog.util;
 
+import com.intellij.execution.ui.ConsoleViewContentType;
+import com.intellij.openapi.editor.markup.TextAttributes;
 import com.intellij.openapi.project.Project;
 import org.apache.commons.lang.StringUtils;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -18,6 +21,30 @@ import java.util.regex.Pattern;
  * @date 2020/8/23 17:14
  */
 public class SqlProUtil {
+
+    /**
+     * 获取Sql语句类型
+     * @param sql 语句
+     * @return
+     */
+    public static String getSqlType(String sql) {
+        if (StringUtils.isNotBlank(sql)) {
+            String lowerLine = sql.toLowerCase().trim();
+            if (lowerLine.startsWith("insert")) {
+                return "insert";
+            }
+            if (lowerLine.startsWith("update")) {
+                return "update";
+            }
+            if (lowerLine.startsWith("delete")) {
+                return "delete";
+            }
+            if (lowerLine.startsWith("select")) {
+                return "select";
+            }
+        }
+        return "";
+    }
 
     /**
      * Sql语句还原，整个插件的核心就是该方法

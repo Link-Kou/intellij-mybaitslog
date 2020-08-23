@@ -43,9 +43,9 @@ public class ConfigUtil {
      */
     public static String getPreparing(Project project) {
         if (project == null) {
-            return StringConst.PREPARING;
+            return KeyNameUtil.PREPARING;
         }
-        return PropertiesComponent.getInstance(project).getValue(StringConst.PREPARING_KEY, StringConst.PREPARING);
+        return PropertiesComponent.getInstance(project).getValue(KeyNameUtil.DB_PREPARING_KEY, KeyNameUtil.PREPARING);
     }
 
     /**
@@ -56,9 +56,9 @@ public class ConfigUtil {
      */
     public static String getParameters(Project project) {
         if (project == null) {
-            return StringConst.PARAMETERS;
+            return KeyNameUtil.PARAMETERS;
         }
-        return PropertiesComponent.getInstance(project).getValue(StringConst.PARAMETERS_KEY, StringConst.PARAMETERS);
+        return PropertiesComponent.getInstance(project).getValue(KeyNameUtil.DB_PARAMETERS_KEY, KeyNameUtil.PARAMETERS);
     }
 
     /**
@@ -68,7 +68,7 @@ public class ConfigUtil {
      * @param value   值
      */
     public static void setPreparing(Project project, String value) {
-        PropertiesComponent.getInstance(project).setValue(StringConst.PREPARING_KEY, value);
+        PropertiesComponent.getInstance(project).setValue(KeyNameUtil.DB_PREPARING_KEY, value);
     }
 
     /**
@@ -78,7 +78,7 @@ public class ConfigUtil {
      * @param value   值
      */
     public static void setParameters(Project project, String value) {
-        PropertiesComponent.getInstance(project).setValue(StringConst.PARAMETERS_KEY, value);
+        PropertiesComponent.getInstance(project).setValue(KeyNameUtil.DB_PARAMETERS_KEY, value);
     }
 
     /**
@@ -88,7 +88,7 @@ public class ConfigUtil {
      * @param value   值
      */
     public static void setStartup(Project project, int value) {
-        PropertiesComponent.getInstance(project).setValue(StringConst.STARTUP_KEY, value, 1);
+        PropertiesComponent.getInstance(project).setValue(KeyNameUtil.DB_STARTUP_KEY, value, 1);
     }
 
     /**
@@ -97,7 +97,7 @@ public class ConfigUtil {
      * @param project 项目
      */
     public static boolean getStartup(Project project) {
-        final int anInt = PropertiesComponent.getInstance(project).getInt(StringConst.STARTUP_KEY, 1);
+        final int anInt = PropertiesComponent.getInstance(project).getInt(KeyNameUtil.DB_STARTUP_KEY, 1);
         return anInt == 1;
     }
 }
