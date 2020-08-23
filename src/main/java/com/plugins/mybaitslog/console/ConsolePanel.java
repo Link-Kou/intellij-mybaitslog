@@ -32,7 +32,7 @@ public class ConsolePanel {
     /**
      * 创建 输出面板
      *
-     * @param project
+     * @param project 项目
      * @return
      */
     private ConsoleView createConsole(@NotNull Project project) {
@@ -55,7 +55,7 @@ public class ConsolePanel {
     /**
      * 构建面板
      */
-    public JComponent ConsolePanel(final Project myProject) {
+    public JComponent getConsolePanel(final Project myProject) {
         final ConsoleView consoleView = createConsole(myProject);
         //左边显示的控件
         final JComponent consolePanel = createConsolePanel(consoleView);
@@ -77,8 +77,8 @@ public class ConsolePanel {
     /**
      * 创建工具栏
      *
-     * @param consolePanel
-     * @param consoleView
+     * @param consolePanel 输出面板
+     * @param consoleView 输出窗口
      * @return
      */
     @NotNull
