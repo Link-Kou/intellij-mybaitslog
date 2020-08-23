@@ -23,6 +23,4 @@ public class StringConst {
      * 存储的key名称 是否允许运行
      */
     public static final String STARTUP_KEY = PLUGIN_ID + "startup";
-
-    public static final String INDEXNUMKEY = PLUGIN_ID + "indexNum";
 }
