@@ -47,15 +47,31 @@ public class PrintlnUtil {
      * @param rowLine                行数据
      * @param consoleViewContentType 输出颜色
      */
-    public static void println(Project project, String rowLine, ConsoleViewContentType consoleViewContentType, boolean lINE) {
+    public static void println(Project project, String rowLine, ConsoleViewContentType consoleViewContentType, boolean line) {
+        println(project, rowLine, consoleViewContentType, line, true);
+    }
+
+    /**
+     * 输出语句
+     *
+     * @param project                项目
+     * @param rowLine                行数据
+     * @param consoleViewContentType 输出颜色
+     */
+    public static void println(Project project, String rowLine, ConsoleViewContentType consoleViewContentType, boolean line, boolean lineBreak) {
         ConsoleView consoleView = consoleViewMap.get(project.getBasePath());
         if (consoleView != null) {
-            consoleView.print(rowLine + "\n", consoleViewContentType);
-            if (lINE) {
+            if (lineBreak) {
+                consoleView.print(rowLine + "\n", consoleViewContentType);
+            } else {
+                consoleView.print(rowLine, consoleViewContentType);
+            }
+            if (line) {
                 consoleView.print(KeyNameUtil.LINE, ConsoleViewContentType.USER_INPUT);
             }
         }
     }
+
 
     /**
      * SQL 输出语句

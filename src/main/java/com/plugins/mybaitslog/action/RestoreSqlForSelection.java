@@ -10,6 +10,9 @@ import com.intellij.openapi.project.Project;
 import com.plugins.mybaitslog.icons.Icons;
 import com.plugins.mybaitslog.util.*;
 import org.apache.commons.lang.StringUtils;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 
 /**
@@ -32,7 +35,7 @@ public class RestoreSqlForSelection extends AnAction {
         if (project == null) {
             return;
         }
-        CaretModel caretModel = e.getData(LangDataKeys.EDITOR).getCaretModel();
+        CaretModel caretModel = Objects.requireNonNull(e.getData(LangDataKeys.EDITOR)).getCaretModel();
         Caret currentCaret = caretModel.getCurrentCaret();
         String selectedText = currentCaret.getSelectedText();
         ConfigUtil.setShowMyBatisLog(project);
@@ -49,7 +52,7 @@ public class RestoreSqlForSelection extends AnAction {
 
 
     @Override
-    public void update(AnActionEvent event) {
+    public void update(@NotNull AnActionEvent event) {
         this.getTemplatePresentation().setEnabled(true);
     }
 
