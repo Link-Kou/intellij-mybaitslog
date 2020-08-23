@@ -6,6 +6,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.DumbAware;
 
 /**
+ * 左侧工具栏
  * @author lk
  * @version 1.0
  * @date 2020/4/10 22:00

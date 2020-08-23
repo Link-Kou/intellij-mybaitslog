@@ -9,7 +9,9 @@ import com.intellij.openapi.project.Project;
 
 /**
  * Console 输出监控
- * @author ob
+ * @author lk
+ * @version 1.0
+ * @date 2020/4/10 21:46
  */
 public class MyBatisLogProvider implements ConsoleFilterProvider {
     @NotNull

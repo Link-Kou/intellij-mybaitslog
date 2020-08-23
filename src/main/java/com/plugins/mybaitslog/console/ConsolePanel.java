@@ -20,7 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * console 描述
+ * console 窗口
+ * @author lk
+ * @version 1.0
+ * @date 2020/4/10 22:00
  */
 public class ConsolePanel {
 

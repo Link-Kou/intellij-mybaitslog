@@ -12,6 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 
 /**
+ * 标签窗口实现
  * @author lk
  * @version 1.0
  * @date 2020/4/10 21:46
