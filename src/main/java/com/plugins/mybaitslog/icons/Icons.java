@@ -7,7 +7,9 @@ import javax.swing.*;
 /**
  * 图标文件
  *
- * @author ob
+ * @author lk
+ * @version 1.0
+ * @date 2020/8/23 17:14
  */
 public final class Icons {
     public static final Icon MyBatisIcon = IconLoader.getIcon("/icons/mybatis.png", Icons.class);

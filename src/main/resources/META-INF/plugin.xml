@@ -42,14 +42,13 @@
     </extensions>
 
     <actions>
-
         <!-- restore sql from selection -->
-        <action class="com.plugins.mybaitslog.action.RestoreSqlForSelection" id="RestoreSqlAction"
+        <action class="com.plugins.mybaitslog.action.RestoreSqlForSelection"
+                id="RestoreSqlAction"
                 text="Restore Sql from Selection"
                 description="Restore Sql from Selection">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
             <add-to-group group-id="ConsoleEditorPopupMenu" anchor="before" relative-to-action="ConsoleView.ClearAll"/>
         </action>
-
     </actions>
 </idea-plugin>

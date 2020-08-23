@@ -4,11 +4,7 @@ import com.intellij.execution.ui.ConsoleView;
 import com.intellij.execution.ui.ConsoleViewContentType;
 import com.intellij.openapi.editor.markup.TextAttributes;
 import com.intellij.openapi.project.Project;
-import com.intellij.util.ui.UIUtil;
-import com.plugins.mybaitslog.hibernate.BasicFormatterImpl;
-import com.plugins.mybaitslog.hibernate.Formatter;
 import org.apache.commons.lang.StringUtils;
-import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 import java.util.Map;
@@ -17,10 +13,15 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 打印简单工具类
  *
- * @author ob
+ * @author lk
+ * @version 1.0
+ * @date 2020/8/23 17:14
  */
 public class PrintUtil {
 
+    /**
+     * 多项目控制台独立性
+     */
     public static Map<String, ConsoleView> consoleViewMap = new ConcurrentHashMap<>();
 
 
@@ -28,16 +29,12 @@ public class PrintUtil {
         consoleViewMap.put(project.getBasePath(), consoleView);
     }
 
-    public static ConsoleViewContentType getOutputAttributes(@Nullable Color foregroundColor, @Nullable Color backgroundColor) {
-        //@Nullable Color foregroundColor, @Nullable Color backgroundColor, @Nullable Color effectColor, EffectType effectType, @FontStyle int fontType
-        //针对Darcula主题，背景颜色调整
-        if (UIUtil.isUnderDarcula() && backgroundColor != null) {
-            backgroundColor = null;
-            foregroundColor = Color.YELLOW;
-        }
-        return new ConsoleViewContentType("styleName", new TextAttributes(foregroundColor, backgroundColor, null, null, Font.PLAIN));
-    }
-
+    /**
+     *
+     * @param project 项目
+     * @param line 行数据
+     * @param consoleViewContentType 输出颜色
+     */
     public static void println(Project project, String line, ConsoleViewContentType consoleViewContentType) {
         ConsoleView consoleView = consoleViewMap.get(project.getBasePath());
         if (consoleView != null) {
@@ -48,7 +45,7 @@ public class PrintUtil {
     /**
      * 增删改sql改用蓝色标识
      *
-     * @param line
+     * @param line 行数据
      */
     public static void println(Project project, String line) {
         if (StringUtils.isNotBlank(line)) {
@@ -56,21 +53,10 @@ public class PrintUtil {
             if (lowerLine.startsWith("insert") || lowerLine.startsWith("update")) {
                 println(project, line, ConsoleViewContentType.SYSTEM_OUTPUT);
             } else if (lowerLine.startsWith("delete")) {
-                println(project, line, getOutputAttributes(Color.RED, null));
+                println(project, line, new ConsoleViewContentType("styleName", new TextAttributes(Color.RED, null, null, null, Font.PLAIN)));
             } else {
                 println(project, line, ConsoleViewContentType.ERROR_OUTPUT);
             }
         }
-    }
-
-    /**
-     * format sql statements
-     *
-     * @param sql
-     * @return
-     */
-    public static String format(String sql) {
-        Formatter formatter = new BasicFormatterImpl();
-        return formatter.format(sql);
     }
 }
