@@ -2,16 +2,9 @@
 
 ### 2020.8.11 《IDEA 2020.2 测试通过支持使用。》
 
-### 此项目拷贝于 [https://github.com/kookob/mybatis-log-plugin](https://github.com/kookob/mybatis-log-plugin)
+### 关于协议冲突
 
-> 原来项目在IDEA的 2019.3 版本的时候出现无法使用的情况。此项目已经修复BUG
-
-> 我在原来的基础上对项目进行部分重写,有部分核心代码依旧采用原作者
-
-> 项目会持续优化BUG，但是不添加新功能。如果原作者持续更新，优先建议使用原作者的
-
-> 由于原作者提供一个收费版本,这里就不在对插件发布到插件市场
-
+#### 由于部分核心代码采用原作者的。本人暂时性去除下载jar。将花一些时间完全重写。
 
 ### Mybatislog能做什么？
 
@@ -59,7 +52,7 @@ select f_id, f_groupId, f_preId, f_name, f_type, createtime, updatedtime
  
 ### 手动安装
 
- 2020.2 以下版本都支持
+ 2020.2 以下版本都支持（协议冲突，暂不提供下载,以下链接暂时失效）
  [plugin.intellij.assistant.mybaitslog-2020.1-1.0.3.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-2020.1-1.0.3.jar)
   
 
