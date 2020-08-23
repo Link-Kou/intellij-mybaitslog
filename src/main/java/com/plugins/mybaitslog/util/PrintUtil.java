@@ -30,7 +30,7 @@ public class PrintUtil {
     }
 
     /**
-     *
+     * 输出语句
      * @param project 项目
      * @param line 行数据
      * @param consoleViewContentType 输出颜色
