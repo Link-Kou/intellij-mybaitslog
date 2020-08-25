@@ -2,8 +2,6 @@ package com.plugins.mybaitslog.util;
 
 import com.intellij.openapi.project.Project;
 import org.apache.commons.lang.StringUtils;
-import com.alibaba.druid.sql.SQLUtils;
-import com.alibaba.druid.util.JdbcConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +15,7 @@ import java.util.List;
  */
 public class SqlProUtil {
 
-    private final static BasicFormatter basicFormatter = new BasicFormatter();
+    private final static BasicFormatter BASIC_FORMATTER = new BasicFormatter();
     /**
      * 获取Sql语句类型
      *
@@ -58,7 +56,7 @@ public class SqlProUtil {
         final String[] preparing = getPreparing(preparingLineSplit);
         final Object[] parameters = getParameters(parametersLineSplit);
         final String sqlformat = String.format(preparing[1], parameters);
-        final String result = basicFormatter.format(sqlformat);
+        final String result = BASIC_FORMATTER.format(sqlformat);
         return new String[]{preparing[0], result};
     }
 
