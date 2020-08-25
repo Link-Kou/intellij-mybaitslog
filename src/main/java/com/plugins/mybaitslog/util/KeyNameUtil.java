@@ -15,6 +15,7 @@ public class KeyNameUtil {
      * 无法格式输出
      */
     public static final String SQL_NULL = "没有可以格式化内容";
+    public static final String SQL_Line = "--  ";
     /**
      * 存储的key名称
      */

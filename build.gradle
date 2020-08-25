@@ -38,6 +38,7 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    /*compile group: 'com.alibaba', name: 'druid', version: '1.1.23'*/
     compile fileTree(dir: 'libs', include: [ '*'])
 }
 

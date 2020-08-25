@@ -1,17 +1,12 @@
 package com.plugins.mybaitslog.util;
 
-import com.intellij.execution.ui.ConsoleViewContentType;
-import com.intellij.openapi.editor.markup.TextAttributes;
 import com.intellij.openapi.project.Project;
 import org.apache.commons.lang.StringUtils;
+import com.alibaba.druid.sql.SQLUtils;
+import com.alibaba.druid.util.JdbcConstants;
 
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * 用于SQL的还原
@@ -22,8 +17,10 @@ import java.util.regex.Pattern;
  */
 public class SqlProUtil {
 
+    private final static BasicFormatter basicFormatter = new BasicFormatter();
     /**
      * 获取Sql语句类型
+     *
      * @param sql 语句
      * @return
      */
@@ -60,7 +57,9 @@ public class SqlProUtil {
         final String[] parametersLineSplit = parametersLine.split(PARAMETERS);
         final String[] preparing = getPreparing(preparingLineSplit);
         final Object[] parameters = getParameters(parametersLineSplit);
-        return new String[]{preparing[0], String.format(preparing[1], parameters)};
+        final String sqlformat = String.format(preparing[1], parameters);
+        final String result = basicFormatter.format(sqlformat);
+        return new String[]{preparing[0], result};
     }
 
     private static String[] getPreparing(String[] preparingLineSplit) {
@@ -79,7 +78,7 @@ public class SqlProUtil {
             final String[] split = parametersLineSplit[1].split(",");
             final List<String> params = new ArrayList<>();
             for (int i = 0; i < split.length; i++) {
-                final String s = split[i];
+                final String s = split[i].trim();
                 if (s.endsWith(")")) {
                     final char[] value = s.toCharArray();
                     int find = -1;
@@ -100,4 +99,6 @@ public class SqlProUtil {
         }
         return new String[]{};
     }
+
+
 }

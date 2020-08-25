@@ -72,6 +72,7 @@ public class RestoreSqlForSelection extends AnAction {
                 return true;
             }
         }
+        PrintlnUtil.println(project, "", ConsoleViewContentType.USER_INPUT);
         PrintlnUtil.println(project, KeyNameUtil.SQL_NULL, ConsoleViewContentType.USER_INPUT,true);
         return false;
     }
@@ -103,10 +104,11 @@ public class RestoreSqlForSelection extends AnAction {
             if (StringUtils.isNotEmpty(preparingLine) && StringUtils.isNotEmpty(parametersLine)) {
                 //SQL还原
                 String[] restoreSql = SqlProUtil.restoreSql(project, preparingLine, parametersLine);
-                PrintlnUtil.println(project, "-- " + restoreSql[0], ConsoleViewContentType.USER_INPUT);
+                PrintlnUtil.println(project, KeyNameUtil.SQL_Line + restoreSql[0], ConsoleViewContentType.USER_INPUT);
                 //高亮显示
                 PrintlnUtil.printlnSqlType(project, restoreSql[1]);
             } else {
+                PrintlnUtil.println(project, "", ConsoleViewContentType.USER_INPUT);
                 PrintlnUtil.println(project, KeyNameUtil.SQL_NULL, ConsoleViewContentType.USER_INPUT,true);
             }
         }
