@@ -28,3 +28,5 @@ gen
 build
 .gradle
 gradle
+libs
+idea-sandbox

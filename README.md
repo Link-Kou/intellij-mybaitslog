@@ -1,8 +1,7 @@
 # Mybatislog
 
 ### 2020.8.11 《IDEA 2020.2 测试通过支持使用。》
-
-### 重构！重构! 现有代码模块将在2020年8月26日前完成基本测试,完成后会将next分支代码会同步Master上面
+### 2020.8.25  重构代码所有代码,代码中完善备注信息
 
 ### Mybatislog能做什么？
 
@@ -50,9 +49,8 @@ select f_id, f_groupId, f_preId, f_name, f_type, createtime, updatedtime
  
 ### 手动安装
 
- 2020.2 以下版本都支持（协议冲突，暂不提供下载,以下链接暂时失效）
->  
- [plugin.intellij.assistant.mybaitslog-2020.1-1.0.3.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-2020.1-1.0.3.jar)
+ 2020.2 以下版本都支持
+ [plugin.intellij.assistant.mybaitslog-2020.X-1.0.5.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-1.0.5.jar)
   
 
 > ##### 说明文档：
