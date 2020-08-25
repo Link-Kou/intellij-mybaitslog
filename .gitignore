@@ -29,5 +29,4 @@ build
 .gradle
 gradle
 libs
-plugin
 idea-sandbox
