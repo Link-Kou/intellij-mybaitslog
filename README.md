@@ -2,6 +2,7 @@
 
 ### 2020.8.11 《IDEA 2020.2 测试通过支持使用。》
 ### 2020.8.25  重构代码所有代码,代码中完善备注信息
+### 2020.9.19  添加对特点类型的引号支持
 
 ### Mybatislog能做什么？
 
@@ -39,9 +40,6 @@ select f_id, f_groupId, f_preId, f_name, f_type, createtime, updatedtime
 ### 源代码构建
 
     项目管理：Gradle
-    
-    注意：国内网络原因，构建十分费力,如果不进行扶墙，几乎不可能完成构建
-    （曾经的我是如此的单纯，挂机24小时就是没办法）
    
 ### 在线安装(搜索)
 
@@ -51,7 +49,7 @@ select f_id, f_groupId, f_preId, f_name, f_type, createtime, updatedtime
 
  2020.2 以下版本都支持
  >
- [plugin.intellij.assistant.mybaitslog-2020.X-1.0.5.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-1.0.5.jar)
+ [plugin.intellij.assistant.mybaitslog-2020.X-1.0.6.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-1.0.6.jar)
   
 
 > ##### 说明文档：
