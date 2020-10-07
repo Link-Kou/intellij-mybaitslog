@@ -45,7 +45,7 @@ dependencies {
 intellij {
     pluginName 'MybatisLog'
     // 开发环境运行时使用的版本
-    version '2020.1'
+    version '2020.2'
     // 沙箱目录位置，用于保存IDEA的设置，默认在build文件下面，防止clean，放在根目录下。
     sandboxDirectory = "${rootProject.rootDir}/idea-sandbox"
     type 'IU'
