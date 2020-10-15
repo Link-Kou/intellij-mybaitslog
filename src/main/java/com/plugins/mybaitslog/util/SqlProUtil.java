@@ -67,9 +67,14 @@ public class SqlProUtil {
         final String[] parametersLineSplit = parametersLine.split(PARAMETERS);
         final String[] preparing = getPreparing(preparingLineSplit);
         final Object[] parameters = getParameters(parametersLineSplit);
-        final String sqlformat = String.format(preparing[1], parameters);
-        final String result = BASIC_FORMATTER.format(sqlformat);
-        return new String[]{preparing[0], result};
+        try {
+            final String sqlformat = String.format(preparing[1], parameters);
+            final String result = BASIC_FORMATTER.format(sqlformat);
+            return new String[]{preparing[0], result};
+        } catch (Exception e) {
+            final String result = BASIC_FORMATTER.format(preparing[1]);
+            return new String[]{preparing[0], result};
+        }
     }
 
     /**
