@@ -4,25 +4,25 @@
     <vendor email="chinacclk@gmail.com" url="https://github.com/Link-Kou/intellij-mybaitslog">linkkou</vendor>
 
     <!-- 插件版本 -->
-    <version>1.0.3</version>
+    <version>1.0.7</version>
     <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
     <idea-version since-build="172"/>
     <!-- 插件的描述 -->
     <description><![CDATA[
       <ul>
         <h3>English:</h3>
-        <li>Copy with mybatis-log-plugin</li>
+        <li>Format output mybatis-log</li>
         <h3>中文：</h3>
-        <li>拷贝 mybatis-log-plugin</li>
+        <li>格式化输出 mybatis-log</li>
       </ul>
     ]]></description>
 
     <!-- 插件的功能 -->
     <change-notes><![CDATA[
       <ul>
-        <p>1.0.0</p>
-        <li> 1. 修正并运行 mybatis-log-plugin </li>
-        <li> 1. Fix and run mybatis-log-plugin </li>
+        <p>1.X.X</p>
+        <li> 1. 构建新的插件</li>
+        <li> 1. Building new plug-ins</li>
       </ul>
     ]]></change-notes>
 

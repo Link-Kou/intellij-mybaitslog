@@ -5,6 +5,8 @@ import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 用于SQL的还原
@@ -16,6 +18,16 @@ import java.util.List;
 public class SqlProUtil {
 
     private final static BasicFormatter BASIC_FORMATTER = new BasicFormatter();
+
+    /**
+     * 匹配 '
+     */
+    private final static Pattern PSingleQuotationMark = Pattern.compile("'");
+    /**
+     * 匹配 (String),
+     */
+    private final static String Separate = "\\(.*?\\),\\s";
+    private final static Pattern PSeparate = Pattern.compile(Separate);
 
     /**
      * 获取Sql语句类型
@@ -101,12 +113,19 @@ public class SqlProUtil {
      */
     private static Object[] getParameters(String[] parametersLineSplit) {
         if (parametersLineSplit.length == 2) {
-            final String[] split = parametersLineSplit[1].split(",");
+            //Mybatis的特性一定保证参数数量是一致的
+            final String[] split = parametersLineSplit[1].split(Separate);
+            final Matcher matcher = PSeparate.matcher(parametersLineSplit[1]);
             final List<String> params = new ArrayList<>();
             for (String item : split) {
+                String group = "";
+                if (matcher.find()) {
+                    group = matcher.group().replaceAll(",", "").trim();
+                }
                 final String s = item.trim();
-                final String[] parametersTypeOrValue = getParametersTypeOrValue(s);
-                final String stringformat = stringformat(parametersTypeOrValue);
+                final String[] parametersTypeOrValue = getParametersTypeOrValue(s + group);
+                //final String[] specialTypesOfEscapeFormat = specialTypesOfEscapeFormat(parametersTypeOrValue);
+                final String stringformat = quotationTypeFormat(parametersTypeOrValue);
                 params.add(stringformat);
             }
             return params.toArray(new String[0]);
@@ -117,10 +136,11 @@ public class SqlProUtil {
 
     /**
      * 对特点类型进行格式化
+     * 这里的String值由Mybatis输入的格式来解决决定的
      *
      * @return String
      */
-    private static String stringformat(String[] parametersTypeOrValue) {
+    private static String quotationTypeFormat(String[] parametersTypeOrValue) {
         String[] d = {"String", "Timestamp", "Date", "Time", "LocalDate", "LocalTime", "LocalDateTime"};
         for (String s : d) {
             if (s.equals(parametersTypeOrValue[1])) {
@@ -128,6 +148,24 @@ public class SqlProUtil {
             }
         }
         return parametersTypeOrValue[0];
+    }
+
+    /**
+     * 特殊字符串类型进行转义
+     * 由于一些JSON测试中只能对单引号进行处理，否者无法保证最后的值是能正确转义的
+     * 占时保留代码,后续在考虑如何解决问题
+     *
+     * @return String
+     */
+    private static String[] specialTypesOfEscapeFormat(String[] parametersTypeOrValue) {
+        final String type = parametersTypeOrValue[1];
+        final String value = parametersTypeOrValue[0];
+        String s = value;
+        if ("String".equals(type)) {
+            final Matcher matcher1 = PSingleQuotationMark.matcher(value);
+            s = matcher1.replaceAll("\\\\'");
+        }
+        return new String[]{s, type};
     }
 
     /**
@@ -147,7 +185,7 @@ public class SqlProUtil {
                     break;
                 }
             }
-            if (find > 0) {
+            if (find >= 0) {
                 final String val = s.substring(0, find);
                 final String type = s.substring(find + 1, value.length - 1);
                 return new String[]{val, type};
