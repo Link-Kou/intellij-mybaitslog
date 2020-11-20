@@ -1,9 +1,10 @@
 # Mybatislog
 
-### 2020.08.11 《IDEA 2020.2 测试通过支持使用。》
-### 2020.08.25  重构代码所有代码,代码中完善备注信息
-### 2020.09.19  添加对特点类型的引号支持
-### 2020.10.07 支持2020.2.3版本
+#### 2020.08.11 《IDEA 2020.2 测试通过支持使用。》
+#### 2020.08.25 重构代码所有代码,代码中完善备注信息
+#### 2020.09.19 添加对特点类型的引号支持
+#### 2020.10.07 支持2020.2.3版本
+#### 2020.11.20 改进分隔判断,由单纯通过,判断会存在无法对文本正常分隔的情况下。
 
 ### Mybatislog能做什么？
 
@@ -50,7 +51,7 @@ select f_id, f_groupId, f_preId, f_name, f_type, createtime, updatedtime
 
  2020.2 以下版本都支持
  >
- [plugin.intellij.assistant.mybaitslog-2020.X-1.0.6.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-1.0.6.jar)
+ [plugin.intellij.assistant.mybaitslog-2020.X-1.0.7.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-1.0.7.jar)
   
 
 > ##### 说明文档：
