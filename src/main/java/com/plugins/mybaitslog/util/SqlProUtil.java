@@ -80,13 +80,22 @@ public class SqlProUtil {
         final String[] preparing = getPreparing(preparingLineSplit);
         final Object[] parameters = getParameters(parametersLineSplit);
         try {
-            final String sqlformat = String.format(preparing[1], parameters);
+            final String sqlformat = ProcessLikeSymbol(String.format(preparing[1], parameters));
             final String result = BASIC_FORMATTER.format(sqlformat);
             return new String[]{preparing[0], result};
         } catch (Exception e) {
             final String result = BASIC_FORMATTER.format(preparing[1]);
             return new String[]{preparing[0], result};
         }
+    }
+
+    /**
+     * 处理Like的%符号冲突String.format方法
+     *
+     * @return
+     */
+    private static String ProcessLikeSymbol(String preparing) {
+        return preparing.replace("∮∝‰#‰∝∮", "%");
     }
 
     /**
@@ -100,7 +109,8 @@ public class SqlProUtil {
         String tow = "";
         if (preparingLineSplit.length == 2) {
             one = preparingLineSplit[0];
-            tow = preparingLineSplit[1].replace("?", "%s");
+            tow = preparingLineSplit[1].replace("%", "∮∝‰#‰∝∮")
+                    .replace("?", "%s");
         }
         return new String[]{one, tow};
     }

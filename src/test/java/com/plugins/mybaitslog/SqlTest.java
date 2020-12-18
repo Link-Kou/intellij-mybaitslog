@@ -45,4 +45,30 @@ public class SqlTest {
         System.out.println(strings[0]);
         System.out.println(strings[1]);
     }
+
+    @Test
+    public void format5() {
+        String preparingLine = "" +
+                "c.s.w.c.m.C.find Preparing: \n" +
+                "SELECT count(0) FROM cust_consign a\n" +
+                "cust_consign a LEFT JOIN sys_users ON a.create_by=s.id AND a.consign_source=\n" +
+                "\n" +
+                "1LEFTJOINapp_user au ON a.create_by=au.id AND a.consign_source= 2 LEFT JOIN\n" +
+                "\n" +
+                "cuSt_customer cON a.customer_id=c.id LEFT JOIN C SELECT*FROM\n" +
+                "\n" +
+                "cust_electric_fence WHERE del_fLag=O GROUP BY consign_id) cef ONce f.consign_id\n" +
+                "\n" +
+                "=a.idLEFTJ0INsys_or gorgON a.org_id=org.id WHERE a.del_fLag= 0 AND\n" +
+                "\n" +
+                "a.is_common= 1 AND a.type = ? AND a.org_seq LIKE CONCAT(?， '%')";
+        String parametersLine = "sc.s.w.c.m.C.find List_COUNT\n" +
+                "\n" +
+                "[debug： 159]]-==> Parameters:\n" +
+                "\n" +
+                "1(String), /root/蓝物流/豆腐店/(String)";
+        final String[] strings = SqlProUtil.restoreSql(null, preparingLine, parametersLine);
+        System.out.println(strings[0]);
+        System.out.println(strings[1]);
+    }
 }
