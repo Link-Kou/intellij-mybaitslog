@@ -54,7 +54,7 @@ select f_id, f_groupId, f_preId, f_name, f_type, createtime, updatedtime
 
  2020.2 以下版本都支持
  >
- [plugin.intellij.assistant.mybaitslog-2020.X-1.0.7.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-1.0.7.jar)
+ [plugin.intellij.assistant.mybaitslog-2020.X-1.0.8.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-1.0.8.jar)
   
 
 > ##### 说明文档：
