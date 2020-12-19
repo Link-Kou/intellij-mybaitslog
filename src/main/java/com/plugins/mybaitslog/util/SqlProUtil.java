@@ -29,6 +29,8 @@ public class SqlProUtil {
     private final static String Separate = "\\(.*?\\),\\s";
     private final static Pattern PSeparate = Pattern.compile(Separate);
 
+    public static Boolean Ellipsis = false;
+
     /**
      * 获取Sql语句类型
      *
@@ -81,7 +83,10 @@ public class SqlProUtil {
         final Object[] parameters = getParameters(parametersLineSplit);
         try {
             final String sqlformat = ProcessLikeSymbol(String.format(preparing[1], parameters));
-            final String result = BASIC_FORMATTER.format(sqlformat);
+            String result = sqlformat;
+            if (!Ellipsis) {
+                result = BASIC_FORMATTER.format(result);
+            }
             return new String[]{preparing[0], result};
         } catch (Exception e) {
             final String result = BASIC_FORMATTER.format(preparing[1]);
@@ -203,5 +208,4 @@ public class SqlProUtil {
         }
         return new String[]{s, ""};
     }
-
 }

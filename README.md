@@ -1,5 +1,4 @@
-#最近遭受恶意的乱提Issues，本人强烈谴责这种行为。
-#我不会屈服于这种行为。暂时关闭Issues
+#最近遭受恶意的乱提Issues，本人强烈谴责这种行为。我不会屈服于这种行为
 
 # Mybatislog
 
@@ -8,6 +7,8 @@
 #### 2020.09.19 添加对特点类型的引号支持
 #### 2020.10.07 支持2020.2.3版本
 #### 2020.11.20 改进分隔判断,由单纯通过,判断会存在无法对文本正常分隔的情况下。
+#### 2020.12.18 改进Like判断异常(解决还不够优雅,不影响正常使用)。
+#### 2020.12.19 添加可选是否格式化。
 
 ### Mybatislog能做什么？
 
@@ -54,7 +55,7 @@ select f_id, f_groupId, f_preId, f_name, f_type, createtime, updatedtime
 
  2020.2 以下版本都支持
  >
- [plugin.intellij.assistant.mybaitslog-2020.X-1.0.8.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-1.0.8.jar)
+ [plugin.intellij.assistant.mybaitslog-2020.X-1.0.9.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-1.0.9.jar)
   
 
 > ##### 说明文档：
