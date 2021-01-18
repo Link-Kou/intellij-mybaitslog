@@ -8,7 +8,6 @@ buildscript {
         mavenCentral()
         gradlePluginPortal()
     }
-
     dependencies {
 
     }
@@ -16,7 +15,7 @@ buildscript {
 
 plugins {
     id 'idea'
-    id 'org.jetbrains.intellij' version '0.4.21'
+    id 'org.jetbrains.intellij' version '0.6.5'
 }
 
 //2.1 插件配置
@@ -28,8 +27,8 @@ apply plugin: 'java'
 group 'com.linkkou'
 version '1.0.9'
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 repositories {
     maven { url 'https://maven.aliyun.com/repository/public/' }
@@ -45,7 +44,7 @@ dependencies {
 intellij {
     pluginName 'MybatisLog'
     // 开发环境运行时使用的版本
-    version '2020.2'
+    version '2020.3'
     // 沙箱目录位置，用于保存IDEA的设置，默认在build文件下面，防止clean，放在根目录下。
     sandboxDirectory = "${rootProject.rootDir}/idea-sandbox"
     type 'IU'

@@ -6,7 +6,7 @@
     <!-- 插件版本 -->
     <version>1.0.9</version>
     <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-    <idea-version since-build="172"/>
+    <idea-version since-build="230"/>
     <!-- 插件的描述 -->
     <description><![CDATA[
       <ul>
