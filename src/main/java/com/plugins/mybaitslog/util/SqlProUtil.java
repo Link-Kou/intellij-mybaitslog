@@ -3,8 +3,7 @@ package com.plugins.mybaitslog.util;
 import com.intellij.openapi.project.Project;
 import org.apache.commons.lang.StringUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,7 +26,9 @@ public class SqlProUtil {
      * 匹配 (String),
      */
     private final static String Separate = "\\(.*?\\),\\s";
+    private final static String Separate_Substring = "substring\\((.+)\\,('|\")(.+)('|\")\\)";
     private final static Pattern PSeparate = Pattern.compile(Separate);
+    private final static Pattern PSubstring = Pattern.compile(Separate_Substring);
 
     public static Boolean Ellipsis = false;
 
@@ -79,18 +80,19 @@ public class SqlProUtil {
     public static String[] restoreSql(String PREPARING, final String PARAMETERS, final String preparingLine, final String parametersLine) {
         final String[] preparingLineSplit = preparingLine.split(PREPARING);
         final String[] parametersLineSplit = parametersLine.split(PARAMETERS);
-        final String[] preparing = getPreparing(preparingLineSplit);
+        final Object[] preparing = getPreparing(preparingLineSplit);
         final Object[] parameters = getParameters(parametersLineSplit);
         try {
-            final String sqlformat = ProcessLikeSymbol(String.format(preparing[1], parameters));
+            String sqlformatLike = ProcessLikeSymbol(String.format((String) preparing[1], parameters));
+            final String sqlformat = ProcessSubstringSymbol(sqlformatLike, (HashMap<Object, Object>) preparing[2]);
             String result = sqlformat;
             if (!Ellipsis) {
                 result = BASIC_FORMATTER.format(result);
             }
-            return new String[]{preparing[0], result};
+            return new String[]{(String) preparing[0], result};
         } catch (Exception e) {
-            final String result = BASIC_FORMATTER.format(preparing[1]);
-            return new String[]{preparing[0], result};
+            final String result = BASIC_FORMATTER.format((String) preparing[1]);
+            return new String[]{(String) preparing[0], result};
         }
     }
 
@@ -100,8 +102,25 @@ public class SqlProUtil {
      * @return
      */
     private static String ProcessLikeSymbol(String preparing) {
-        return preparing.replace("∮∝‰#‰∝∮", "%");
+        return preparing.replaceAll("∮∝‰#‰∝∮", "%");
     }
+
+    /**
+     * 处理Substring函数正则表达式，不兼容的问题
+     *
+     * @return
+     */
+    private static String ProcessSubstringSymbol(String preparing, HashMap<Object, Object> hashMap) {
+        Iterator iter = hashMap.entrySet().iterator();
+        while (iter.hasNext()) {
+            Map.Entry entry = (Map.Entry) iter.next();
+            String key = (String) entry.getKey();
+            String val = (String) entry.getValue();
+            preparing = preparing.replaceAll(val, key);
+        }
+        return preparing;
+    }
+
 
     /**
      * preparing 格式化
@@ -109,15 +128,39 @@ public class SqlProUtil {
      * @param preparingLineSplit 字符串
      * @return String[]
      */
-    private static String[] getPreparing(String[] preparingLineSplit) {
+    private static Object[] getPreparing(String[] preparingLineSplit) {
         String one = "";
         String tow = "";
+        Map<Object, Object> d = null;
         if (preparingLineSplit.length == 2) {
             one = preparingLineSplit[0];
-            tow = preparingLineSplit[1].replace("%", "∮∝‰#‰∝∮")
-                    .replace("?", "%s");
+            tow = preparingLineSplit[1].replaceAll("%", "∮∝‰#‰∝∮");
+            Object[] objects = ReplaceSubstringSymbol(tow);
+            tow = ((String) objects[0]).replaceAll("\\?", "%s");
+            d = (HashMap<Object, Object>) objects[1];
         }
-        return new String[]{one, tow};
+        return new Object[]{one, tow, d};
+    }
+
+    /**
+     * 处理Substring函数正则表达式，不兼容的问题
+     *
+     * @param preparing
+     * @return
+     */
+    private static Object[] ReplaceSubstringSymbol(String preparing) {
+        //substring\((.+)\,('|")(.+)('|")\)
+        final Matcher matcher = PSubstring.matcher(preparing);
+        HashMap<String, String> d = new HashMap<>();
+        int i = 0;
+        while (matcher.find()) {
+            String group = matcher.group();
+            String groupreplace = "∮∝‰Substring" + i + "‰∝∮";
+            d.put(group, groupreplace);
+            preparing = preparing.replace(group, groupreplace);
+            i++;
+        }
+        return new Object[]{preparing, d};
     }
 
     /**
