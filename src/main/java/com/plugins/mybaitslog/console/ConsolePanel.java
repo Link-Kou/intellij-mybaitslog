@@ -93,6 +93,7 @@ public class ConsolePanel {
             dialog.setVisible(true);
         });
         actionGroup.add(new ConsoleActionGroup.FilterAction());
+        actionGroup.add(new ConsoleActionGroup.FormatAction());
         actionGroup.add(consoleView.createConsoleActions()[2]);
         actionGroup.add(consoleView.createConsoleActions()[3]);
         actionGroup.add(consoleView.createConsoleActions()[5]);

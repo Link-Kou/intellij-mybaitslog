@@ -5,6 +5,11 @@
 #### 2020.09.19 添加对特点类型的引号支持
 #### 2020.10.07 支持2020.2.3版本
 #### 2020.11.20 改进分隔判断,由单纯通过,判断会存在无法对文本正常分隔的情况下。
+#### 2020.12.18 改进Like判断异常(解决还不够优雅,不影响正常使用)。
+#### 2020.12.19 添加可选是否格式化。
+#### 2021.01.18 支持IDEA：2020.3.1，Master代码升级到IDEA2020.3.1版本(JAVA_11版本)
+#### 2021.01.31 发布2.0包。不向下兼容IDEA:2020.3以下版本,拥抱Java11,代码将保持兼容度，如果需要2020.3以下包支持,自行编译以下。
+#### 2021.02.11 发布2.0.1包。修复兼容性问题，不兼容还是会有不少后遗症。
 
 ### Mybatislog能做什么？
 
@@ -49,10 +54,11 @@ select f_id, f_groupId, f_preId, f_name, f_type, createtime, updatedtime
  
 ### 手动安装
 
- 2020.2 以下版本都支持
+
+ 2020.2 以上版本都支持
  >
- [plugin.intellij.assistant.mybaitslog-2020.X-1.0.7.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-1.0.7.jar)
-  
+ [plugin.intellij.assistant.mybaitslog-2020.X-2.0.1.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-2.0.1.jar)
+
 
 > ##### 说明文档：
     
