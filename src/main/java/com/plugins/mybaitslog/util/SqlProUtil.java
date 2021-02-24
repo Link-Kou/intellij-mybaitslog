@@ -26,7 +26,7 @@ public class SqlProUtil {
     /**
      * 匹配 (String),
      */
-    private final static String Separate = "\\(.*?\\),\\s";
+    private final static String Separate = "(\\(.*?\\))?,\\s";
     private final static Pattern PSeparate = Pattern.compile(Separate);
 
     /**
