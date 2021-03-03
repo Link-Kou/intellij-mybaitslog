@@ -99,4 +99,14 @@ public class SqlTest {
         System.out.println(strings[0]);
         System.out.println(strings[1]);
     }
+
+
+    @Test
+    public void format7() {
+        String preparingLine ="16:51:11.228 DEBUG [Test worker] c.p.d.h.m.H.insert             : ==>  Preparing: insert into his_match_main (his_id, is_invalid, matching_result, create_time, modify_time) values (?, ?, ?, ?, ?)\n";
+        String parametersLine = "16:51:11.246 DEBUG [Test worker] c.p.d.h.m.H.insert             : ==> Parameters: 999999(Integer), null, {}(String), 2021-02-24 16:51:11.184(Timestamp), 2021-02-24 16:51:11.184(Timestamp)\n";
+        final String[] strings = SqlProUtil.restoreSql(null, preparingLine, parametersLine);
+        System.out.println(strings[0]);
+        System.out.println(strings[1]);
+    }
 }
