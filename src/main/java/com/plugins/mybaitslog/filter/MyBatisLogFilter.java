@@ -37,13 +37,13 @@ public class MyBatisLogFilter implements Filter {
         return null;
     }
 
-    private Result prints(final String currentLine, int endPoint) {
-        final String PREPARING = ConfigUtil.getPreparing(project);
-        final String PARAMETERS = ConfigUtil.getParameters(project);
-        if (currentLine.contains(PREPARING)) {
+    private void prints(final String currentLine, int endPoint) {
+        final String preparing = ConfigUtil.getPreparing(project);
+        final String parameters = ConfigUtil.getParameters(project);
+        if (currentLine.contains(preparing)) {
             preparingLine = currentLine;
         }
-        if (!StringUtils.isEmpty(preparingLine) && currentLine.contains(PARAMETERS)) {
+        if (!StringUtils.isEmpty(preparingLine) && currentLine.contains(parameters)) {
             parametersLine = currentLine;
         }
         if (StringUtils.isNotEmpty(preparingLine) && StringUtils.isNotEmpty(parametersLine)) {
@@ -54,6 +54,5 @@ public class MyBatisLogFilter implements Filter {
             preparingLine = "";
             parametersLine = "";
         }
-        return null;
     }
 }

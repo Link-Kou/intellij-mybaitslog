@@ -64,21 +64,23 @@ public class ConfigUtil {
     /**
      * 获取配置
      *
-     * @param project 项目
-     * @param value   值
+     * @param project      项目
+     * @param value        值
+     * @param defaultValue 默认
      */
-    public static void setPreparing(Project project, String value) {
-        PropertiesComponent.getInstance(project).setValue(KeyNameUtil.DB_PREPARING_KEY, value);
+    public static void setPreparing(Project project, String value, String defaultValue) {
+        PropertiesComponent.getInstance(project).setValue(KeyNameUtil.DB_PREPARING_KEY, null == value ? defaultValue : value);
     }
 
     /**
      * 设置配置
      *
-     * @param project 项目
-     * @param value   值
+     * @param project      项目
+     * @param value        值
+     * @param defaultValue 默认
      */
-    public static void setParameters(Project project, String value) {
-        PropertiesComponent.getInstance(project).setValue(KeyNameUtil.DB_PARAMETERS_KEY, value);
+    public static void setParameters(Project project, String value, String defaultValue) {
+        PropertiesComponent.getInstance(project).setValue(KeyNameUtil.DB_PREPARING_KEY, null == value ? defaultValue : value);
     }
 
     /**

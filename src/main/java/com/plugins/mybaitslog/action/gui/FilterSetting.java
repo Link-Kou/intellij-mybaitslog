@@ -12,6 +12,7 @@ import java.awt.event.WindowEvent;
 
 /**
  * 过滤设置 窗口
+ *
  * @author lk
  * @version 1.0
  * @date 2020/8/23 17:14
@@ -26,6 +27,7 @@ public class FilterSetting extends JDialog {
 
     /**
      * 窗口初始化
+     *
      * @param project 项目
      */
     public FilterSetting(Project project) {
@@ -52,13 +54,14 @@ public class FilterSetting extends JDialog {
 
     /**
      * 点击确认按钮处理
+     *
      * @param project 项目
      */
     private void onOK(Project project) {
-        String preparingText = KeyNameUtil.PREPARING;
-        String parametersText = KeyNameUtil.PARAMETERS;
-        ConfigUtil.setPreparing(project, preparingText);
-        ConfigUtil.setParameters(project, parametersText);
+        String preparing = this.preparingTextField.getText();
+        String parameters = this.parametersTextField.getText();
+        ConfigUtil.setPreparing(project, preparing, KeyNameUtil.PREPARING);
+        ConfigUtil.setParameters(project, parameters, KeyNameUtil.PARAMETERS);
         ConfigUtil.setStartup(project, startupCheckBox.isSelected() ? 1 : 0);
         this.setVisible(false);
     }
