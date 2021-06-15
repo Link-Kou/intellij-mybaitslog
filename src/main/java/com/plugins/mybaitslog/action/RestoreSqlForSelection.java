@@ -39,8 +39,8 @@ public class RestoreSqlForSelection extends AnAction {
         Caret currentCaret = caretModel.getCurrentCaret();
         String selectedText = currentCaret.getSelectedText();
         ConfigUtil.setShowMyBatisLog(project);
-        final String preparing = ConfigUtil.getPreparing(project);
-        final String parameters = ConfigUtil.getParameters(project);
+        final String preparing = ConfigUtil.getPreparing();
+        final String parameters = ConfigUtil.getParameters();
         if (StringUtils.isNotEmpty(selectedText)) {
             //分割每一行
             String[] selectedRowText = selectedText.split("\n");
@@ -103,7 +103,7 @@ public class RestoreSqlForSelection extends AnAction {
             }
             if (StringUtils.isNotEmpty(preparingLine) && StringUtils.isNotEmpty(parametersLine)) {
                 //SQL还原
-                String[] restoreSql = SqlProUtil.restoreSql(project, preparingLine, parametersLine);
+                String[] restoreSql = SqlProUtil.restoreSql(preparingLine, parametersLine);
                 PrintlnUtil.println(project, KeyNameUtil.SQL_Line + restoreSql[0], ConsoleViewContentType.USER_INPUT);
                 //高亮显示
                 PrintlnUtil.printlnSqlType(project, restoreSql[1]);

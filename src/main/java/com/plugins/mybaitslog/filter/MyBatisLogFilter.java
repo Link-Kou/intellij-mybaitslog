@@ -30,7 +30,7 @@ public class MyBatisLogFilter implements Filter {
         if (this.project == null) {
             return null;
         }
-        final boolean startup = ConfigUtil.getStartup(project);
+        final boolean startup = ConfigUtil.getStartup();
         if (startup && currentLine != null) {
             prints(currentLine, endPoint);
         }
@@ -38,8 +38,8 @@ public class MyBatisLogFilter implements Filter {
     }
 
     private void prints(final String currentLine, int endPoint) {
-        final String preparing = ConfigUtil.getPreparing(project);
-        final String parameters = ConfigUtil.getParameters(project);
+        final String preparing = ConfigUtil.getPreparing();
+        final String parameters = ConfigUtil.getParameters();
         if (currentLine.contains(preparing)) {
             preparingLine = currentLine;
         }
@@ -48,7 +48,7 @@ public class MyBatisLogFilter implements Filter {
         }
         if (StringUtils.isNotEmpty(preparingLine) && StringUtils.isNotEmpty(parametersLine)) {
             //序号前缀字符串
-            String[] restoreSql = SqlProUtil.restoreSql(project, preparingLine, parametersLine);
+            String[] restoreSql = SqlProUtil.restoreSql(preparingLine, parametersLine);
             PrintlnUtil.println(project, KeyNameUtil.SQL_Line + restoreSql[0], ConsoleViewContentType.USER_INPUT);
             PrintlnUtil.printlnSqlType(project, restoreSql[1]);
             preparingLine = "";

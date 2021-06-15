@@ -64,9 +64,9 @@ public class SqlProUtil {
      * @param parametersLine 参数
      * @return
      */
-    public static String[] restoreSql(Project project, final String preparingLine, final String parametersLine) {
-        final String PREPARING = ConfigUtil.getPreparing(project);
-        final String PARAMETERS = ConfigUtil.getParameters(project);
+    public static String[] restoreSql(final String preparingLine, final String parametersLine) {
+        final String PREPARING = ConfigUtil.getPreparing();
+        final String PARAMETERS = ConfigUtil.getParameters();
         return restoreSql(PREPARING, PARAMETERS, preparingLine, parametersLine);
     }
 

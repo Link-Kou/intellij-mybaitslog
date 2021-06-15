@@ -38,68 +38,56 @@ public class ConfigUtil {
     /**
      * 获取关键字常量配置
      *
-     * @param project 项目
      * @return string
      */
-    public static String getPreparing(Project project) {
-        if (project == null) {
-            return KeyNameUtil.PREPARING;
-        }
-        return PropertiesComponent.getInstance(project).getValue(KeyNameUtil.DB_PREPARING_KEY, KeyNameUtil.PREPARING);
+    public static String getPreparing() {
+        return PropertiesComponent.getInstance().getValue(KeyNameUtil.DB_PREPARING_KEY, KeyNameUtil.PREPARING);
     }
 
     /**
      * 获取关键字常量配置
      *
-     * @param project 项目
      * @return string
      */
-    public static String getParameters(Project project) {
-        if (project == null) {
-            return KeyNameUtil.PARAMETERS;
-        }
-        return PropertiesComponent.getInstance(project).getValue(KeyNameUtil.DB_PARAMETERS_KEY, KeyNameUtil.PARAMETERS);
+    public static String getParameters() {
+        return PropertiesComponent.getInstance().getValue(KeyNameUtil.DB_PARAMETERS_KEY, KeyNameUtil.PARAMETERS);
     }
 
     /**
      * 获取配置
      *
-     * @param project      项目
      * @param value        值
      * @param defaultValue 默认
      */
-    public static void setPreparing(Project project, String value, String defaultValue) {
-        PropertiesComponent.getInstance(project).setValue(KeyNameUtil.DB_PREPARING_KEY, null == value ? defaultValue : value);
+    public static void setPreparing(String value, String defaultValue) {
+        PropertiesComponent.getInstance().setValue(KeyNameUtil.DB_PREPARING_KEY, null == value ? defaultValue : value);
     }
 
     /**
      * 设置配置
      *
-     * @param project      项目
      * @param value        值
      * @param defaultValue 默认
      */
-    public static void setParameters(Project project, String value, String defaultValue) {
-        PropertiesComponent.getInstance(project).setValue(KeyNameUtil.DB_PREPARING_KEY, null == value ? defaultValue : value);
+    public static void setParameters(String value, String defaultValue) {
+        PropertiesComponent.getInstance().setValue(KeyNameUtil.DB_PARAMETERS_KEY, null == value ? defaultValue : value);
     }
 
     /**
      * 设置启动过滤
      *
-     * @param project 项目
      * @param value   值
      */
-    public static void setStartup(Project project, int value) {
-        PropertiesComponent.getInstance(project).setValue(KeyNameUtil.DB_STARTUP_KEY, value, 1);
+    public static void setStartup(int value) {
+        PropertiesComponent.getInstance().setValue(KeyNameUtil.DB_STARTUP_KEY, value, 1);
     }
 
     /**
      * 获取启动过滤
      *
-     * @param project 项目
      */
-    public static boolean getStartup(Project project) {
-        final int anInt = PropertiesComponent.getInstance(project).getInt(KeyNameUtil.DB_STARTUP_KEY, 1);
+    public static boolean getStartup() {
+        final int anInt = PropertiesComponent.getInstance().getInt(KeyNameUtil.DB_STARTUP_KEY, 1);
         return anInt == 1;
     }
 }

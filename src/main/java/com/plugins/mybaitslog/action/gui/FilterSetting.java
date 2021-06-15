@@ -33,8 +33,8 @@ public class FilterSetting extends JDialog {
     public FilterSetting(Project project) {
         //设置标题
         this.setTitle("Filter Setting");
-        this.preparingTextField.setText(ConfigUtil.getPreparing(project));
-        this.parametersTextField.setText(ConfigUtil.getParameters(project));
+        this.preparingTextField.setText(ConfigUtil.getPreparing());
+        this.parametersTextField.setText(ConfigUtil.getParameters());
         int startup = PropertiesComponent.getInstance(project).getInt(KeyNameUtil.DB_STARTUP_KEY, 1);
         startupCheckBox.setSelected(startup == 1);
         setContentPane(contentPane);
@@ -60,9 +60,9 @@ public class FilterSetting extends JDialog {
     private void onOK(Project project) {
         String preparing = this.preparingTextField.getText();
         String parameters = this.parametersTextField.getText();
-        ConfigUtil.setPreparing(project, preparing, KeyNameUtil.PREPARING);
-        ConfigUtil.setParameters(project, parameters, KeyNameUtil.PARAMETERS);
-        ConfigUtil.setStartup(project, startupCheckBox.isSelected() ? 1 : 0);
+        ConfigUtil.setPreparing(preparing, KeyNameUtil.PREPARING);
+        ConfigUtil.setParameters(parameters, KeyNameUtil.PARAMETERS);
+        ConfigUtil.setStartup(startupCheckBox.isSelected() ? 1 : 0);
         this.setVisible(false);
     }
 

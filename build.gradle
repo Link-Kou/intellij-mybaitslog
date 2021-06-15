@@ -3,7 +3,6 @@ buildscript {
         maven { url 'https://maven.aliyun.com/repository/public/' }
         maven { url "https://www.jetbrains.com/intellij-repository/releases/" }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        maven { url "https://dl.bintray.com/jetbrains/intellij-plugin-service/" }
         mavenLocal()
         mavenCentral()
         gradlePluginPortal()
@@ -25,7 +24,7 @@ apply plugin: 'java'
 
 
 group 'com.linkkou'
-version '2.0.3'
+version '2.0.5'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
