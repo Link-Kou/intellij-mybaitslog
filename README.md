@@ -6,6 +6,25 @@
 
 <br/>
 
+### Mybatislog能做什么？
+
+> Mybatislog是基于IntelliJ 开发的项目，用来格式化输出Mybatis的Sql。
+
+![样列](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/2020-03-25_09-28-47.jpg "样列")
+
+![样列](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/2020-04-17_23-51-18.gif "样列")
+
+## Sponsors
+
+<table>
+      <td>
+        <a href="https://www.jetbrains.com/?from=TreeInfotip" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/YiiGuxing/TranslationPlugin@master/images/jetbrains.svg" alt="JetBrains" title="Development powered by JetBrains.">
+        </a>
+      </td>
+</table>
+
+
 #### <kbd>2020.08.11</kbd> -> <kbd>《IDEA 2020.2 测试通过支持使用。》</kbd>
 
 #### <kbd>2020.08.25</kbd> ->  <kbd>重构代码所有代码,代码中完善备注信息</kbd>
@@ -28,23 +47,6 @@
 
 #### <kbd>2021.06.15</kbd> ->  <kbd>发布2.0.5包。修复无法自定义关键字问题。</kbd>
 
-## Sponsors
-
-<table>
-      <td>
-        <a href="https://www.jetbrains.com/?from=TreeInfotip" target="_blank">
-            <img src="https://cdn.jsdelivr.net/gh/YiiGuxing/TranslationPlugin@master/images/jetbrains.svg" alt="JetBrains" title="Development powered by JetBrains.">
-        </a>
-      </td>
-</table>
-
-### Mybatislog能做什么？
-
-> Mybatislog是基于IntelliJ 开发的项目，用来格式化输出Mybatis的Sql。
-
-![样列](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/2020-03-25_09-28-47.jpg "样列")
-
-![样列](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/2020-04-17_23-51-18.gif "样列")
 
 ```sql
 
