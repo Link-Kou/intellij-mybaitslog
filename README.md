@@ -4,8 +4,9 @@
 ![GitHub](https://img.shields.io/github/license/Link-Kou/intellij-mybaitslog)
 ![GitHub issues](https://img.shields.io/github/issues/Link-Kou/intellij-mybaitslog)
 
+<br/>
 
-#### 2020.08.11 《IDEA 2020.2 测试通过支持使用。》
+#### <kbd>2020.08.11</kbd> 《IDEA 2020.2 测试通过支持使用。》
 #### 2020.08.25 重构代码所有代码,代码中完善备注信息
 #### 2020.09.19 添加对特点类型的引号支持
 #### 2020.10.07 支持2020.2.3版本
