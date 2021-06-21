@@ -1,4 +1,4 @@
-# [![Mybatislog](mybatis-superbird-small.png)](https://github.com/Link-Kou/intellij-mybaitslog) Mybatislog
+# [![Mybatislog](logo-bird-ninja.svg)](https://github.com/Link-Kou/intellij-mybaitslog) Mybatislog
 
 #### 2020.08.11 《IDEA 2020.2 测试通过支持使用。》
 #### 2020.08.25 重构代码所有代码,代码中完善备注信息
