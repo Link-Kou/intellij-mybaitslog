@@ -1,5 +1,10 @@
 # [![Mybatislog](logo-bird-ninja.svg)](https://github.com/Link-Kou/intellij-mybaitslog) Mybatislog
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/Link-Kou/intellij-mybaitslog)
+![GitHub](https://img.shields.io/github/license/Link-Kou/intellij-mybaitslog)
+![GitHub issues](https://img.shields.io/github/issues/Link-Kou/intellij-mybaitslog)
+
+
 #### 2020.08.11 《IDEA 2020.2 测试通过支持使用。》
 #### 2020.08.25 重构代码所有代码,代码中完善备注信息
 #### 2020.09.19 添加对特点类型的引号支持
@@ -11,6 +16,16 @@
 #### 2021.01.31 发布2.0包。不向下兼容IDEA:2020.3以下版本,拥抱Java11,代码将保持兼容度，如果需要2020.3以下包支持,自行编译以下。
 #### 2021.02.11 发布2.0.1包。修复兼容性问题，不兼容还是会有不少后遗症。
 #### 2021.06.15 发布2.0.5包。修复无法自定义关键字问题。
+
+## Sponsors
+
+<table>
+      <td>
+        <a href="https://www.jetbrains.com/?from=TreeInfotip" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/YiiGuxing/TranslationPlugin@master/images/jetbrains.svg" alt="JetBrains" title="Development powered by JetBrains.">
+        </a>
+      </td>
+</table>
 
 ### Mybatislog能做什么？
 
