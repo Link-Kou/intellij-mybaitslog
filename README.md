@@ -4,8 +4,6 @@
 ![GitHub](https://img.shields.io/github/license/Link-Kou/intellij-mybaitslog)
 ![GitHub issues](https://img.shields.io/github/issues/Link-Kou/intellij-mybaitslog)
 
-<br/>
-
 ### Mybatislog能做什么？
 
 > Mybatislog是基于IntelliJ 开发的项目，用来格式化输出Mybatis的Sql。
