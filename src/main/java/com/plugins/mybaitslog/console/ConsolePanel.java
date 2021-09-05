@@ -94,6 +94,7 @@ public class ConsolePanel {
         });
         actionGroup.add(new ConsoleActionGroup.FilterAction());
         actionGroup.add(new ConsoleActionGroup.FormatAction());
+        actionGroup.add(new ConsoleActionGroup.ShowLiteralAction());
         actionGroup.add(consoleView.createConsoleActions()[2]);
         actionGroup.add(consoleView.createConsoleActions()[3]);
         actionGroup.add(consoleView.createConsoleActions()[5]);
