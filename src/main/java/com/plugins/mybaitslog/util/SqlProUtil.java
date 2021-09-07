@@ -1,7 +1,8 @@
 package com.plugins.mybaitslog.util;
 
-import com.intellij.openapi.project.Project;
+import com.plugins.mybaitslog.type.JavaType;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.EnumUtils;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -31,6 +32,7 @@ public class SqlProUtil {
     private final static Pattern PSubstring = Pattern.compile(Separate_Substring);
 
     public static Boolean Ellipsis = false;
+    public static Boolean ShowLiteral= false;
 
     /**
      * 获取Sql语句类型
@@ -199,11 +201,12 @@ public class SqlProUtil {
      * @return String
      */
     private static String quotationTypeFormat(String[] parametersTypeOrValue) {
-        String[] d = {"String", "Timestamp", "Date", "Time", "LocalDate", "LocalTime", "LocalDateTime"};
-        for (String s : d) {
-            if (s.equals(parametersTypeOrValue[1])) {
-                return String.format("'%s'", parametersTypeOrValue[0]);
+        if (EnumUtils.isValidEnumIgnoreCase(JavaType.class, parametersTypeOrValue[1])) {
+            JavaType javaType = EnumUtils.getEnumIgnoreCase(JavaType.class, parametersTypeOrValue[1]);
+            if (SqlProUtil.ShowLiteral && javaType.isShowLiteral()) {
+                return String.format("%s'%s'", javaType.getLiteralName(), parametersTypeOrValue[0]);
             }
+            return String.format("'%s'", parametersTypeOrValue[0]);
         }
         return parametersTypeOrValue[0];
     }

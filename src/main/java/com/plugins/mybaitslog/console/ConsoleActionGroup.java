@@ -1,6 +1,7 @@
 package com.plugins.mybaitslog.console;
 
 import com.intellij.icons.AllIcons;
+import com.intellij.icons.AllIcons.Actions;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.ToggleAction;
@@ -58,6 +59,25 @@ public class ConsoleActionGroup {
         @Override
         public void setSelected(@NotNull AnActionEvent anActionEvent, boolean b) {
             SqlProUtil.Ellipsis = b;
+        }
+    }
+
+    /**
+     * Sql 展示字面量按钮
+     */
+    public static class ShowLiteralAction extends ToggleAction implements DumbAware{
+
+        public ShowLiteralAction(){
+            super("Literal","ShowLiteral", Actions.ShowCode);
+        }
+        @Override
+        public boolean isSelected(@NotNull AnActionEvent anActionEvent) {
+            return SqlProUtil.ShowLiteral;
+        }
+
+        @Override
+        public void setSelected(@NotNull AnActionEvent anActionEvent, boolean b) {
+            SqlProUtil.ShowLiteral = b;
         }
     }
 }
