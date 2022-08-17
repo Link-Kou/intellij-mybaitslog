@@ -39,45 +39,4 @@ public class ConsoleActionGroup {
             ConsoleActionGroup.myFilterAction.run();
         }
     }
-
-
-    /**
-     * 开启过滤按钮
-     */
-    public static class FormatAction extends ToggleAction implements DumbAware {
-
-
-        public FormatAction() {
-            super("Ellipsis", "Ellipsis", AllIcons.General.Ellipsis);
-        }
-
-        @Override
-        public boolean isSelected(@NotNull AnActionEvent anActionEvent) {
-            return SqlProUtil.Ellipsis;
-        }
-
-        @Override
-        public void setSelected(@NotNull AnActionEvent anActionEvent, boolean b) {
-            SqlProUtil.Ellipsis = b;
-        }
-    }
-
-    /**
-     * Sql 展示字面量按钮
-     */
-    public static class ShowLiteralAction extends ToggleAction implements DumbAware{
-
-        public ShowLiteralAction(){
-            super("Literal","ShowLiteral", Actions.ShowCode);
-        }
-        @Override
-        public boolean isSelected(@NotNull AnActionEvent anActionEvent) {
-            return SqlProUtil.ShowLiteral;
-        }
-
-        @Override
-        public void setSelected(@NotNull AnActionEvent anActionEvent, boolean b) {
-            SqlProUtil.ShowLiteral = b;
-        }
-    }
 }

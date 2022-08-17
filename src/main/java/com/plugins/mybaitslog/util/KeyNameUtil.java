@@ -8,8 +8,8 @@ package com.plugins.mybaitslog.util;
  */
 public class KeyNameUtil {
     public static final String PROJECT_ID = "MyBatisLogPlugin";
-    public static final String PREPARING = "Preparing:";
-    public static final String PARAMETERS = "Parameters:";
+
+    public static final String PARAMETERS = "SQLStructure:";
     public static final String LINE = " ";
     /**
      * 无法格式输出
@@ -19,11 +19,7 @@ public class KeyNameUtil {
     /**
      * 存储的key名称
      */
-    public static final String DB_PREPARING_KEY = PROJECT_ID + "preparing";
-    /**
-     * 存储的key名称
-     */
-    public static final String DB_PARAMETERS_KEY = PROJECT_ID + "parameters";
+    public static final String DB_PARAMETERS_KEY = PROJECT_ID + "SQLStructure";
     /**
      * 存储的key名称 是否允许运行
      */

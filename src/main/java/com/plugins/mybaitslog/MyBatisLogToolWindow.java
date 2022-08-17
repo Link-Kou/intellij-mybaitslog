@@ -24,7 +24,7 @@ public class MyBatisLogToolWindow implements ToolWindowFactory {
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
         ConsolePanel consolePanel = new ConsolePanel();
         final JComponent jComponent = consolePanel.getConsolePanel(project);
-        ContentFactory contentFactory = ContentFactory.SERVICE.getInstance();
+        ContentFactory contentFactory = ContentFactory.getInstance();
         Content content = contentFactory.createContent(jComponent, "", false);
         toolWindow.setIcon(Icons.MyBatisIcon);
         toolWindow.getContentManager().addContent(content);

@@ -40,27 +40,8 @@ public class ConfigUtil {
      *
      * @return string
      */
-    public static String getPreparing() {
-        return PropertiesComponent.getInstance().getValue(KeyNameUtil.DB_PREPARING_KEY, KeyNameUtil.PREPARING);
-    }
-
-    /**
-     * 获取关键字常量配置
-     *
-     * @return string
-     */
     public static String getParameters() {
         return PropertiesComponent.getInstance().getValue(KeyNameUtil.DB_PARAMETERS_KEY, KeyNameUtil.PARAMETERS);
-    }
-
-    /**
-     * 获取配置
-     *
-     * @param value        值
-     * @param defaultValue 默认
-     */
-    public static void setPreparing(String value, String defaultValue) {
-        PropertiesComponent.getInstance().setValue(KeyNameUtil.DB_PREPARING_KEY, null == value ? defaultValue : value);
     }
 
     /**

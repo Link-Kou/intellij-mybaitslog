@@ -4,7 +4,7 @@
     <vendor email="chinacclk@gmail.com" url="https://github.com/Link-Kou/intellij-mybaitslog">linkkou</vendor>
 
     <!-- 插件版本 -->
-    <version>2.0.6</version>
+    <version>3.0.0</version>
     <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
     <idea-version since-build="172"/>
     <!-- 插件的描述 -->
@@ -36,19 +36,13 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <consoleFilterProvider implementation="com.plugins.mybaitslog.MyBatisLogProvider"/>
+        <consoleFilterProvider order="first"  implementation="com.plugins.mybaitslog.MyBatisLogProvider"/>
+        <consoleInputFilterProvider implementation="com.plugins.mybaitslog.MyBatisLogInputFilterProvider"/>
         <toolWindow id="MyBatis Log" secondary="true" icon="/icons/mybatis.png" anchor="bottom"
                     factoryClass="com.plugins.mybaitslog.MyBatisLogToolWindow"/>
     </extensions>
 
     <actions>
         <!-- restore sql from selection -->
-        <action class="com.plugins.mybaitslog.action.RestoreSqlForSelection"
-                id="RestoreSqlAction"
-                text="Restore Sql from Selection"
-                description="Restore Sql from Selection">
-            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
-            <add-to-group group-id="ConsoleEditorPopupMenu" anchor="before" relative-to-action="ConsoleView.ClearAll"/>
-        </action>
     </actions>
 </idea-plugin>

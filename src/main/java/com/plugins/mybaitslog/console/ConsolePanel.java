@@ -10,7 +10,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
-import com.plugins.mybaitslog.action.gui.FilterSetting;
+import com.plugins.mybaitslog.gui.FilterSetting;
 import com.plugins.mybaitslog.util.PrintlnUtil;
 import org.jetbrains.annotations.NotNull;
 
@@ -93,8 +93,6 @@ public class ConsolePanel {
             dialog.setVisible(true);
         });
         actionGroup.add(new ConsoleActionGroup.FilterAction());
-        actionGroup.add(new ConsoleActionGroup.FormatAction());
-        actionGroup.add(new ConsoleActionGroup.ShowLiteralAction());
         actionGroup.add(consoleView.createConsoleActions()[2]);
         actionGroup.add(consoleView.createConsoleActions()[3]);
         actionGroup.add(consoleView.createConsoleActions()[5]);

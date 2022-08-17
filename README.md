@@ -12,7 +12,30 @@
 
 ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/2020-04-17_23-51-18.gif "样列")
 
-## Sponsors
+## <p style="color:red">★★重大更新★★</p>
+> 版本从V3.*开始<b style="color:red">支持所有数据库的SQL都能均能正常格式化输出</b><br/>
+> 版本从V3.*开始必须需要配合Mybatis插件使用否则就无效。
+> 版本从V3.*插件只支持IDEA版本2020.3以上
+####
+第一步：
+```xml
+<dependency>
+    <groupId>com.github.link-kou</groupId>
+    <artifactId>mybatis-plugin</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+####
+第二步：<br/>
+**SpringBoot配置示例：**
+```java
+SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+sqlSessionFactoryBean.setPlugins(new LogInterceptor());
+return sqlSessionFactoryBean.getObject();
+```
+
+
+### Sponsors
 
 <table>
       <td>
@@ -22,6 +45,9 @@
       </td>
 </table>
 
+#### <kbd>2021.08.16</kbd> -> <kbd>★★★重大更新，从版本V3开始将彻底解决字符串替代弊端，支持所有数据库★★★</kbd>
+
+#### <kbd>2021.08.16</kbd> -> <kbd>《IDEA 2022.2 测试通过支持使用。》</kbd>
 
 #### <kbd>2020.08.11</kbd> -> <kbd>《IDEA 2020.2 测试通过支持使用。》</kbd>
 
@@ -44,6 +70,10 @@
 #### <kbd>2021.02.11</kbd> ->  <kbd>发布2.0.1包。修复兼容性问题，不兼容还是会有不少后遗症。</kbd>
 
 #### <kbd>2021.06.15</kbd> ->  <kbd>发布2.0.5包。修复无法自定义关键字问题。</kbd>
+
+#### <kbd>2021.09.16</kbd> ->  <kbd>发布2.0.6包。增加自动生成字面量按钮。</kbd>
+
+#### <kbd>2021.12.15</kbd> ->  <kbd>支持IDEA 2020.3 发布2.0.7包。修复无法自定义关键字问题。</kbd>
 
 
 ```sql
@@ -82,9 +112,9 @@ WHERE f_type = 2;
 
 ### 手动安装
 
-2020.2 以上版本都支持
+2020.3 以上版本都支持
 >
-[plugin.intellij.assistant.mybaitslog-2020.X-2.0.5.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-2.0.5.jar)
+[plugin.intellij.assistant.mybaitslog-2020.3.X-3.0.0.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-3.0.0.jar)
 
 
 > ##### 说明文档：

@@ -22,11 +22,33 @@ public class PrintlnUtil {
     /**
      * 多项目控制台独立性
      */
-    public static Map<String, ConsoleView> consoleViewMap = new ConcurrentHashMap<>();
+    public static Map<Project, ConsoleView> consoleViewMap = new ConcurrentHashMap<>(16);
 
 
     public static void setConsoleView(Project project, ConsoleView consoleView) {
-        consoleViewMap.put(project.getBasePath(), consoleView);
+        consoleViewMap.put(project, consoleView);
+    }
+
+    public static ConsoleView getConsoleView(Project project) {
+        return consoleViewMap.get(project);
+    }
+
+
+    public static void prints(Project project, String currentLine) {
+        final String parameters = ConfigUtil.getParameters();
+        if (currentLine.contains(parameters)) {
+            //序号前缀字符串
+            String restoreSql = SqlProUtil.restoreSql(currentLine);
+            final String[] split = restoreSql.split(ConfigUtil.getParameters());
+            if (split.length == 2) {
+                final String s = split[1];
+                final String s1 = s.replaceAll("\t|\r|\n", "");
+                //序号
+                PrintlnUtil.println(project, KeyNameUtil.SQL_Line + s1, ConsoleViewContentType.USER_INPUT);
+                //sql
+                PrintlnUtil.printlnSqlType(project, s1);
+            }
+        }
     }
 
     /**
@@ -59,7 +81,7 @@ public class PrintlnUtil {
      * @param consoleViewContentType 输出颜色
      */
     public static void println(Project project, String rowLine, ConsoleViewContentType consoleViewContentType, boolean line, boolean lineBreak) {
-        ConsoleView consoleView = consoleViewMap.get(project.getBasePath());
+        ConsoleView consoleView = consoleViewMap.get(project);
         if (consoleView != null) {
             if (lineBreak) {
                 consoleView.print(rowLine + "\n", consoleViewContentType);
