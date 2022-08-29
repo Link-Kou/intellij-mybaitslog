@@ -38,15 +38,14 @@ public class PrintlnUtil {
         final String parameters = ConfigUtil.getParameters();
         if (currentLine.contains(parameters)) {
             //序号前缀字符串
-            String restoreSql = SqlProUtil.restoreSql(currentLine);
-            final String[] split = restoreSql.split(ConfigUtil.getParameters());
-            if (split.length == 2) {
-                final String s = split[1];
-                final String s1 = s.replaceAll("\t|\r|\n", "");
+            final SqlVO sqlVO = SqlProUtil.restoreSql(currentLine);
+            if (null != sqlVO) {
+                final String completesql = sqlVO.getCompleteSql().replaceAll("\t|\r|\n", "");
+                final String id = sqlVO.getId();
                 //序号
-                PrintlnUtil.println(project, KeyNameUtil.SQL_Line + s1, ConsoleViewContentType.USER_INPUT);
+                PrintlnUtil.println(project, KeyNameUtil.SQL_Line + id, ConsoleViewContentType.USER_INPUT);
                 //sql
-                PrintlnUtil.printlnSqlType(project, s1);
+                PrintlnUtil.printlnSqlType(project, completesql);
             }
         }
     }

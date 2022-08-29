@@ -19,7 +19,6 @@ import javax.swing.*;
  */
 public class MyBatisLogToolWindow implements ToolWindowFactory {
 
-
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
         ConsolePanel consolePanel = new ConsolePanel();
