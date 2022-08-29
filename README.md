@@ -24,7 +24,7 @@
 <dependency>
     <groupId>com.github.link-kou</groupId>
     <artifactId>mybatis-plugin</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 ####
@@ -116,7 +116,7 @@ WHERE f_type = 2;
 
 2020.3 以上版本都支持
 >
-[plugin.intellij.assistant.mybaitslog-2020.3.X-3.0.0.jar](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/plugin.intellij.assistant.mybaitslog-3.0.0.jar)
+[plugin.intellij.assistant.mybaitslog-2020.3.X-3.0.0.zip](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/MybatisLog-3.0.1.zip)
 
 
 > ##### 说明文档：
