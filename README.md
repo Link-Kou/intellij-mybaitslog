@@ -116,7 +116,7 @@ WHERE f_type = 2;
 
 2020.3 以上版本都支持
 >
-[plugin.intellij.assistant.mybaitslog-2020.3.X-3.0.0.zip](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/MybatisLog-3.0.1.zip)
+[plugin.intellij.assistant.mybaitslog-2020.3.X-3.0.0.zip](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/plugin/MybatisLog-3.0.2.zip)
 
 
 > ##### 说明文档：
