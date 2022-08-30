@@ -61,11 +61,9 @@ public class ConsolePanel {
         final JComponent consolePanel = createConsolePanel(consoleView);
         final ActionToolbar actionToolbar = createActionToolbar(myProject, consolePanel, consoleView);
         actionToolbar.setTargetComponent(consolePanel);
-
         SimpleToolWindowPanel panel = new SimpleToolWindowPanel(false, true);
         panel.setContent(consolePanel);
         panel.setToolbar(actionToolbar.getComponent());
-
         DefaultActionGroup actions = new DefaultActionGroup();
         for (AnAction action : consoleView.createConsoleActions()) {
             actions.add(action);

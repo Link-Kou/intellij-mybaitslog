@@ -14,6 +14,22 @@ import com.intellij.openapi.wm.ToolWindowManager;
  */
 public class ConfigUtil {
 
+    public static final String PROJECT_ID = "MyBatisLogPlugin";
+
+    public static final String PARAMETERS = "SQLStructure:";
+    public static final String LINE = " ";
+
+    public static final String SQL_Start_Line = "- ==>  ";
+    /**
+     * 存储的key名称
+     */
+    public static final String DB_PARAMETERS_KEY = PROJECT_ID + "SQLStructure";
+    /**
+     * 存储的key名称 是否允许运行
+     */
+    public static final String DB_STARTUP_KEY = PROJECT_ID + "startup";
+
+
     /**
      * 显示窗口
      *
@@ -41,7 +57,7 @@ public class ConfigUtil {
      * @return string
      */
     public static String getParameters() {
-        return PropertiesComponent.getInstance().getValue(KeyNameUtil.DB_PARAMETERS_KEY, KeyNameUtil.PARAMETERS);
+        return PropertiesComponent.getInstance().getValue(ConfigUtil.DB_PARAMETERS_KEY, ConfigUtil.PARAMETERS);
     }
 
     /**
@@ -51,7 +67,7 @@ public class ConfigUtil {
      * @param defaultValue 默认
      */
     public static void setParameters(String value, String defaultValue) {
-        PropertiesComponent.getInstance().setValue(KeyNameUtil.DB_PARAMETERS_KEY, null == value ? defaultValue : value);
+        PropertiesComponent.getInstance().setValue(ConfigUtil.DB_PARAMETERS_KEY, null == value ? defaultValue : value);
     }
 
     /**
@@ -60,7 +76,7 @@ public class ConfigUtil {
      * @param value   值
      */
     public static void setStartup(int value) {
-        PropertiesComponent.getInstance().setValue(KeyNameUtil.DB_STARTUP_KEY, value, 1);
+        PropertiesComponent.getInstance().setValue(ConfigUtil.DB_STARTUP_KEY, value, 1);
     }
 
     /**
@@ -68,7 +84,7 @@ public class ConfigUtil {
      *
      */
     public static boolean getStartup() {
-        final int anInt = PropertiesComponent.getInstance().getInt(KeyNameUtil.DB_STARTUP_KEY, 1);
+        final int anInt = PropertiesComponent.getInstance().getInt(ConfigUtil.DB_STARTUP_KEY, 1);
         return anInt == 1;
     }
 }

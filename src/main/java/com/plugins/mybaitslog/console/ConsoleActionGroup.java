@@ -1,13 +1,9 @@
 package com.plugins.mybaitslog.console;
 
 import com.intellij.icons.AllIcons;
-import com.intellij.icons.AllIcons.Actions;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.project.DumbAware;
-import com.plugins.mybaitslog.util.SqlProUtil;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * 左侧工具栏

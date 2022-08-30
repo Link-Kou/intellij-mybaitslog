@@ -4,7 +4,7 @@
     <vendor email="chinacclk@gmail.com" url="https://github.com/Link-Kou/intellij-mybaitslog">linkkou</vendor>
 
     <!-- 插件版本 -->
-    <version>3.0.1</version>
+    <version>3.0.2</version>
     <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
     <idea-version since-build="172"/>
     <!-- 插件的描述 -->
@@ -37,6 +37,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
         <consoleInputFilterProvider implementation="com.plugins.mybaitslog.MyBatisLogInputFilterProvider"/>
+        <console.folding implementation="com.plugins.mybaitslog.console.ConsoleExceptionFolding"/>
         <toolWindow id="MyBatis Log" secondary="true" icon="/icons/mybatis.png" anchor="bottom"
                     factoryClass="com.plugins.mybaitslog.MyBatisLogToolWindow"/>
     </extensions>

@@ -24,7 +24,7 @@
 <dependency>
     <groupId>com.github.link-kou</groupId>
     <artifactId>mybatis-plugin</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 ####

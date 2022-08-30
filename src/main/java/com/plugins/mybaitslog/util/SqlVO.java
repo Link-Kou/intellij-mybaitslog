@@ -15,6 +15,10 @@ public class SqlVO {
 
     private String completeSql;
 
+    private String parameter;
+
+    private Integer total;
+
     //region GetSet
     public String getId() {
         return id;
@@ -42,5 +46,24 @@ public class SqlVO {
         this.completeSql = completeSql;
         return this;
     }
+
+    public String getParameter() {
+        return parameter;
+    }
+
+    public SqlVO setParameter(String parameter) {
+        this.parameter = parameter;
+        return this;
+    }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public SqlVO setTotal(Integer total) {
+        this.total = total;
+        return this;
+    }
+
     //endregion
 }

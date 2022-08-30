@@ -30,7 +30,7 @@ apply plugin: 'application'
 mainClassName = "com.rapid.develop.core.server.ApplicationServer"
 
 group 'com.linkkou'
-version '3.0.1'
+version '3.0.2'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
