@@ -1,55 +1,52 @@
 buildscript {
     repositories {
-        maven { url 'https://maven.aliyun.com/repository/public/' }
         maven { url "https://www.jetbrains.com/intellij-repository/releases/" }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        mavenLocal()
+        maven { url "https://plugins.gradle.org/m2/" }
         mavenCentral()
+        google()
         gradlePluginPortal()
-    }
-    dependencies {
-        classpath "org.jetbrains.intellij.plugins:gradle-intellij-plugin:1.8.0"
+        mavenLocal()
     }
 }
 
 plugins {
     id 'java'
-    id 'org.jetbrains.intellij' version '1.8.0'
+    id 'org.jetbrains.intellij' version '1.13.2'
     // Gradle Changelog Plugin
     id 'org.jetbrains.changelog' version "1.3.1"
     // Gradle Qodana Plugin
     id 'org.jetbrains.qodana' version "0.1.13"
 }
 
-//2.1 插件配置
-apply plugin: 'org.jetbrains.intellij'
-apply plugin: 'org.jetbrains.changelog'
-apply plugin: 'org.jetbrains.qodana'
-apply plugin: 'java'
-apply plugin: 'application'
-mainClassName = "com.rapid.develop.core.server.ApplicationServer"
+allprojects {
+    repositories {
+        maven { url "https://www.jetbrains.com/intellij-repository/releases/" }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://plugins.gradle.org/m2/" }
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+        mavenLocal()
+    }
+}
+
 
 group 'com.linkkou'
 version '3.0.2'
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
-
-repositories {
-    maven { url 'https://maven.aliyun.com/repository/public/' }
-    maven { url "https://www.jetbrains.com/intellij-repository/releases" }
-}
-
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.13.1'
-    /*compile fileTree(dir: 'libs', include: [ '*'])*/
-    implementation group: 'com.google.code.gson', name: 'gson', version: '2.9.1'
+    testImplementation 'junit:junit:4.13.2'
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'org.jetbrains:annotations:24.0.1'
 }
 /*https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html#intellij-platform-based-products-of-recent-ide-versions*/
 intellij {
     pluginName = 'MybatisLog'
     // 开发环境运行时使用的版本
-    //version = '2021.1'
+    version = '2022.3.2'
     // 沙箱目录位置，用于保存IDEA的设置，默认在build文件下面，防止clean，放在根目录下。
     sandboxDir = "${rootProject.rootDir}/idea-sandbox"
     type = 'IU'
@@ -58,7 +55,14 @@ intellij {
     //Disables updating since-build attribute in plugin.xml
     updateSinceUntilBuild = false
     downloadSources = false
-    localPath = '/Applications/IntelliJ IDEA.app'
+    //localPath = '/Applications/IntelliJ IDEA.app'
+}
+
+runIde {
+    jvmArgs = [
+            "-javaagent:/Applications/jetbra/fineagent.jar=jetbrains",
+            "--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED",
+            "--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED"]
 }
 
 processResources {
@@ -69,8 +73,4 @@ processResources {
 
 patchPluginXml {
 
-}
-
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
 }
