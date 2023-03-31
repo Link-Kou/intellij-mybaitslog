@@ -3,6 +3,8 @@ package com.plugins.mybaitslog;
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.ui.content.ContentFactory;
 
+import java.lang.reflect.Method;
+
 /**
  * A <code>versionControl</code> Class
  *
@@ -17,12 +19,6 @@ public class VersionControl {
     private static final int BaselineVersion = ApplicationInfo.getInstance().getBuild().getBaselineVersion();
 
     public static ContentFactory getContentFactory() {
-        ContentFactory contentFactory;
-        if (BaselineVersion > _2022DOT1) {
-            contentFactory = ContentFactory.getInstance();
-        } else {
-            contentFactory = ContentFactory.SERVICE.getInstance();
-        }
-        return contentFactory;
+        return  ContentFactory.SERVICE.getInstance();
     }
 }

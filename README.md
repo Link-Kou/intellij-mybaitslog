@@ -27,7 +27,7 @@ IDEA --> Setting --> Plugins --> 搜索 MyBatis Log EasyPlus
 
 ## <p style="color:red">★★超级无敌丝滑★★</p>
 > 版本V5.<b style="color:red">支持所有数据库的所有SQL都能均能正常格式化输出</b><br/>
-> 版本V5.插件支持IDEA版本2019.3以上<br/>
+> 版本V5.插件支持IDEA版本2020.1以上<br/>
 > 版本V5.插件支持Mybatis版本<b>3.2.0<b/>以上，3.2.0已经是2013发布的。所以更低版本将不在支持<br/>
 
 ### Sponsors
