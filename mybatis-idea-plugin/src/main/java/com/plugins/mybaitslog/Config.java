@@ -36,7 +36,7 @@ public class Config {
 
         public static final String PARAMETERS = "SQLStructure:";
 
-        public static final Map<String, String> ColorMap = new HashMap<>() {{
+        public static final Map<String, String> ColorMap = new HashMap<String, String>() {{
             put("select", "42,199,180");
             put("update", "158,190,92");
             put("delect", "231,29,54");
