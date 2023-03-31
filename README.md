@@ -12,6 +12,19 @@
 
 ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/2020-04-17_23-51-18.gif "样列")
 
+
+### 在线安装(搜索)
+
+IDEA --> Setting --> Plugins --> 搜索 MyBatis Log EasyPlus
+
+
+
+
+### 捐赠 | Donate
+
+> 坚绝不设，欢迎Fokr，欢迎继续扩展
+
+
 ## <p style="color:red">★★超级无敌丝滑★★</p>
 > 版本V5.<b style="color:red">支持所有数据库的所有SQL都能均能正常格式化输出</b><br/>
 > 版本V5.插件支持IDEA版本2019.3以上<br/>
@@ -26,6 +39,7 @@
         </a>
       </td>
 </table>
+
 
 #### <kbd>2023.03.30</kbd> -> <kbd>《IDEA 2019.3 以上》★★★超级重大更新，从版本V5将实现丝滑体验;多IDEA版本支持★★★</kbd>
 
@@ -71,7 +85,5 @@
 
     项目管理：Gradle
 
-### 在线安装(搜索)
 
-在线插件库安装
 

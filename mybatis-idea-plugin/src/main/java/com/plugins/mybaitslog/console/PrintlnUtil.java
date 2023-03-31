@@ -53,6 +53,19 @@ public class PrintlnUtil {
         return null;
     }
 
+
+    public static void printsInit(ConsoleView consoleView) {
+        consoleView.print(" ============================================================================ " + "\n", ConsoleViewContentType.NORMAL_OUTPUT);
+        consoleView.print("\n", ConsoleViewContentType.NORMAL_OUTPUT);
+        consoleView.print("    MyBatis Log EasyPlus" + "\n", ConsoleViewContentType.NORMAL_OUTPUT);
+        consoleView.print("\n", ConsoleViewContentType.NORMAL_OUTPUT);
+        consoleView.print("    A mybatis javaagent framework :)" + "\n", ConsoleViewContentType.NORMAL_OUTPUT);
+        consoleView.print("\n", ConsoleViewContentType.NORMAL_OUTPUT);
+        consoleView.print("    https://github.com/Link-Kou/intellij-mybaitslog" + "\n", ConsoleViewContentType.NORMAL_OUTPUT);
+        consoleView.print("\n", ConsoleViewContentType.NORMAL_OUTPUT);
+        consoleView.print("  ============================================================================ " + "\n", ConsoleViewContentType.NORMAL_OUTPUT);
+    }
+
     public static void prints(Project project, String currentLine) {
         final String parameters = Config.Idea.getParameters();
         if (currentLine.contains(parameters)) {
@@ -64,15 +77,14 @@ public class PrintlnUtil {
                 final String parameter = sqlVO.getParameter();
                 final Integer total = sqlVO.getTotal();
                 //序号
-                PrintlnUtil.println(project, Config.SQL_START_LINE +  id + "\n", ConsoleViewContentType.USER_INPUT);
-                PrintlnUtil.printlnSqlType(project, Config.SQL_MIDDLE_LINE + completesql + "\n");
-                PrintlnUtil.printlnSqlType(project, Config.SQL_MIDDLE_LINE + parameter + "\n");
-                PrintlnUtil.printlnSqlType(project, Config.SQL_MIDDLE_LINE + "total:" + total + "\n");
-                PrintlnUtil.printlnSqlType(project, Config.SQL_END_LINE + "\n");
+                PrintlnUtil.println(project, Config.SQL_START_LINE + id + "\n", ConsoleViewContentType.USER_INPUT);
+                PrintlnUtil.printlnSqlType(project, Config.SQL_MIDDLE_LINE, completesql + "\n");
+                PrintlnUtil.printlnSqlType(project, Config.SQL_MIDDLE_LINE, parameter + "\n");
+                PrintlnUtil.printlnSqlType(project, Config.SQL_MIDDLE_LINE, "total:" + total + "\n");
+                PrintlnUtil.println(project, Config.SQL_END_LINE + "\n", ConsoleViewContentType.USER_INPUT);
             }
         }
     }
-
 
     /**
      * 输出语句
@@ -118,7 +130,7 @@ public class PrintlnUtil {
                 return "select";
             }
         }
-        return "";
+        return "other";
     }
 
 
@@ -127,18 +139,24 @@ public class PrintlnUtil {
      *
      * @param rowLine 行数据
      */
-    public static void printlnSqlType(Project project, String rowLine) {
+    public static void printlnSqlType(Project project, String title, String rowLine) {
         final String sqlType = getSqlType(rowLine);
+        final ConsoleViewContentType systemOutput = ConsoleViewContentType.SYSTEM_OUTPUT;
+        final TextAttributes attributes = systemOutput.getAttributes();
+        final ConsoleViewContentType styleName = new ConsoleViewContentType("styleName", new TextAttributes(attributes.getForegroundColor(), attributes.getBackgroundColor(), attributes.getEffectColor(), attributes.getEffectType(), attributes.getFontType()));
         switch (sqlType) {
+            case "select":
             case "insert":
             case "update":
-                println(project, rowLine, ConsoleViewContentType.SYSTEM_OUTPUT);
-                break;
             case "delete":
-                println(project, rowLine, new ConsoleViewContentType("styleName", new TextAttributes(Color.RED, null, null, null, Font.PLAIN)));
+                final Color color = Config.Idea.getColor(sqlType);
+                styleName.getAttributes().setForegroundColor(color);
+                println(project, title + rowLine, styleName);
                 break;
             default:
-                println(project, rowLine, ConsoleViewContentType.ERROR_OUTPUT);
+                final Color color1 = Config.Idea.getColor("other");
+                styleName.getAttributes().setForegroundColor(color1);
+                println(project, title + rowLine, styleName);
         }
     }
 }

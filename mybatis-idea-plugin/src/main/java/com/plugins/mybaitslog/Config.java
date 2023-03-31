@@ -2,6 +2,10 @@ package com.plugins.mybaitslog;
 
 import com.intellij.ide.util.PropertiesComponent;
 
+import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * A <code>Config</code> Class
  *
@@ -32,6 +36,14 @@ public class Config {
 
         public static final String PARAMETERS = "SQLStructure:";
 
+        public static final Map<String, String> ColorMap = new HashMap<>() {{
+            put("select", "42,199,180");
+            put("update", "158,190,92");
+            put("delect", "231,29,54");
+            put("insert", "97,163,172");
+            put("other", "252,255,253");
+        }};
+
         /**
          * 获取关键字常量配置
          *
@@ -59,6 +71,30 @@ public class Config {
         public static void setStartup(int value) {
             PropertiesComponent.getInstance().setValue(DB_STARTUP_KEY, value, 1);
         }
+
+
+        /**
+         * 设置配置
+         *
+         * @param type        值
+         */
+        public static Color getColor(String type) {
+            final String s = ColorMap.get(type);
+            final String value = PropertiesComponent.getInstance().getValue("color:" + type, s);
+            final String[] split = value.split(",");
+            return new Color(Integer.parseInt(split[0]), Integer.parseInt(split[1]), Integer.parseInt(split[2]));
+        }
+
+        /**
+         * 设置启动过滤
+         *
+         * @param value 值
+         */
+        public static void setColor(String type, Color value) {
+            final String color = String.format("%s,%s,%s", value.getRed(), value.getGreen(), value.getBlue());
+            PropertiesComponent.getInstance().setValue("color:" + type, color);
+        }
+
 
         /**
          * 获取启动过滤
