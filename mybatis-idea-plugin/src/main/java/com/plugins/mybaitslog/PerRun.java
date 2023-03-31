@@ -16,7 +16,7 @@ import java.util.Set;
 
 public class PerRun extends JavaProgramPatcher {
 
-    private Set<String> stringSet = new HashSet<>() {{
+    private Set<String> stringSet = new HashSet<String>() {{
         add("org.jetbrains.idea.maven.execution");
     }};
     //com.intellij.execution.junit

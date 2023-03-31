@@ -17,7 +17,7 @@
 
 IDEA --> Setting --> Plugins --> 搜索 MyBatis Log EasyPlus
 
-
+![样列](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/img.png "样列")
 
 
 ### 捐赠 | Donate
