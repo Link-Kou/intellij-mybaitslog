@@ -25,7 +25,7 @@ public class PerRun extends JavaProgramPatcher {
         if (!(configuration instanceof RunConfiguration)) {
             return;
         }
-        if (stringSet.contains(configuration.getClass().getPackageName())) {
+        if (stringSet.contains(configuration.getClass().getPackage().getName())) {
             return;
         }
         //
