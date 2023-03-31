@@ -1,4 +1,4 @@
-# [![Mybatislog](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/pluginIcon.svg)](https://github.com/Link-Kou/intellij-mybaitslog) Mybatislog
+# [![Mybatislog](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/pluginIcon.svg)](https://github.com/Link-Kou/intellij-mybaitslog) MyBatis Log EasyPlus
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Link-Kou/intellij-mybaitslog)
 ![GitHub](https://img.shields.io/github/license/Link-Kou/intellij-mybaitslog)
