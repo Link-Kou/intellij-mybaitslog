@@ -47,10 +47,10 @@ dependencies {
 }
 
 /*测试关闭*/
-/*java {
+java {
     sourceCompatibility = "1.8"
     targetCompatibility = "1.8"
-}*/
+}
 
 /*https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html#intellij-platform-based-products-of-recent-ide-versions*/
 /*https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html#configuration-intellij-extension*/
