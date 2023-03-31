@@ -1,0 +1,57 @@
+<idea-plugin>
+    <id>com.linkkou.plugin.intellij.assistant.mybaitslog</id>
+    <name>MybatisLog</name>
+    <vendor email="chinacclk@gmail.com" url="https://github.com/Link-Kou/intellij-mybaitslog">linkkou</vendor>
+
+    <!-- 插件版本 -->
+    <version>5.0.0</version>
+    <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="193"/>
+    <!-- 插件的描述 -->
+    <description><![CDATA[
+      <ul>
+        <h3>English:</h3>
+        <li>This is a MybaitLog output plugin that lets you feel silky</li>
+        <h3>中文：</h3>
+        <li>这是一个让你感受丝滑的MybaitLog输出插件</li>
+        <p>
+          <a title="To Github" href="https://github.com/Link-Kou/intellij-mybaitslog"><img src="https://raw.githubusercontent.com/Link-Kou/intellij-treeInfotip/master/image/2021-06-19_14-39-35.png" width="532" alt="image"></a>
+        </p>
+      </ul>
+    ]]></description>
+
+    <!-- 插件的功能 -->
+    <change-notes><![CDATA[
+      <ul>
+        <p>5.X.X</p>
+        <li>支持所有数据库所有Sql格式化</li>
+        <li>Supports all Sql formatting for all databases</li>
+      </ul>
+    ]]></change-notes>
+
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products-->
+
+    <!--必须为企业版-->
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <java.programPatcher implementation="com.plugins.mybaitslog.PerRun"/>
+        <!--定义控制台右键动作-->
+        <!--<consoleActionsPostProcessor implementation=""/>-->
+        <consoleFilterProvider order="first"
+                               implementation="com.plugins.mybaitslog.integration.MyConsoleDependentFilterProvider"/>
+        <console.folding implementation="com.plugins.mybaitslog.integration.MyConsoleFolding"/>
+        <toolWindow id="MyBatis Log" secondary="true" icon="/icons/mybatis.png" anchor="bottom"
+                    factoryClass="com.plugins.mybaitslog.console.MyBatisLogToolWindow"/>
+    </extensions>
+
+    <actions>
+        <!-- restore sql from selection -->
+    </actions>
+</idea-plugin>

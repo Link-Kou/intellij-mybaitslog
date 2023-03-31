@@ -1,0 +1,62 @@
+buildscript {
+    repositories {
+        maven { url "https://www.jetbrains.com/intellij-repository/releases/" }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://plugins.gradle.org/m2/" }
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+        mavenLocal()
+    }
+}
+
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+allprojects {
+    repositories {
+        maven { url "https://www.jetbrains.com/intellij-repository/releases/" }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://plugins.gradle.org/m2/" }
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+        mavenLocal()
+    }
+}
+
+
+group 'com.plugins.mybatislog.agent'
+version '1.0.18'
+
+java {
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
+}
+
+
+dependencies {
+    implementation 'org.javatuples:javatuples:1.2'
+    implementation 'org.javassist:javassist:3.29.2-GA'
+    // compile project(":probe-agent") 另一种引入工程的方式
+    implementation fileTree(dir: 'libs', includes: ['*jar'])
+}
+
+test {
+    useJUnitPlatform()
+}
+
+shadowJar {
+    manifest {
+        attributes(
+                'Premain-Class': 'com.plugins.mybaitslog.preAgent',
+                'Can-Retransform-Classes': 'true',
+                'Can-Redefine-Classes': 'true',
+                'Can-Set-Native-Method-Prefix': 'true'
+        )
+    }
+}

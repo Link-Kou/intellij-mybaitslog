@@ -1,0 +1,51 @@
+buildscript {
+    repositories {
+        maven { url "https://www.jetbrains.com/intellij-repository/releases/" }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://plugins.gradle.org/m2/" }
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+        mavenLocal()
+    }
+}
+
+plugins {
+    id 'java'
+    id 'io.freefair.lombok' version "8.0.1"
+}
+
+allprojects {
+    repositories {
+        maven { url "https://www.jetbrains.com/intellij-repository/releases/" }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://plugins.gradle.org/m2/" }
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+        mavenLocal()
+    }
+}
+
+group 'com.plugins.mybatislog.plugin'
+version '1.0.0'
+
+java {
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
+}
+
+
+dependencies {
+    implementation 'org.javatuples:javatuples:1.2'
+    implementation 'com.google.code.gson:gson:2.9.1'
+    compileOnly 'org.mybatis:mybatis:3.5.10'
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+}
+
+test {
+    useJUnitPlatform()
+}
