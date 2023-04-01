@@ -28,11 +28,13 @@ public class PluginUtil {
         if (file.exists()) {
             return d;
         }
+        int length;
         byte[] b = new byte[1024];
         try (FileOutputStream fos = new FileOutputStream(d)) {
             try (InputStream resourceAsStream = PluginUtil.class.getResourceAsStream("/mybatis-agent-1.0.18-all.jar");) {
-                while ((resourceAsStream.read(b)) != -1) {
-                    fos.write(b);// 写入数据
+                while ((length = resourceAsStream.read(b)) != -1) {
+                    fos.write(b, 0, length);// 写入数据
+                    fos.flush();
                 }
             }
             return d;
