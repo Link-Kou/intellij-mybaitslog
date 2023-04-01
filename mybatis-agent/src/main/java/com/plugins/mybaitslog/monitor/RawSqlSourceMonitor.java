@@ -26,6 +26,9 @@ public class RawSqlSourceMonitor implements IClassFileTransformer {
             classPool.insertClassPath(new ClassClassPath(this.getClass()));
             //获取类
             ctClass = classPool.get(injectedClassName);
+            if (null == ctClass) {
+                return;
+            }
             //添加新的字段
             CtField ctField = new CtField(classPool.getCtClass("java.lang.String"), "_rootSqlNode_", ctClass);
             ctField.setModifiers(Modifier.PUBLIC);

@@ -29,6 +29,9 @@ public class DynamicSqlSourceMonitor implements IClassFileTransformer {
             classPool.insertClassPath(new ClassClassPath(this.getClass()));
             //获取类
             ctClass = classPool.get(injectedClassName);
+            if (null == ctClass) {
+                return;
+            }
             //删除类
             final CtMethod pluginAll = ctClass.getDeclaredMethod("pluginAll");
             pluginAll.insertBefore("{new com.linkkou.mybatis.log.SubInterceptorChain($0.interceptors);}");
