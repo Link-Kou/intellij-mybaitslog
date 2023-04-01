@@ -45,6 +45,7 @@ bin/
 .DS_Store### Java template
 # Compiled class file
 *.class
+.DS_Store
 
 # Log file
 *.log
