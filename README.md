@@ -22,7 +22,8 @@ IDEA --> Setting --> Plugins --> 搜索 MyBatis Log EasyPlus
 
 ### 捐赠 | Donate
 
-> 坚绝不设，欢迎Fokr，欢迎继续扩展
+> 虽然日常时间很忙碌，也为了碎银几两而发愁，但是希望借此慰藉心中早已经开始缥缈的诗与远方。<br/>
+> 欢迎Fokr，欢迎继续扩展
 
 
 ## <p style="color:red">★★超级无敌丝滑★★</p>
