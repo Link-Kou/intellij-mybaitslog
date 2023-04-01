@@ -22,29 +22,35 @@ public class RawSqlSourceMonitor implements IClassFileTransformer {
     public void transform() {
         ClassPool classPool = ClassPool.getDefault();
         CtClass ctClass = null;
+        classPool.insertClassPath(new ClassClassPath(this.getClass()));
+        boolean isMybitas = true;
         try {
-            classPool.insertClassPath(new ClassClassPath(this.getClass()));
             //获取类
             ctClass = classPool.get(injectedClassName);
             if (null == ctClass) {
                 return;
             }
-            //添加新的字段
-            CtField ctField = new CtField(classPool.getCtClass("java.lang.String"), "_rootSqlNode_", ctClass);
-            ctField.setModifiers(Modifier.PUBLIC);
-            ctField.setModifiers(Modifier.FINAL);
-            ctClass.addField(ctField);
-            //获取构造
-            final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{classPool.getCtClass("org.apache.ibatis.session.Configuration"), classPool.getCtClass("java.lang.String"), classPool.getCtClass("java.lang.Class")});
-            declaredConstructor.insertAfter("{$0._rootSqlNode_ = $2;}");
-            //写入
-            ctClass.writeFile();
-            //加载该类的字节码（不能少）
-            ctClass.toClass(LogInterceptor.class.getClassLoader(), LogInterceptor.class.getProtectionDomain());
-            ctClass.detach();
         } catch (Exception e) {
-            e.printStackTrace();
+            isMybitas = false;
+        }
+        if (isMybitas) {
+            try {
+                //添加新的字段
+                CtField ctField = new CtField(classPool.getCtClass("java.lang.String"), "_rootSqlNode_", ctClass);
+                ctField.setModifiers(Modifier.PUBLIC);
+                ctField.setModifiers(Modifier.FINAL);
+                ctClass.addField(ctField);
+                //获取构造
+                final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{classPool.getCtClass("org.apache.ibatis.session.Configuration"), classPool.getCtClass("java.lang.String"), classPool.getCtClass("java.lang.Class")});
+                declaredConstructor.insertAfter("{$0._rootSqlNode_ = $2;}");
+                //写入
+                ctClass.writeFile();
+                //加载该类的字节码（不能少）
+                ctClass.toClass(LogInterceptor.class.getClassLoader(), LogInterceptor.class.getProtectionDomain());
+                ctClass.detach();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
-
 }
