@@ -4,19 +4,20 @@
     <vendor email="chinacclk@gmail.com" url="https://github.com/Link-Kou/intellij-mybaitslog">linkkou</vendor>
 
     <!-- 插件版本 -->
-    <version>5.0.1</version>
+    <version>5.0.0</version>
     <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
     <idea-version since-build="201"/>
     <!-- 插件的描述 -->
     <description><![CDATA[
       <p><b>MyBatis Log EasyPlus plugin for IntelliJ IDEs.</b></p>
+      <p><b>Output the MyBatis log information with formatting</b></p>
       <ul>
         <h3>English:</h3>
-        <li>This is a MybaitLog output plugin that lets you feel silky</li>
         <li>Support all SQL formatted output for all databases above MyBatis3.2.0</li>
+        <li>This is a MybaitLog output plugin that lets you feel silky</li>
         <h3>中文：</h3>
-        <li>这是一个让你感受丝滑的MybaitLog输出插件</li>
         <li>支持MyBatis3.2.0以上所有数据库的所有SQL格式化输出</li>
+        <li>这是一个让你感受丝滑的MybaitLog输出插件</li>
         <p>
          <a title="To Github" href="https://github.com/Link-Kou/intellij-mybaitslog"><img src="https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/2020-03-25_09-28-47.jpg" width="558" alt="image"></a>
         </p>
@@ -26,9 +27,9 @@
     <!-- 插件的功能 -->
     <change-notes><![CDATA[
       <ul>
-        <p>5.X.X</p>
-        <li>支持所有数据库所有Sql格式化</li>
-        <li>Supports all Sql formatting for all databases</li>
+        <p>5.0.0</p>
+        <li>支持MyBatis输出的Sql进行格式化</li>
+        <li>Support MyBatis output Sql for formatting</li>
       </ul>
     ]]></change-notes>
 
