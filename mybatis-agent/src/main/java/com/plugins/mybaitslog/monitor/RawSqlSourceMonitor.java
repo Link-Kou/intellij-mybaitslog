@@ -4,10 +4,6 @@ import com.linkkou.mybatis.log.LogInterceptor;
 import com.plugins.mybaitslog.IClassFileTransformer;
 import javassist.*;
 
-import java.lang.instrument.ClassFileTransformer;
-import java.lang.instrument.IllegalClassFormatException;
-import java.security.ProtectionDomain;
-
 /**
  * A <code>RawSqlSourceMonitor</code> Class
  *
