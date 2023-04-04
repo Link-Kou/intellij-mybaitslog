@@ -5,11 +5,9 @@ import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorChooser;
 import com.plugins.mybaitslog.Config;
 import com.plugins.mybaitslog.gui.compone.MyColorButton;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -32,6 +30,7 @@ public class FilterSetting extends JDialog {
     private JPanel jpanel_delect;
     private JPanel jpanel_insert;
     private JPanel jpanel_other;
+    private JTextArea addOpensTextArea;
 
 
     /**
@@ -51,6 +50,7 @@ public class FilterSetting extends JDialog {
         getRootPane().setDefaultButton(buttonOK);
 
         //region 自定义控件
+        addOpensTextArea.setText(String.join("\n", Config.Idea.getAddOpens()));
         String[] colorname = {"select", "update", "delect", "insert", "other"};
         for (String s : colorname) {
             final MyColorButton myColorButton = new MyColorButton(Config.Idea.getColor(s));
@@ -105,6 +105,8 @@ public class FilterSetting extends JDialog {
      */
     private void onOK(Project project) {
         String preparing = this.preparingTextField.getText();
+        String addOpens = this.addOpensTextArea.getText();
+        Config.Idea.setAddOpens(addOpens);
         Config.Idea.setParameters(preparing, Config.Idea.PARAMETERS);
         Config.Idea.setStartup(startupCheckBox.isSelected() ? 1 : 0);
         this.setVisible(false);

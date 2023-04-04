@@ -4,7 +4,7 @@
     <vendor email="chinacclk@gmail.com" url="https://github.com/Link-Kou/intellij-mybaitslog">linkkou</vendor>
 
     <!-- 插件版本 -->
-    <version>5.0.0</version>
+    <version>5.0.2</version>
     <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
     <idea-version since-build="201"/>
     <!-- 插件的描述 -->
@@ -26,6 +26,16 @@
 
     <!-- 插件的功能 -->
     <change-notes><![CDATA[
+     <ul>
+        <p>5.0.2</p>
+        <li>改进JDK17的支持</li>
+        <li>Improved support for JDK17</li>
+      </ul>
+     <ul>
+        <p>5.0.1</p>
+        <li>修正GSON未依赖的BUG</li>
+        <li>Fixed a BUG where GSON was not dependent</li>
+      </ul>
       <ul>
         <p>5.0.0</p>
         <li>支持MyBatis输出的Sql进行格式化</li>

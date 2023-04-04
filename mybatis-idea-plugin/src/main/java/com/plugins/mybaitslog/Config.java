@@ -3,7 +3,10 @@ package com.plugins.mybaitslog;
 import com.intellij.ide.util.PropertiesComponent;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -44,6 +47,10 @@ public class Config {
             put("other", "252,255,253");
         }};
 
+        public static final ArrayList<String> AddOpens = new ArrayList<String>() {{
+            add("--add-opens java.base/java.lang=ALL-UNNAMED");
+        }};
+
         /**
          * 获取关键字常量配置
          *
@@ -72,11 +79,18 @@ public class Config {
             PropertiesComponent.getInstance().setValue(DB_STARTUP_KEY, value, 1);
         }
 
+        /**
+         * 获取启动过滤
+         */
+        public static boolean getStartup() {
+            final int anInt = PropertiesComponent.getInstance().getInt(DB_STARTUP_KEY, 1);
+            return anInt == 1;
+        }
 
         /**
          * 设置配置
          *
-         * @param type        值
+         * @param type 值
          */
         public static Color getColor(String type) {
             final String s = ColorMap.get(type);
@@ -95,13 +109,16 @@ public class Config {
             PropertiesComponent.getInstance().setValue("color:" + type, color);
         }
 
-
-        /**
-         * 获取启动过滤
-         */
-        public static boolean getStartup() {
-            final int anInt = PropertiesComponent.getInstance().getInt(DB_STARTUP_KEY, 1);
-            return anInt == 1;
+        public static ArrayList<String> getAddOpens() {
+            final String value = PropertiesComponent.getInstance().getValue("addOpens:", String.join(";", AddOpens));
+            return new ArrayList<String>(Arrays.asList(value.split(";")));
         }
+
+        public static void setAddOpens(String opens) {
+            final List<String> openlist = Arrays.asList(opens.split("\n"));
+            PropertiesComponent.getInstance().setValue("addOpens:", String.join(";", openlist));
+        }
+
+
     }
 }

@@ -10,6 +10,7 @@ import com.intellij.openapi.projectRoots.JavaSdk;
 import com.intellij.openapi.projectRoots.JavaSdkVersion;
 import com.intellij.openapi.projectRoots.Sdk;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -19,6 +20,7 @@ public class PerRun extends JavaProgramPatcher {
     private Set<String> stringSet = new HashSet<String>() {{
         add("org.jetbrains.idea.maven.execution");
     }};
+
     //com.intellij.execution.junit
     @Override
     public void patchJavaParameters(Executor executor, RunProfile configuration, JavaParameters javaParameters) {
@@ -44,7 +46,13 @@ public class PerRun extends JavaProgramPatcher {
         if (null != agentCoreJarPath) {
             //RunConfiguration runConfiguration = (RunConfiguration) configuration;
             ParametersList vmParametersList = javaParameters.getVMParametersList();
+            //JDK17的改进
+            if (version.compareTo(JavaSdkVersion.JDK_17) >= 0) {
+                final ArrayList<String> addOpens = Config.Idea.getAddOpens();
+                vmParametersList.addAll(addOpens);
+            }
             vmParametersList.prepend("-javaagent:" + agentCoreJarPath);
+            //
             //vmParametersList.addParametersString("-javaagent:\"" + agentCoreJarPath + "\"");
             //vmParametersList.addNotEmptyProperty("guide-idea-plugin-probe.projectId", runConfiguration.getProject().getLocationHash());
         }
