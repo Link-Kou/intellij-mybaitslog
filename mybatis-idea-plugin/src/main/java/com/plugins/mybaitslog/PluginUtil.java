@@ -23,7 +23,7 @@ public class PluginUtil {
     private static String getJarPathByStartWith() {
         //向下兼容
         String defaultBaseDir = System.getProperty("java.io.tmpdir");
-        String d = defaultBaseDir + "mybatis-agent-1.0.18-all.jar";
+        String d = defaultBaseDir + "mybatis-agent-1.0.19-all.jar";
         File file = new File(d);
         if (file.exists()) {
             return d;
