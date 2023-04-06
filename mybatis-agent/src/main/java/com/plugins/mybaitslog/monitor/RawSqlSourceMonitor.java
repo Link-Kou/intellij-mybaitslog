@@ -40,7 +40,7 @@ public class RawSqlSourceMonitor implements IClassFileTransformer {
                 final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{classPool.getCtClass("org.apache.ibatis.session.Configuration"), classPool.getCtClass("java.lang.String"), classPool.getCtClass("java.lang.Class")});
                 declaredConstructor.insertAfter("{$0._rootSqlNode_ = $2;}");
                 //写入
-                ctClass.writeFile();
+                //ctClass.writeFile();
                 //加载该类的字节码（不能少）
                 ctClass.toClass(LogInterceptor.class.getClassLoader(), LogInterceptor.class.getProtectionDomain());
                 ctClass.detach();
