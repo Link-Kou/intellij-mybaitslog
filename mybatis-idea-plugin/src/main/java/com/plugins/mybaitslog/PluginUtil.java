@@ -35,7 +35,7 @@ public class PluginUtil {
             if ("lib".equals(listFile.getName())) {
                 final File[] fileslib = listFile.listFiles();
                 for (File file : fileslib) {
-                    if ("mybatis-agent-1.0.20-all.jar".equals(file.getName())) {
+                    if ("mybatis-agent-1.0.21-all.jar".equals(file.getName())) {
                         return file.toPath().toString();
                     }
                 }

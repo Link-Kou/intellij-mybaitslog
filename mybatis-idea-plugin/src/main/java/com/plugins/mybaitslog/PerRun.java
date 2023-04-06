@@ -48,10 +48,11 @@ public class PerRun extends JavaProgramPatcher {
             final JavaSdkVersion javaSdkVersion = JavaSdkVersion.fromVersionString("17");
             if (null != javaSdkVersion && version.compareTo(javaSdkVersion) >= 0) {
                 final ArrayList<String> addOpens = Config.Idea.getAddOpens();
-                vmParametersList.addAll(addOpens);
+                for (String opens : addOpens) {
+                    vmParametersList.addParametersString(opens);
+                }
             }
             vmParametersList.prepend("-javaagent:" + agentCoreJarPath);
-            //
             //vmParametersList.addParametersString("-javaagent:\"" + agentCoreJarPath + "\"");
             //vmParametersList.addNotEmptyProperty("guide-idea-plugin-probe.projectId", runConfiguration.getProject().getLocationHash());
         }

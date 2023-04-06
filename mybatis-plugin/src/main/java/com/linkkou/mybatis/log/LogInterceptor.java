@@ -21,10 +21,7 @@ import org.javatuples.Pair;
 
 import java.lang.reflect.Field;
 import java.text.DateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Properties;
+import java.util.*;
 
 
 /**
@@ -45,15 +42,13 @@ public class LogInterceptor implements Interceptor {
      */
     private static final Integer ARGSNUMBER = 2;
 
-    public static Gson gson = new GsonBuilder()
-            .setDateFormat("yyyy-MM-dd HH:mm:ss")
+    public static Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss")
             //当Map的key为复杂对象时,需要开启该方法
             .enableComplexMapKeySerialization()
             //当字段值为空或null时，依然对该字段进行转换
             .serializeNulls()
             //防止特殊字符出现乱码
-            .disableHtmlEscaping()
-            .create();
+            .disableHtmlEscaping().create();
 
 
     @Override
@@ -73,12 +68,8 @@ public class LogInterceptor implements Interceptor {
                     BoundSql boundSql = mappedStatement.getBoundSql(parameter);
                     Configuration configuration = mappedStatement.getConfiguration();
                     // 通过配置信息和BoundSql对象来生成带值得sql语句
-                    String sql = getCompleteSql(configuration, boundSql, originalSql);
-                    final SqlVO sqlVO = new SqlVO().setId(mappedStatement.getId())
-                            .setCompleteSql(sql)
-                            .setParameter(gson.toJson(parameter))
-                            .setTotal(size)
-                            .setOriginalSql(originalSql);
+                    final Pair<String, List<Map<String, ?>>> completeSql = getCompleteSql(configuration, boundSql, originalSql);
+                    final SqlVO sqlVO = new SqlVO().setId(mappedStatement.getId()).setCompleteSql(completeSql.getValue0()).setParameter(gson.toJson(completeSql.getValue1())).setTotal(size).setOriginalSql(originalSql);
                     final String json = gson.toJson(sqlVO);
                     System.out.println("==>  SQLStructure: " + json);
                 }
@@ -102,23 +93,31 @@ public class LogInterceptor implements Interceptor {
      * @param originalSql   sql
      * @return String
      */
-    private String getCompleteSql(Configuration configuration, BoundSql boundSql, String originalSql) {
+    private Pair<String, List<Map<String, ?>>> getCompleteSql(Configuration configuration, BoundSql boundSql, String originalSql) {
         Object parameterObject = boundSql.getParameterObject();
         List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
+        List<Map<String, ?>> keyvalue = new ArrayList<Map<String, ?>>();
         if (parameterMappings.size() > 0 && parameterObject != null) {
             MetaObject metaObject = configuration.newMetaObject(parameterObject);
             for (ParameterMapping parameterMapping : parameterMappings) {
                 String propertyName = parameterMapping.getProperty();
+                final HashMap<String, Object> stringObjectHashMap = new HashMap<>();
                 if (metaObject.hasGetter(propertyName)) {
                     Object obj = metaObject.getValue(propertyName);
-                    originalSql = originalSql.replaceFirst("#\\{" + propertyName + "}", getParameterValue(obj));
+                    final String parameterValue = getParameterValue(obj);
+                    stringObjectHashMap.put(propertyName, parameterValue);
+                    keyvalue.add(stringObjectHashMap);
+                    originalSql = originalSql.replaceFirst("#\\{" + propertyName + "}", parameterValue);
                 } else if (boundSql.hasAdditionalParameter(propertyName)) {
                     Object obj = boundSql.getAdditionalParameter(propertyName);
-                    originalSql = originalSql.replaceFirst("#\\{" + propertyName + "}", getParameterValue(obj));
+                    final String parameterValue = getParameterValue(obj);
+                    stringObjectHashMap.put(propertyName, parameterValue);
+                    keyvalue.add(stringObjectHashMap);
+                    originalSql = originalSql.replaceFirst("#\\{" + propertyName + "}", parameterValue);
                 }
             }
         }
-        return originalSql.replaceAll("[\\s]+", " ");
+        return Pair.with(originalSql.replaceAll("[\\s]+", " "), keyvalue);
     }
 
 
@@ -213,6 +212,7 @@ public class LogInterceptor implements Interceptor {
     }
 
     @Override
-    public void setProperties(Properties properties) {}
+    public void setProperties(Properties properties) {
+    }
 
 }
