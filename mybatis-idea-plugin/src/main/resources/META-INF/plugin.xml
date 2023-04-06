@@ -27,6 +27,16 @@
     <!-- 插件的功能 -->
     <change-notes><![CDATA[
      <ul>
+        <p>5.0.4</p>
+        <li>改进对JRebel支持</li>
+        <li>Optimize support for JRebel</li>
+      </ul>
+       <ul>
+        <p>5.0.3</p>
+        <li>添加执行器过滤</li>
+        <li>Add actuator filtering</li>
+      </ul>
+     <ul>
         <p>5.0.2</p>
         <li>改进JDK17的支持</li>
         <li>Improved support for JDK17</li>
