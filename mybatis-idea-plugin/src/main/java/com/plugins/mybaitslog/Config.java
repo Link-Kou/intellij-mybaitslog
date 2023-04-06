@@ -47,6 +47,7 @@ public class Config {
         public static final Map<String, Boolean> PerRunMap = new HashMap<String, Boolean>() {{
             put("org.jetbrains.idea.maven.execution", false);
             put("com.intellij.execution.junit", true);
+            put("com.intellij.spring.boot.run", true);
         }};
 
         public static final ArrayList<String> AddOpens = new ArrayList<String>() {{
