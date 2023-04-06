@@ -31,7 +31,7 @@ allprojects {
 
 
 group 'com.plugins.mybatislog.agent'
-version '1.0.19'
+version '1.0.20'
 
 java {
     sourceCompatibility = "1.8"
