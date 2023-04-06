@@ -45,7 +45,8 @@ public class PerRun extends JavaProgramPatcher {
             //RunConfiguration runConfiguration = (RunConfiguration) configuration;
             ParametersList vmParametersList = javaParameters.getVMParametersList();
             //JDK17的改进
-            if (version.compareTo(JavaSdkVersion.JDK_17) >= 0) {
+            final JavaSdkVersion javaSdkVersion = JavaSdkVersion.fromVersionString("17");
+            if (null != javaSdkVersion && version.compareTo(javaSdkVersion) >= 0) {
                 final ArrayList<String> addOpens = Config.Idea.getAddOpens();
                 vmParametersList.addAll(addOpens);
             }
