@@ -5,12 +5,16 @@ import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorChooser;
 import com.plugins.mybaitslog.Config;
 import com.plugins.mybaitslog.gui.compone.MyColorButton;
+import com.plugins.mybaitslog.gui.compone.MyTableModel;
 
 import javax.swing.*;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * 过滤设置 窗口
@@ -31,6 +35,7 @@ public class FilterSetting extends JDialog {
     private JPanel jpanel_insert;
     private JPanel jpanel_other;
     private JTextArea addOpensTextArea;
+    private JTable excludeTable;
 
 
     /**
@@ -50,6 +55,13 @@ public class FilterSetting extends JDialog {
         getRootPane().setDefaultButton(buttonOK);
 
         //region 自定义控件
+        final MyTableModel myTableModel = new MyTableModel();
+        final Map<String, Boolean> perRunMap = Config.Idea.getPerRunMap();
+        for (Map.Entry<String, Boolean> next : perRunMap.entrySet()) {
+            myTableModel.addRow(new Object[]{next.getKey(), next.getValue()});
+        }
+        this.excludeTable.setModel(myTableModel);
+
         addOpensTextArea.setText(String.join("\n", Config.Idea.getAddOpens()));
         String[] colorname = {"select", "update", "delect", "insert", "other"};
         for (String s : colorname) {
@@ -106,6 +118,13 @@ public class FilterSetting extends JDialog {
     private void onOK(Project project) {
         String preparing = this.preparingTextField.getText();
         String addOpens = this.addOpensTextArea.getText();
+        final TableModel model = this.excludeTable.getModel();
+        final int rowCount = model.getRowCount();
+        for (int r = 0; r < rowCount; r++) {
+            final Object key = model.getValueAt(r, 0);
+            final Object value = model.getValueAt(r, 1);
+            Config.Idea.setPerRunMap((String) key, (Boolean) value, true);
+        }
         Config.Idea.setAddOpens(addOpens);
         Config.Idea.setParameters(preparing, Config.Idea.PARAMETERS);
         Config.Idea.setStartup(startupCheckBox.isSelected() ? 1 : 0);

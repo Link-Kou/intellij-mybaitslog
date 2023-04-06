@@ -3,11 +3,8 @@ package com.plugins.mybaitslog;
 import com.intellij.ide.util.PropertiesComponent;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 /**
  * A <code>Config</code> Class
@@ -45,6 +42,11 @@ public class Config {
             put("delect", "231,29,54");
             put("insert", "97,163,172");
             put("other", "252,255,253");
+        }};
+
+        public static final Map<String, Boolean> PerRunMap = new HashMap<String, Boolean>() {{
+            put("org.jetbrains.idea.maven.execution", false);
+            put("com.intellij.execution.junit", true);
         }};
 
         public static final ArrayList<String> AddOpens = new ArrayList<String>() {{
@@ -117,6 +119,38 @@ public class Config {
         public static void setAddOpens(String opens) {
             final List<String> openlist = Arrays.asList(opens.split("\n"));
             PropertiesComponent.getInstance().setValue("addOpens:", String.join(";", openlist));
+        }
+
+        public static Map<String, Boolean> getPerRunMap() {
+            final String value = PropertiesComponent.getInstance().getValue("perRunMap:");
+            if (null == value) {
+                return PerRunMap;
+            }
+            final String[] split1 = value.split(";");
+            final List<String> strings = Arrays.asList(split1);
+            strings.forEach(e -> {
+                final String[] split2 = e.split("=");
+                if (!PerRunMap.containsKey(split2[0])) {
+                    PerRunMap.put(split2[0], Boolean.valueOf(split2[1]));
+                }
+            });
+            return PerRunMap;
+        }
+
+        public static void setPerRunMap(String name, boolean run, boolean cover) {
+            final Boolean aBoolean = PerRunMap.containsKey(name);
+            if (cover) {
+                PerRunMap.put(name, run);
+            }
+            if (!cover && !aBoolean) {
+                PerRunMap.put(name, run);
+            }
+            ArrayList<String> value = new ArrayList<String>();
+            for (Map.Entry<String, Boolean> next : PerRunMap.entrySet()) {
+                final String format = String.format("%s=%s", next.getKey(), next.getValue());
+                value.add(format);
+            }
+            PropertiesComponent.getInstance().setValue("perRunMap:", String.join(";", value));
         }
 
 
