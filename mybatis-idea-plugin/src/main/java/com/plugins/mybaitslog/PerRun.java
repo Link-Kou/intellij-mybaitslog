@@ -10,16 +10,10 @@ import com.intellij.openapi.projectRoots.JavaSdk;
 import com.intellij.openapi.projectRoots.JavaSdkVersion;
 import com.intellij.openapi.projectRoots.Sdk;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class PerRun extends JavaProgramPatcher {
 
-    private Set<String> stringSet = new HashSet<String>() {{
-        add("org.jetbrains.idea.maven.execution");
-    }};
 
     //com.intellij.execution.junit
     @Override
@@ -27,7 +21,11 @@ public class PerRun extends JavaProgramPatcher {
         if (!(configuration instanceof RunConfiguration)) {
             return;
         }
-        if (stringSet.contains(configuration.getClass().getPackage().getName())) {
+        final String name = configuration.getClass().getPackage().getName();
+        Config.Idea.setPerRunMap(name, false, false);
+        //IDEA中有大量的执行器。这里需要做排除和生效处理
+        final Map<String, Boolean> perRunMap = Config.Idea.getPerRunMap();
+        if (!perRunMap.get(name)) {
             return;
         }
         //
