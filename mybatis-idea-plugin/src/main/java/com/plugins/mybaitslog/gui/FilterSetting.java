@@ -63,7 +63,7 @@ public class FilterSetting extends JDialog {
         this.excludeTable.setModel(myTableModel);
 
         addOpensTextArea.setText(String.join("\n", Config.Idea.getAddOpens()));
-        String[] colorname = {"select", "update", "delect", "insert", "other"};
+        String[] colorname = {"select", "update", "delete", "insert", "other"};
         for (String s : colorname) {
             final MyColorButton myColorButton = new MyColorButton(Config.Idea.getColor(s));
             myColorButton.addActionListener(e -> onColor(project, s, myColorButton));
@@ -74,7 +74,7 @@ public class FilterSetting extends JDialog {
                 case "update":
                     this.jpanel_update.add(myColorButton);
                     break;
-                case "delect":
+                case "delete":
                     this.jpanel_delect.add(myColorButton);
                     break;
                 case "insert":

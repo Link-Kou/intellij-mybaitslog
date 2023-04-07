@@ -20,6 +20,7 @@ import java.util.List;
 
 /**
  * console 窗口
+ *
  * @author lk
  * @version 1.0
  * @date 2020/4/10 22:00
@@ -76,7 +77,7 @@ public class ConsolePanel {
      * 创建工具栏
      *
      * @param consolePanel 输出面板
-     * @param consoleView 输出窗口
+     * @param consoleView  输出窗口
      * @return
      */
     @NotNull
@@ -86,15 +87,16 @@ public class ConsolePanel {
             //启动filter配置
             FilterSetting dialog = new FilterSetting(project);
             dialog.pack();
-            dialog.setSize(520, 380);//配置大小
-            dialog.setResizable(false);
+            dialog.setSize(520, 390);//配置大小
+            dialog.setResizable(true);
             dialog.setLocationRelativeTo(null);//位置居中显示
             dialog.setVisible(true);
         });
         actionGroup.add(new ConsoleActionGroup.FilterAction());
-        actionGroup.add(consoleView.createConsoleActions()[2]);
+        actionGroup.addAll(consoleView.createConsoleActions());
+        /*actionGroup.add(consoleView.createConsoleActions()[2]);
         actionGroup.add(consoleView.createConsoleActions()[3]);
-        actionGroup.add(consoleView.createConsoleActions()[5]);
+        actionGroup.add(consoleView.createConsoleActions()[5]);*/
         return ActionManager.getInstance().createActionToolbar("EventLog", actionGroup, false);
     }
 }
