@@ -1,6 +1,7 @@
 package com.plugins.mybaitslog;
 
 import com.intellij.ide.util.PropertiesComponent;
+import com.intellij.openapi.project.Project;
 
 import java.awt.*;
 import java.util.*;
@@ -35,7 +36,7 @@ public class Config {
         public static final String DB_STARTUP_KEY = PROJECT_ID + "startup";
 
 
-        public static final String FORMAT_SQL = "formatsql:";
+        public static final String FORMAT_SQL_1 = PROJECT_ID + "SQL_FORMAT";
 
         public static final String PARAMETERS = "SQLStructure:";
 
@@ -82,15 +83,15 @@ public class Config {
          * @param value 值
          */
         public static void setStartup(int value) {
-            PropertiesComponent.getInstance().setValue(DB_STARTUP_KEY, value, 1);
+            PropertiesComponent.getInstance().setValue(DB_STARTUP_KEY, Integer.toString(value), "1");
         }
 
         /**
          * 获取启动过滤
          */
         public static boolean getStartup() {
-            final int anInt = PropertiesComponent.getInstance().getInt(DB_STARTUP_KEY, 1);
-            return anInt == 1;
+            final String value = PropertiesComponent.getInstance().getValue(DB_STARTUP_KEY, "1");
+            return  Integer.parseInt(value) == 1;
         }
 
         /**
@@ -99,15 +100,15 @@ public class Config {
          * @param value 值
          */
         public static void setFormatSql(int value) {
-            PropertiesComponent.getInstance().setValue(FORMAT_SQL, value, 1);
+            PropertiesComponent.getInstance().setValue(FORMAT_SQL_1, Integer.toString(value), "0");
         }
 
         /**
          * 设置格式化
          */
         public static boolean getFormatSql() {
-            final int anInt = PropertiesComponent.getInstance().getInt(FORMAT_SQL, 0);
-            return anInt == 1;
+            final String value = PropertiesComponent.getInstance().getValue(FORMAT_SQL_1, "0");
+            return Integer.parseInt(value) == 1;
         }
 
         /**
