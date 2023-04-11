@@ -13,7 +13,6 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -36,6 +35,7 @@ public class FilterSetting extends JDialog {
     private JPanel jpanel_other;
     private JTextArea addOpensTextArea;
     private JTable excludeTable;
+    private JCheckBox checkBox_sql;
 
 
     /**
@@ -48,8 +48,12 @@ public class FilterSetting extends JDialog {
         this.setTitle("Filter Setting");
         this.setBackground(Color.WHITE);
         this.preparingTextField.setText(Config.Idea.getParameters());
-        int startup = PropertiesComponent.getInstance(project).getInt(Config.Idea.DB_STARTUP_KEY, 1);
-        startupCheckBox.setSelected(startup == 1);
+        //PropertiesComponent.getInstance(project).getInt(Config.Idea.DB_STARTUP_KEY, 1);
+        boolean startup = Config.Idea.getStartup();
+        boolean formatSql = Config.Idea.getFormatSql();
+        startupCheckBox.setSelected(startup);
+        checkBox_sql.setSelected(formatSql);
+
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -128,6 +132,7 @@ public class FilterSetting extends JDialog {
         Config.Idea.setAddOpens(addOpens);
         Config.Idea.setParameters(preparing, Config.Idea.PARAMETERS);
         Config.Idea.setStartup(startupCheckBox.isSelected() ? 1 : 0);
+        Config.Idea.setFormatSql(checkBox_sql.isSelected() ? 1 : 0);
         this.setVisible(false);
     }
 

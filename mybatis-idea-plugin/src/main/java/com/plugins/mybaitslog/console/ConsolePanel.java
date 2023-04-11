@@ -87,7 +87,7 @@ public class ConsolePanel {
             //启动filter配置
             FilterSetting dialog = new FilterSetting(project);
             dialog.pack();
-            dialog.setSize(520, 390);//配置大小
+            dialog.setSize(520, 420);//配置大小
             dialog.setResizable(true);
             dialog.setLocationRelativeTo(null);//位置居中显示
             dialog.setVisible(true);

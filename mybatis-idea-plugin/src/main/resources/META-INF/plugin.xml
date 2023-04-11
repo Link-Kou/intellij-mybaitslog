@@ -4,7 +4,7 @@
     <vendor email="chinacclk@gmail.com" url="https://github.com/Link-Kou/intellij-mybaitslog">linkkou</vendor>
 
     <!-- 插件版本 -->
-    <version>5.0.6</version>
+    <version>5.0.7</version>
     <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
     <idea-version since-build="201"/>
     <!-- 插件的描述 -->
@@ -26,6 +26,11 @@
 
     <!-- 插件的功能 -->
     <change-notes><![CDATA[
+    <ul>
+        <p>5.0.7</p>
+        <li>修正部分也知问题</li>
+        <li>The correction part is also aware of the problem.</li>
+      </ul>
     <ul>
         <p>5.0.6</p>
         <li>修复颜色设置bug</li>

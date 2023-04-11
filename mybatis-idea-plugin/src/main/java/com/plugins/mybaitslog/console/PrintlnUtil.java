@@ -28,15 +28,13 @@ public class PrintlnUtil {
     public static Map<Project, ConsoleView> consoleViewMap = new ConcurrentHashMap<>(16);
 
 
-    private static final Gson gson = new GsonBuilder()
-            .setDateFormat("yyyy-MM-dd HH:mm:ss")
+    private static final Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss")
             //当Map的key为复杂对象时,需要开启该方法
             .enableComplexMapKeySerialization()
             //当字段值为空或null时，依然对该字段进行转换
             .serializeNulls()
             //防止特殊字符出现乱码
-            .disableHtmlEscaping()
-            .create();
+            .disableHtmlEscaping().create();
 
     /**
      * Sql语句还原，整个插件的核心就是该方法
@@ -72,11 +70,14 @@ public class PrintlnUtil {
             //序号前缀字符串
             final SqlVO sqlVO = restoreSql(currentLine);
             if (null != sqlVO) {
-                final String completesql = sqlVO.getCompleteSql().replaceAll("\t|\r|\n", "");
+                String completesql = sqlVO.getCompleteSql().replaceAll("\t|\r|\n", "");
                 //final String originalSql = sqlVO.getOriginalSql().replaceAll("\t|\r|\n", "");
                 final String id = sqlVO.getId();
                 final String parameter = sqlVO.getParameter();
                 final Integer total = sqlVO.getTotal();
+                if (Config.Idea.getFormatSql()) {
+                    completesql = new BasicFormatter().format(completesql);
+                }
                 //序号
                 PrintlnUtil.println(project, Config.SQL_START_LINE + id + "\n", ConsoleViewContentType.USER_INPUT);
                 PrintlnUtil.printlnSqlType(project, Config.SQL_MIDDLE_LINE, completesql + "\n");

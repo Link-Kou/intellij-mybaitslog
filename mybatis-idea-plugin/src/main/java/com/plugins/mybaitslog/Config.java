@@ -34,6 +34,9 @@ public class Config {
          */
         public static final String DB_STARTUP_KEY = PROJECT_ID + "startup";
 
+
+        public static final String FORMAT_SQL = "formatsql:";
+
         public static final String PARAMETERS = "SQLStructure:";
 
         public static final Map<String, String> ColorMap = new HashMap<String, String>() {{
@@ -87,6 +90,23 @@ public class Config {
          */
         public static boolean getStartup() {
             final int anInt = PropertiesComponent.getInstance().getInt(DB_STARTUP_KEY, 1);
+            return anInt == 1;
+        }
+
+        /**
+         * 设置启动过滤
+         *
+         * @param value 值
+         */
+        public static void setFormatSql(int value) {
+            PropertiesComponent.getInstance().setValue(FORMAT_SQL, value, 1);
+        }
+
+        /**
+         * 获取启动过滤
+         */
+        public static boolean getFormatSql() {
+            final int anInt = PropertiesComponent.getInstance().getInt(FORMAT_SQL, 1);
             return anInt == 1;
         }
 

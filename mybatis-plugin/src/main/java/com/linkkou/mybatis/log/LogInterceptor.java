@@ -2,6 +2,7 @@ package com.linkkou.mybatis.log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
@@ -97,7 +98,8 @@ public class LogInterceptor implements Interceptor {
         Object parameterObject = boundSql.getParameterObject();
         List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
         List<Map<String, ?>> keyvalue = new ArrayList<Map<String, ?>>();
-        if (parameterMappings.size() > 0 && parameterObject != null) {
+        final int size = parameterMappings.size();
+        if (size > 0 && parameterObject != null) {
             MetaObject metaObject = configuration.newMetaObject(parameterObject);
             for (ParameterMapping parameterMapping : parameterMappings) {
                 String propertyName = parameterMapping.getProperty();
@@ -111,6 +113,12 @@ public class LogInterceptor implements Interceptor {
                 } else if (boundSql.hasAdditionalParameter(propertyName)) {
                     Object obj = boundSql.getAdditionalParameter(propertyName);
                     final String parameterValue = getParameterValue(obj);
+                    stringObjectHashMap.put(propertyName, parameterValue);
+                    keyvalue.add(stringObjectHashMap);
+                    originalSql = originalSql.replaceFirst("#\\{" + propertyName + "}", parameterValue);
+                } else if (size == 1 && !(parameterObject instanceof Map)) {
+                    //单个参数默认组合
+                    final String parameterValue = getParameterValue(metaObject.getOriginalObject());
                     stringObjectHashMap.put(propertyName, parameterValue);
                     keyvalue.add(stringObjectHashMap);
                     originalSql = originalSql.replaceFirst("#\\{" + propertyName + "}", parameterValue);

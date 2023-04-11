@@ -18,6 +18,9 @@ public class PerRun extends JavaProgramPatcher {
     //com.intellij.execution.junit
     @Override
     public void patchJavaParameters(Executor executor, RunProfile configuration, JavaParameters javaParameters) {
+        if (!Config.Idea.getStartup()) {
+            return;
+        }
         if (!(configuration instanceof RunConfiguration)) {
             return;
         }
@@ -44,15 +47,20 @@ public class PerRun extends JavaProgramPatcher {
         if (null != agentCoreJarPath) {
             //RunConfiguration runConfiguration = (RunConfiguration) configuration;
             ParametersList vmParametersList = javaParameters.getVMParametersList();
+            String agentParameter = "-javaagent:" + agentCoreJarPath;
             //JDK17的改进
             final JavaSdkVersion javaSdkVersion = JavaSdkVersion.fromVersionString("17");
             if (null != javaSdkVersion && version.compareTo(javaSdkVersion) >= 0) {
                 final ArrayList<String> addOpens = Config.Idea.getAddOpens();
                 for (String opens : addOpens) {
-                    vmParametersList.addParametersString(opens);
+                    if (!vmParametersList.hasParameter(opens)) {
+                        vmParametersList.addParametersString(opens);
+                    }
                 }
             }
-            vmParametersList.prepend("-javaagent:" + agentCoreJarPath);
+            if (!vmParametersList.hasParameter(agentParameter)) {
+                vmParametersList.prepend(agentParameter);
+            }
             //vmParametersList.addParametersString("-javaagent:\"" + agentCoreJarPath + "\"");
             //vmParametersList.addNotEmptyProperty("guide-idea-plugin-probe.projectId", runConfiguration.getProject().getLocationHash());
         }
