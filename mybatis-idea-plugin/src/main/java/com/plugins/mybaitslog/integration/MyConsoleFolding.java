@@ -2,6 +2,7 @@ package com.plugins.mybaitslog.integration;
 
 import com.intellij.execution.ConsoleFolding;
 import com.intellij.openapi.project.Project;
+import com.plugins.mybaitslog.Config;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,8 +35,13 @@ public class MyConsoleFolding extends ConsoleFolding {
             this.IS_SQL_START_LINE = false;
             return true;
         }
+        //后续修正
         if (IS_SQL_START_LINE) {
-            return line.contains(SQL_MIDDLE_LINE);
+            if (Idea.getFormatSql()) {
+                return true;
+            } else {
+                return line.contains(SQL_MIDDLE_LINE);
+            }
         }
         //endregion
         return false;

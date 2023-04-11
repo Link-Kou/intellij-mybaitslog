@@ -94,7 +94,7 @@ public class Config {
         }
 
         /**
-         * 设置启动过滤
+         * 设置格式化
          *
          * @param value 值
          */
@@ -103,10 +103,10 @@ public class Config {
         }
 
         /**
-         * 获取启动过滤
+         * 设置格式化
          */
         public static boolean getFormatSql() {
-            final int anInt = PropertiesComponent.getInstance().getInt(FORMAT_SQL, 1);
+            final int anInt = PropertiesComponent.getInstance().getInt(FORMAT_SQL, 0);
             return anInt == 1;
         }
 
