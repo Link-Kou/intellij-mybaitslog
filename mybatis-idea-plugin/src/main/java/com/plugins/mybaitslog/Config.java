@@ -91,7 +91,7 @@ public class Config {
          */
         public static boolean getStartup() {
             final String value = PropertiesComponent.getInstance().getValue(DB_STARTUP_KEY, "1");
-            return  Integer.parseInt(value) == 1;
+            return Integer.parseInt(value) == 1;
         }
 
         /**
@@ -159,12 +159,20 @@ public class Config {
             return PerRunMap;
         }
 
+        /**
+         * 添加执行器
+         *
+         * @param name  执行器名称
+         * @param run   是否可以运行
+         * @param cover 是否替换 false=不替换 true=强制替换
+         */
         public static void setPerRunMap(String name, boolean run, boolean cover) {
             final Boolean aBoolean = PerRunMap.containsKey(name);
             if (cover) {
                 PerRunMap.put(name, run);
             }
             if (!cover && !aBoolean) {
+                PluginUtil.Notificat_AddConfiguration();
                 PerRunMap.put(name, run);
             }
             ArrayList<String> value = new ArrayList<String>();

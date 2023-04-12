@@ -22,9 +22,10 @@ public class PerRun extends JavaProgramPatcher {
             return;
         }
         if (!(configuration instanceof RunConfiguration)) {
-            return;
+            PluginUtil.Notificat_AddConfiguration();
         }
         final String name = configuration.getClass().getPackage().getName();
+        //默认关闭，做个冒泡提示
         Config.Idea.setPerRunMap(name, false, false);
         //IDEA中有大量的执行器。这里需要做排除和生效处理
         final Map<String, Boolean> perRunMap = Config.Idea.getPerRunMap();
@@ -34,6 +35,7 @@ public class PerRun extends JavaProgramPatcher {
         //
         Sdk jdk = javaParameters.getJdk();
         if (Objects.isNull(jdk)) {
+            PluginUtil.Notificat_Error("JDK does not exist in the project");
             return;
         }
         JavaSdkVersion version = JavaSdk.getInstance().getVersion(jdk);
@@ -41,6 +43,7 @@ public class PerRun extends JavaProgramPatcher {
             return;
         }
         if (version.compareTo(JavaSdkVersion.JDK_1_8) < 0) {
+            PluginUtil.Notificat_Error("JDK < 1.8");
             return;
         }
         String agentCoreJarPath = PluginUtil.getAgentCoreJarPath();

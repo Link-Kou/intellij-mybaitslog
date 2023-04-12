@@ -85,7 +85,7 @@ public class ConsolePanel {
         final DefaultActionGroup actionGroup = new DefaultActionGroup();
         ConsoleActionGroup.withFilter(() -> {
             //启动filter配置
-            FilterSetting dialog = new FilterSetting(project);
+            FilterSetting dialog = new FilterSetting();
             dialog.pack();
             dialog.setSize(520, 420);//配置大小
             dialog.setResizable(true);

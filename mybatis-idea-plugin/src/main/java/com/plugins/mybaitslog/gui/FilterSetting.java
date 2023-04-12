@@ -40,10 +40,8 @@ public class FilterSetting extends JDialog {
 
     /**
      * 窗口初始化
-     *
-     * @param project 项目
      */
-    public FilterSetting(Project project) {
+    public FilterSetting() {
         //设置标题
         this.setTitle("Filter Setting");
         this.setBackground(Color.WHITE);
@@ -70,7 +68,7 @@ public class FilterSetting extends JDialog {
         String[] colorname = {"select", "update", "delete", "insert", "other"};
         for (String s : colorname) {
             final MyColorButton myColorButton = new MyColorButton(Config.Idea.getColor(s));
-            myColorButton.addActionListener(e -> onColor(project, s, myColorButton));
+            myColorButton.addActionListener(e -> onColor(s, myColorButton));
             switch (s) {
                 case "select":
                     this.jpanel_select.add(myColorButton);
@@ -93,7 +91,7 @@ public class FilterSetting extends JDialog {
         }
         //endregion
 
-        buttonOK.addActionListener(e -> onOK(project));
+        buttonOK.addActionListener(e -> onOK());
         buttonCancel.addActionListener(e -> onCancel());
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -106,7 +104,7 @@ public class FilterSetting extends JDialog {
     }
 
 
-    private void onColor(Project project, String type, MyColorButton myColorButton) {
+    private void onColor(String type, MyColorButton myColorButton) {
         Color newColor = ColorChooser.chooseColor(this, "Choose Color", Color.white, true);
         if (null != newColor) {
             myColorButton.setColor(newColor);
@@ -116,10 +114,8 @@ public class FilterSetting extends JDialog {
 
     /**
      * 点击确认按钮处理
-     *
-     * @param project 项目
      */
-    private void onOK(Project project) {
+    private void onOK() {
         String preparing = this.preparingTextField.getText();
         String addOpens = this.addOpensTextArea.getText();
         final TableModel model = this.excludeTable.getModel();
