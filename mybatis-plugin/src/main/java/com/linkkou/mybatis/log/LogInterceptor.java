@@ -18,6 +18,7 @@ import org.apache.ibatis.scripting.xmltags.SqlNode;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
+import org.apache.ibatis.type.JdbcType;
 import org.javatuples.Pair;
 
 import java.lang.reflect.Field;
@@ -103,25 +104,30 @@ public class LogInterceptor implements Interceptor {
             MetaObject metaObject = configuration.newMetaObject(parameterObject);
             for (ParameterMapping parameterMapping : parameterMappings) {
                 String propertyName = parameterMapping.getProperty();
+                final JdbcType jdbcType = parameterMapping.getJdbcType();
+                String jdbcTypename = "";
+                if (null != jdbcType) {
+                    jdbcTypename = String.format("\\s*,\\s*jdbcType\\s*=\\s*%s", jdbcType.name());
+                }
                 final HashMap<String, Object> stringObjectHashMap = new HashMap<>();
                 if (metaObject.hasGetter(propertyName)) {
                     Object obj = metaObject.getValue(propertyName);
                     final String parameterValue = getParameterValue(obj);
                     stringObjectHashMap.put(propertyName, parameterValue);
                     keyvalue.add(stringObjectHashMap);
-                    originalSql = originalSql.replaceFirst("#\\{" + propertyName + "}", parameterValue);
+                    originalSql = originalSql.replaceFirst("#\\{\\s*" + propertyName + jdbcTypename + "\\s*}", parameterValue);
                 } else if (boundSql.hasAdditionalParameter(propertyName)) {
                     Object obj = boundSql.getAdditionalParameter(propertyName);
                     final String parameterValue = getParameterValue(obj);
                     stringObjectHashMap.put(propertyName, parameterValue);
                     keyvalue.add(stringObjectHashMap);
-                    originalSql = originalSql.replaceFirst("#\\{" + propertyName + "}", parameterValue);
-                } else if (size == 1 && !(parameterObject instanceof Map)) {
+                    originalSql = originalSql.replaceFirst("#\\{\\s*" + propertyName + jdbcTypename + "\\s*}", parameterValue);
+                } else if (!(parameterObject instanceof Map)) {
                     //单个参数默认组合
                     final String parameterValue = getParameterValue(metaObject.getOriginalObject());
                     stringObjectHashMap.put(propertyName, parameterValue);
                     keyvalue.add(stringObjectHashMap);
-                    originalSql = originalSql.replaceFirst("#\\{" + propertyName + "}", parameterValue);
+                    originalSql = originalSql.replaceFirst("#\\{\\s*" + propertyName + jdbcTypename + "\\s*}", parameterValue);
                 }
             }
         }
@@ -192,6 +198,7 @@ public class LogInterceptor implements Interceptor {
 
     /**
      * 如果是字符串对象则加上单引号返回，如果是日期则也需要转换成字符串形式，如果是其他则直接转换成字符串返回。
+     * todo 需要改进为MyBatis内置的数据解析能力
      *
      * @param obj 对象
      * @return String

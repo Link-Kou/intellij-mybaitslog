@@ -12,7 +12,7 @@ public class preAgent {
 
     //JVM 首先尝试在代理类上调用以下方法
     public static void premain(String agentArgs, Instrumentation inst) {
-        final Pair<String, String> with = Pair.with("Mybatis", "Plugins");
+        final Pair<String, String> with = Pair.with("Start: ", "MyBatis Log EasyPlus");
         System.out.println(with.getValue0() + with.getValue1());
         final transformer transformer = new transformer(inst);
         transformer.transform();
