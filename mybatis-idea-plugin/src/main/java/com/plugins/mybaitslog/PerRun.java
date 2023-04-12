@@ -9,10 +9,13 @@ import com.intellij.execution.runners.JavaProgramPatcher;
 import com.intellij.openapi.projectRoots.JavaSdk;
 import com.intellij.openapi.projectRoots.JavaSdkVersion;
 import com.intellij.openapi.projectRoots.Sdk;
+import com.intellij.openapi.diagnostic.Logger;
 
 import java.util.*;
 
 public class PerRun extends JavaProgramPatcher {
+
+    private Logger LOG = Logger.getInstance(PerRun.class);
 
 
     //com.intellij.execution.junit
@@ -51,6 +54,7 @@ public class PerRun extends JavaProgramPatcher {
             //RunConfiguration runConfiguration = (RunConfiguration) configuration;
             ParametersList vmParametersList = javaParameters.getVMParametersList();
             String agentParameter = "-javaagent:" + agentCoreJarPath;
+            LOG.info("MyBatis Log EasyPlus" + agentParameter);
             //JDK17的改进
             final JavaSdkVersion javaSdkVersion = JavaSdkVersion.fromVersionString("17");
             if (null != javaSdkVersion && version.compareTo(javaSdkVersion) >= 0) {
