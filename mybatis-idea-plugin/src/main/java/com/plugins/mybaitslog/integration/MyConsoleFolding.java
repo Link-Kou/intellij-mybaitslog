@@ -23,7 +23,7 @@ public class MyConsoleFolding extends ConsoleFolding {
 
     @Override
     public boolean shouldFoldLine(@NotNull Project project, @NotNull String line) {
-        if (line.contains(KEY_NAME)) {
+        if (line.contains(KEY_NAME) || line.contains(KEY_ERROR_NAME)) {
             return true;
         }
         //region 折叠

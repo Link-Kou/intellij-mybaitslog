@@ -1,8 +1,10 @@
 package com.plugins.mybaitslog.integration;
 
+import com.intellij.execution.ui.ConsoleViewContentType;
 import com.intellij.openapi.editor.markup.TextAttributes;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.filters.Filter;
+import com.plugins.mybaitslog.Config;
 import com.plugins.mybaitslog.console.PrintlnUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -10,6 +12,7 @@ import com.intellij.openapi.diagnostic.Logger;
 
 import java.awt.*;
 
+import static com.plugins.mybaitslog.Config.KEY_ERROR_NAME;
 import static com.plugins.mybaitslog.Config.KEY_NAME;
 
 
@@ -41,6 +44,9 @@ public class MyBatisLogFilter implements Filter {
             textAttributes.setForegroundColor(Color.BLACK);
             PrintlnUtil.prints(project, s);
             return new Result(offset, entireLength, null, textAttributes);
+        }
+        if (s.contains(KEY_ERROR_NAME)) {
+            PrintlnUtil.println(project, Config.KEY_ERROR_NAME + s +"\n", ConsoleViewContentType.ERROR_OUTPUT);
         }
         return null;
     }

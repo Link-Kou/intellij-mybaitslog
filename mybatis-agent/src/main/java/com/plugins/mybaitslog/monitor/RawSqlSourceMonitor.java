@@ -27,6 +27,7 @@ public class RawSqlSourceMonitor implements IClassFileTransformer {
                 return;
             }
         } catch (Exception e) {
+            System.out.println("==>  SQLStructureError: " + e.toString());
             isMybitas = false;
         }
         if (isMybitas) {

@@ -19,6 +19,7 @@ public class Config {
     private static final String PROJECT_ID = "MyBatisLogPlugin";
 
     public final static String KEY_NAME = "==>  SQLStructure: ";
+    public final static String KEY_ERROR_NAME = "==>  SQLStructureError: ";
 
     public static final String SQL_START_LINE = "- -->  ";
     public static final String SQL_MIDDLE_LINE = "    >  ";
