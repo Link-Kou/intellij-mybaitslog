@@ -68,8 +68,13 @@ public class PerRun extends JavaProgramPatcher {
             if (!vmParametersList.hasParameter(agentParameter)) {
                 vmParametersList.prepend(agentParameter);
             }
+            if (Config.Idea.getRunNotification()) {
+                PluginUtil.Notificat_Success();
+            }
             //vmParametersList.addParametersString("-javaagent:\"" + agentCoreJarPath + "\"");
             //vmParametersList.addNotEmptyProperty("guide-idea-plugin-probe.projectId", runConfiguration.getProject().getLocationHash());
+        } else {
+            PluginUtil.Notificat_Error("Agent Jar Path Error");
         }
     }
 

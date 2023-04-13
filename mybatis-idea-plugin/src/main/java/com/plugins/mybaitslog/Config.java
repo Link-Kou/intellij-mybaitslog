@@ -38,6 +38,8 @@ public class Config {
 
         public static final String FORMAT_SQL_1 = PROJECT_ID + "SQL_FORMAT";
 
+        public static final String NOTIFICATION = PROJECT_ID + "NOTIFICATION";
+
         public static final String PARAMETERS = "SQLStructure:";
 
         public static final Map<String, String> ColorMap = new HashMap<String, String>() {{
@@ -93,6 +95,24 @@ public class Config {
             final String value = PropertiesComponent.getInstance().getValue(DB_STARTUP_KEY, "1");
             return Integer.parseInt(value) == 1;
         }
+
+        /**
+         * 运行通知
+         *
+         * @param value 值
+         */
+        public static void setRunNotification(int value) {
+            PropertiesComponent.getInstance().setValue(NOTIFICATION, Integer.toString(value), "1");
+        }
+
+        /**
+         * 运行通知
+         */
+        public static boolean getRunNotification() {
+            final String value = PropertiesComponent.getInstance().getValue(NOTIFICATION, "1");
+            return Integer.parseInt(value) == 1;
+        }
+
 
         /**
          * 设置格式化

@@ -71,11 +71,17 @@ public class PluginUtil {
         Notifications.Bus.notify(notification);
     }
 
+    public static void Notificat_Success() {
+        String content = "MyBatis Log EasyPlus Run";
+        NotificationGroup notificationGroup = new NotificationGroup("Notification", NotificationDisplayType.BALLOON, false);
+        Notification notification = notificationGroup.createNotification("MyBatis Log EasyPlus", "", content, NotificationType.INFORMATION);
+        Notifications.Bus.notify(notification);
+    }
 
     public static void Notificat_Error(String error) {
-        String content = error + ", MyBatis Log EasyPlus Unable to run";
+        String content = error + ", MyBatis Log EasyPlus Unable to Run";
         NotificationGroup notificationGroup = new NotificationGroup("Notification", NotificationDisplayType.BALLOON, false);
-        Notification notification = notificationGroup.createNotification("MyBatis Log EasyPlus", "", content, NotificationType.WARNING);
+        Notification notification = notificationGroup.createNotification("MyBatis Log EasyPlus", "", content, NotificationType.ERROR);
         Notifications.Bus.notify(notification);
     }
 

@@ -1,7 +1,5 @@
 package com.plugins.mybaitslog.gui;
 
-import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorChooser;
 import com.plugins.mybaitslog.Config;
 import com.plugins.mybaitslog.gui.compone.MyColorButton;
@@ -36,6 +34,7 @@ public class FilterSetting extends JDialog {
     private JTextArea addOpensTextArea;
     private JTable excludeTable;
     private JCheckBox checkBox_sql;
+    private JCheckBox checkBox_notification;
 
 
     /**
@@ -49,8 +48,11 @@ public class FilterSetting extends JDialog {
         //PropertiesComponent.getInstance(project).getInt(Config.Idea.DB_STARTUP_KEY, 1);
         boolean startup = Config.Idea.getStartup();
         boolean formatSql = Config.Idea.getFormatSql();
+        boolean notification = Config.Idea.getRunNotification();
+
         startupCheckBox.setSelected(startup);
         checkBox_sql.setSelected(formatSql);
+        checkBox_notification.setSelected(notification);
 
         setContentPane(contentPane);
         setModal(true);
@@ -129,6 +131,7 @@ public class FilterSetting extends JDialog {
         Config.Idea.setParameters(preparing, Config.Idea.PARAMETERS);
         Config.Idea.setStartup(startupCheckBox.isSelected() ? 1 : 0);
         Config.Idea.setFormatSql(checkBox_sql.isSelected() ? 1 : 0);
+        Config.Idea.setRunNotification(checkBox_notification.isSelected() ? 1 : 0);
         this.setVisible(false);
     }
 

@@ -73,7 +73,7 @@
          on how to target different products -->
     <!-- uncomment to enable plugin in all products-->
 
-    <!--必须为企业版-->
+    <!--必须为企业版或社区版本-->
     <depends>com.intellij.modules.lang</depends>
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.java</depends>
