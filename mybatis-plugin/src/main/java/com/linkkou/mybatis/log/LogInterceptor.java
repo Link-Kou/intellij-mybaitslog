@@ -143,6 +143,13 @@ public class LogInterceptor implements Interceptor {
         return originalSql.replaceFirst("(\\$|#)\\{\\s*" + propertyName + "*.+}", parameterValue);
     }
 
+    /**
+     * 获取原始的SQL
+     *
+     * @param mappedStatement 对象
+     * @param parameter       对象
+     * @return String
+     */
     private String getOriginalSql(MappedStatement mappedStatement, Object parameter) {
         final SqlSource sqlSource = mappedStatement.getSqlSource();
         if (sqlSource instanceof DynamicSqlSource) {
