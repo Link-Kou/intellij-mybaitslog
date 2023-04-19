@@ -12,5 +12,5 @@ import javax.swing.*;
  * @date 2020/8/23 17:14
  */
 public final class Icons {
-    public static final Icon MyBatisIcon = IconLoader.getIcon("/icons/mybatis.png", Icons.class);
+    public static final Icon MyBatisIcon = IconLoader.getIcon("/icons/pluginIcon.svg", Icons.class);
 }
