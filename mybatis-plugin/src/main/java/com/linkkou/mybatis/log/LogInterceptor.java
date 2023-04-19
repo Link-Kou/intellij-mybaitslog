@@ -106,41 +106,34 @@ public class LogInterceptor implements Interceptor {
         final int size = parameterMappings.size();
         if (size > 0 && parameterObject != null) {
             MetaObject metaObject = configuration.newMetaObject(parameterObject);
-
             for (ParameterMapping parameterMapping : parameterMappings) {
                 String propertyName = parameterMapping.getProperty();
                 final JdbcType jdbcType = parameterMapping.getJdbcType();
                 final TypeHandler<?> typeHandler = parameterMapping.getTypeHandler();
-                String jdbcTypename = "";
-                if (null != jdbcType) {
-                    //typeHandler|jdbcType
-                    jdbcTypename = String.format("\\s*,\\s*jdbcType\\s*=\\s*%s", jdbcType.name());
-                }
                 final HashMap<String, Object> stringObjectHashMap = new HashMap<>();
                 if (metaObject.hasGetter(propertyName)) {
                     Object obj = metaObject.getValue(propertyName);
                     final String parameterValue = getParameterTypeHandler(configuration, typeHandler, obj, jdbcType);
                     stringObjectHashMap.put(propertyName, parameterValue);
                     keyvalue.add(stringObjectHashMap);
-                    originalSql = originalSql.replaceFirst("#\\{\\s*" + propertyName + jdbcTypename + "\\s*}", parameterValue);
+                    originalSql = originalSql.replaceFirst("(\\$|#)\\{" + propertyName + "*.+}", parameterValue);
                 } else if (boundSql.hasAdditionalParameter(propertyName)) {
                     Object obj = boundSql.getAdditionalParameter(propertyName);
                     final String parameterValue = getParameterTypeHandler(configuration, typeHandler, obj, jdbcType);
                     stringObjectHashMap.put(propertyName, parameterValue);
                     keyvalue.add(stringObjectHashMap);
-                    originalSql = originalSql.replaceFirst("#\\{\\s*" + propertyName + jdbcTypename + "\\s*}", parameterValue);
+                    originalSql = originalSql.replaceFirst("(\\$|#)\\{" + propertyName + "*.+}", parameterValue);
                 } else if (!(parameterObject instanceof Map)) {
                     //单个参数默认组合
                     final String parameterValue = getParameterTypeHandler(configuration, typeHandler, metaObject.getOriginalObject(), jdbcType);
                     stringObjectHashMap.put(propertyName, parameterValue);
                     keyvalue.add(stringObjectHashMap);
-                    originalSql = originalSql.replaceFirst("#\\{\\s*" + propertyName + jdbcTypename + "\\s*}", parameterValue);
+                    originalSql = originalSql.replaceFirst("(\\$|#)\\{" + propertyName + "*.+}", parameterValue);
                 }
             }
         }
         return Pair.with(originalSql.replaceAll("[\\s]+", " "), keyvalue);
     }
-
 
     private String getOriginalSql(MappedStatement mappedStatement, Object parameter) {
         final SqlSource sqlSource = mappedStatement.getSqlSource();
