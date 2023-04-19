@@ -30,7 +30,7 @@ allprojects {
 }
 
 group 'com.plugins.mybatislog.plugin'
-version '1.0.4'
+version '1.0.5'
 
 java {
     sourceCompatibility = "1.8"
