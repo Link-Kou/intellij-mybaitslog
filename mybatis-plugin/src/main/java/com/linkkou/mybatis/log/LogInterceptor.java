@@ -2,7 +2,6 @@ package com.linkkou.mybatis.log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
@@ -19,6 +18,7 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.type.JdbcType;
+import org.apache.ibatis.type.TypeHandler;
 import org.javatuples.Pair;
 
 import java.lang.reflect.Field;
@@ -71,7 +71,11 @@ public class LogInterceptor implements Interceptor {
                     Configuration configuration = mappedStatement.getConfiguration();
                     // 通过配置信息和BoundSql对象来生成带值得sql语句
                     final Pair<String, List<Map<String, ?>>> completeSql = getCompleteSql(configuration, boundSql, originalSql);
-                    final SqlVO sqlVO = new SqlVO().setId(mappedStatement.getId()).setCompleteSql(completeSql.getValue0()).setParameter(gson.toJson(completeSql.getValue1())).setTotal(size).setOriginalSql(originalSql);
+                    final SqlVO sqlVO = new SqlVO().setId(mappedStatement.getId())
+                            .setCompleteSql(completeSql.getValue0())
+                            .setParameter(gson.toJson(completeSql.getValue1()))
+                            .setTotal(size)
+                            .setOriginalSql(originalSql);
                     final String json = gson.toJson(sqlVO);
                     System.out.println("==>  SQLStructure: " + json);
                 }
@@ -102,29 +106,32 @@ public class LogInterceptor implements Interceptor {
         final int size = parameterMappings.size();
         if (size > 0 && parameterObject != null) {
             MetaObject metaObject = configuration.newMetaObject(parameterObject);
+
             for (ParameterMapping parameterMapping : parameterMappings) {
                 String propertyName = parameterMapping.getProperty();
                 final JdbcType jdbcType = parameterMapping.getJdbcType();
+                final TypeHandler<?> typeHandler = parameterMapping.getTypeHandler();
                 String jdbcTypename = "";
                 if (null != jdbcType) {
+                    //typeHandler|jdbcType
                     jdbcTypename = String.format("\\s*,\\s*jdbcType\\s*=\\s*%s", jdbcType.name());
                 }
                 final HashMap<String, Object> stringObjectHashMap = new HashMap<>();
                 if (metaObject.hasGetter(propertyName)) {
                     Object obj = metaObject.getValue(propertyName);
-                    final String parameterValue = getParameterValue(obj);
+                    final String parameterValue = getParameterTypeHandler(configuration, typeHandler, obj, jdbcType);
                     stringObjectHashMap.put(propertyName, parameterValue);
                     keyvalue.add(stringObjectHashMap);
                     originalSql = originalSql.replaceFirst("#\\{\\s*" + propertyName + jdbcTypename + "\\s*}", parameterValue);
                 } else if (boundSql.hasAdditionalParameter(propertyName)) {
                     Object obj = boundSql.getAdditionalParameter(propertyName);
-                    final String parameterValue = getParameterValue(obj);
+                    final String parameterValue = getParameterTypeHandler(configuration, typeHandler, obj, jdbcType);
                     stringObjectHashMap.put(propertyName, parameterValue);
                     keyvalue.add(stringObjectHashMap);
                     originalSql = originalSql.replaceFirst("#\\{\\s*" + propertyName + jdbcTypename + "\\s*}", parameterValue);
                 } else if (!(parameterObject instanceof Map)) {
                     //单个参数默认组合
-                    final String parameterValue = getParameterValue(metaObject.getOriginalObject());
+                    final String parameterValue = getParameterTypeHandler(configuration, typeHandler, metaObject.getOriginalObject(), jdbcType);
                     stringObjectHashMap.put(propertyName, parameterValue);
                     keyvalue.add(stringObjectHashMap);
                     originalSql = originalSql.replaceFirst("#\\{\\s*" + propertyName + jdbcTypename + "\\s*}", parameterValue);
@@ -195,6 +202,27 @@ public class LogInterceptor implements Interceptor {
         }
         return null;
     }
+
+    /**
+     * 如果是字符串对象则加上单引号返回，如果是日期则也需要转换成字符串形式，如果是其他则直接转换成字符串返回。
+     * todo 需要改进为MyBatis内置的数据解析能力
+     *
+     * @param configuration 对象
+     * @param jdbcType      对象
+     * @return String
+     */
+    private static String getParameterTypeHandler(Configuration configuration, TypeHandler<?> typeHandler, Object value, JdbcType jdbcType) {
+        try {
+            TypeHandler<Object> _typeHandler = (TypeHandler<Object>) typeHandler;
+            final IPreparedStatement iPreparedStatement = new IPreparedStatement();
+            _typeHandler.setParameter(iPreparedStatement, 1, value, jdbcType);
+            return iPreparedStatement.getValue();
+        } catch (Exception e) {
+            //e.printStackTrace();
+        }
+        return getParameterValue(value);
+    }
+
 
     /**
      * 如果是字符串对象则加上单引号返回，如果是日期则也需要转换成字符串形式，如果是其他则直接转换成字符串返回。
