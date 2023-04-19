@@ -71,11 +71,7 @@ public class LogInterceptor implements Interceptor {
                     Configuration configuration = mappedStatement.getConfiguration();
                     // 通过配置信息和BoundSql对象来生成带值得sql语句
                     final Pair<String, List<Map<String, ?>>> completeSql = getCompleteSql(configuration, boundSql, originalSql);
-                    final SqlVO sqlVO = new SqlVO().setId(mappedStatement.getId())
-                            .setCompleteSql(completeSql.getValue0())
-                            .setParameter(gson.toJson(completeSql.getValue1()))
-                            .setTotal(size)
-                            .setOriginalSql(originalSql);
+                    final SqlVO sqlVO = new SqlVO().setId(mappedStatement.getId()).setCompleteSql(completeSql.getValue0()).setParameter(gson.toJson(completeSql.getValue1())).setTotal(size).setOriginalSql(originalSql);
                     final String json = gson.toJson(sqlVO);
                     System.out.println("==>  SQLStructure: " + json);
                 }
@@ -116,23 +112,35 @@ public class LogInterceptor implements Interceptor {
                     final String parameterValue = getParameterTypeHandler(configuration, typeHandler, obj, jdbcType);
                     stringObjectHashMap.put(propertyName, parameterValue);
                     keyvalue.add(stringObjectHashMap);
-                    originalSql = originalSql.replaceFirst("(\\$|#)\\{" + propertyName + "*.+}", parameterValue);
+                    originalSql = replaceFirst(originalSql, propertyName, parameterValue);
                 } else if (boundSql.hasAdditionalParameter(propertyName)) {
                     Object obj = boundSql.getAdditionalParameter(propertyName);
                     final String parameterValue = getParameterTypeHandler(configuration, typeHandler, obj, jdbcType);
                     stringObjectHashMap.put(propertyName, parameterValue);
                     keyvalue.add(stringObjectHashMap);
-                    originalSql = originalSql.replaceFirst("(\\$|#)\\{" + propertyName + "*.+}", parameterValue);
+                    originalSql = replaceFirst(originalSql, propertyName, parameterValue);
                 } else if (!(parameterObject instanceof Map)) {
                     //单个参数默认组合
                     final String parameterValue = getParameterTypeHandler(configuration, typeHandler, metaObject.getOriginalObject(), jdbcType);
                     stringObjectHashMap.put(propertyName, parameterValue);
                     keyvalue.add(stringObjectHashMap);
-                    originalSql = originalSql.replaceFirst("(\\$|#)\\{" + propertyName + "*.+}", parameterValue);
+                    originalSql = replaceFirst(originalSql, propertyName, parameterValue);
                 }
             }
         }
         return Pair.with(originalSql.replaceAll("[\\s]+", " "), keyvalue);
+    }
+
+    /**
+     * 参数替换
+     *
+     * @param originalSql    SQL
+     * @param propertyName   名称
+     * @param parameterValue 值
+     * @return String
+     */
+    private String replaceFirst(String originalSql, String propertyName, String parameterValue) {
+        return originalSql.replaceFirst("(\\$|#)\\{\\s*" + propertyName + "*.+}", parameterValue);
     }
 
     private String getOriginalSql(MappedStatement mappedStatement, Object parameter) {
