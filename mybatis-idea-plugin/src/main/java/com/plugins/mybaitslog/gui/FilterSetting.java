@@ -132,10 +132,11 @@ public class FilterSetting extends JDialog {
         Config.Idea.setStartup(startupCheckBox.isSelected() ? 1 : 0);
         Config.Idea.setFormatSql(checkBox_sql.isSelected() ? 1 : 0);
         Config.Idea.setRunNotification(checkBox_notification.isSelected() ? 1 : 0);
-        this.setVisible(false);
+        onCancel();
     }
 
     private void onCancel() {
+        this.setModal(false);
         this.setVisible(false);
     }
 }
