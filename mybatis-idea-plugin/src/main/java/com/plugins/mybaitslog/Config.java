@@ -39,7 +39,20 @@ public class Config {
 
         public static final String FORMAT_SQL_1 = PROJECT_ID + "SQL_FORMAT";
 
+        /**
+         * 运行提示
+         */
         public static final String NOTIFICATION = PROJECT_ID + "NOTIFICATION";
+
+        /**
+         * 欢迎信息
+         */
+        public static final String WELCOMEMESSAGE = PROJECT_ID + "WELCOMEMESSAGE";
+
+        /**
+         * 是否折叠
+         */
+        public static final String WHETHERFOLD = PROJECT_ID + "WHETHERFOLD";
 
         public static final String PARAMETERS = "SQLStructure:";
 
@@ -69,6 +82,7 @@ public class Config {
         public static String getParameters() {
             return PropertiesComponent.getInstance().getValue(DB_PARAMETERS_KEY, PARAMETERS);
         }
+
 
         /**
          * 设置配置
@@ -111,6 +125,40 @@ public class Config {
          */
         public static boolean getRunNotification() {
             final String value = PropertiesComponent.getInstance().getValue(NOTIFICATION, "1");
+            return Integer.parseInt(value) == 1;
+        }
+
+        /**
+         * 欢迎信息
+         *
+         * @param value 值
+         */
+        public static void setWelcomeMessage(int value) {
+            PropertiesComponent.getInstance().setValue(WELCOMEMESSAGE, Integer.toString(value), "1");
+        }
+
+        /**
+         * 欢迎信息
+         */
+        public static boolean getWelcomeMessage() {
+            final String value = PropertiesComponent.getInstance().getValue(WELCOMEMESSAGE, "1");
+            return Integer.parseInt(value) == 1;
+        }
+
+        /**
+         * 是否折叠
+         *
+         * @param value 值
+         */
+        public static void setWhetherfold(int value) {
+            PropertiesComponent.getInstance().setValue(WHETHERFOLD, Integer.toString(value), "1");
+        }
+
+        /**
+         * 是否折叠
+         */
+        public static boolean getWhetherfold() {
+            final String value = PropertiesComponent.getInstance().getValue(WHETHERFOLD, "1");
             return Integer.parseInt(value) == 1;
         }
 

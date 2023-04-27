@@ -27,20 +27,22 @@ public class MyConsoleFolding extends ConsoleFolding {
             return true;
         }
         //region 折叠
-        if (line.contains(SQL_START_LINE)) {
-            this.IS_SQL_START_LINE = true;
-            return false;
-        }
-        if (IS_SQL_START_LINE && line.contains(SQL_END_LINE)) {
-            this.IS_SQL_START_LINE = false;
-            return true;
-        }
-        //后续修正
-        if (IS_SQL_START_LINE) {
-            if (Idea.getFormatSql()) {
+        if (Idea.getWhetherfold()) {
+            if (line.contains(SQL_START_LINE)) {
+                this.IS_SQL_START_LINE = true;
+                return false;
+            }
+            if (IS_SQL_START_LINE && line.contains(SQL_END_LINE)) {
+                this.IS_SQL_START_LINE = false;
                 return true;
-            } else {
-                return line.contains(SQL_MIDDLE_LINE);
+            }
+            //后续修正
+            if (IS_SQL_START_LINE) {
+                if (Idea.getFormatSql()) {
+                    return true;
+                } else {
+                    return line.contains(SQL_MIDDLE_LINE);
+                }
             }
         }
         //endregion

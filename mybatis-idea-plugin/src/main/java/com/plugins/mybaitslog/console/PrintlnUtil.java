@@ -53,15 +53,17 @@ public class PrintlnUtil {
 
 
     public static void printsInit(ConsoleView consoleView) {
-        consoleView.print(" ============================================================================ " + "\n", ConsoleViewContentType.NORMAL_OUTPUT);
-        consoleView.print("\n", ConsoleViewContentType.NORMAL_OUTPUT);
-        consoleView.print("    MyBatis Log EasyPlus" + "\n", ConsoleViewContentType.NORMAL_OUTPUT);
-        consoleView.print("\n", ConsoleViewContentType.NORMAL_OUTPUT);
-        consoleView.print("    A mybatis javaagent framework :)" + "\n", ConsoleViewContentType.NORMAL_OUTPUT);
-        consoleView.print("\n", ConsoleViewContentType.NORMAL_OUTPUT);
-        consoleView.print("    https://github.com/Link-Kou/intellij-mybaitslog" + "\n", ConsoleViewContentType.NORMAL_OUTPUT);
-        consoleView.print("\n", ConsoleViewContentType.NORMAL_OUTPUT);
-        consoleView.print("  ============================================================================ " + "\n", ConsoleViewContentType.NORMAL_OUTPUT);
+        if (Config.Idea.getWelcomeMessage()) {
+            consoleView.print(" ============================================================================ " + "\n", ConsoleViewContentType.NORMAL_OUTPUT);
+            consoleView.print("\n", ConsoleViewContentType.NORMAL_OUTPUT);
+            consoleView.print("    MyBatis Log EasyPlus" + "\n", ConsoleViewContentType.NORMAL_OUTPUT);
+            consoleView.print("\n", ConsoleViewContentType.NORMAL_OUTPUT);
+            consoleView.print("    A mybatis javaagent framework :)" + "\n", ConsoleViewContentType.NORMAL_OUTPUT);
+            consoleView.print("\n", ConsoleViewContentType.NORMAL_OUTPUT);
+            consoleView.print("    https://github.com/Link-Kou/intellij-mybaitslog" + "\n", ConsoleViewContentType.NORMAL_OUTPUT);
+            consoleView.print("\n", ConsoleViewContentType.NORMAL_OUTPUT);
+            consoleView.print("  ============================================================================ " + "\n", ConsoleViewContentType.NORMAL_OUTPUT);
+        }
     }
 
     public static void prints(Project project, String currentLine) {
