@@ -10,7 +10,7 @@
 
 ![样列](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/2020-03-25_09-28-47.jpg "样列")
 
-![样列](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/2020-04-17_23-51-18.gif "样列")
+![样列](https://raw.githubusercontent.com/Link-Kou/intellij-mybaitslog/master/image/2023-04-28_08-33-52.gif "样列")
 
 
 ### 在线安装(搜索)
@@ -54,6 +54,18 @@ IDEA --> Setting --> Plugins --> 搜索 MyBatis Log EasyPlus
 
 #### <kbd>2021.06.12</kbd> -> <kbd>《IDEA 2021.3 测试通过支持使用。》</kbd>
 
+#### <kbd>2021.01.18</kbd> ->  <kbd>支持IDEA：2020.3.1，Master代码升级到IDEA2020.3.1版本(JAVA_11版本)</kbd>
+
+#### <kbd>2021.01.31</kbd> ->  <kbd>发布2.0包。不向下兼容IDEA:2020.3以下版本,拥抱Java11,代码将保持兼容度，如果需要2020.3以下包支持,自行编译以下。</kbd>
+
+#### <kbd>2021.02.11</kbd> ->  <kbd>发布2.0.1包。修复兼容性问题，不兼容还是会有不少后遗症。</kbd>
+
+#### <kbd>2021.06.15</kbd> ->  <kbd>发布2.0.5包。修复无法自定义关键字问题。</kbd>
+
+#### <kbd>2021.09.16</kbd> ->  <kbd>发布2.0.6包。增加自动生成字面量按钮。</kbd>
+
+#### <kbd>2021.12.15</kbd> ->  <kbd>支持IDEA 2020.3 发布2.0.7包。修复无法自定义关键字问题。</kbd>
+
 #### <kbd>2020.08.11</kbd> -> <kbd>《IDEA 2020.2 测试通过支持使用。》</kbd>
 
 #### <kbd>2020.08.25</kbd> ->  <kbd>重构代码所有代码,代码中完善备注信息</kbd>
@@ -67,18 +79,6 @@ IDEA --> Setting --> Plugins --> 搜索 MyBatis Log EasyPlus
 #### <kbd>2020.12.18</kbd> ->  <kbd>改进Like判断异常(解决还不够优雅,不影响正常使用)。</kbd>
 
 #### <kbd>2020.12.19</kbd> ->  <kbd>添加可选是否格式化。</kbd>
-
-#### <kbd>2021.01.18</kbd> ->  <kbd>支持IDEA：2020.3.1，Master代码升级到IDEA2020.3.1版本(JAVA_11版本)</kbd>
-
-#### <kbd>2021.01.31</kbd> ->  <kbd>发布2.0包。不向下兼容IDEA:2020.3以下版本,拥抱Java11,代码将保持兼容度，如果需要2020.3以下包支持,自行编译以下。</kbd>
-
-#### <kbd>2021.02.11</kbd> ->  <kbd>发布2.0.1包。修复兼容性问题，不兼容还是会有不少后遗症。</kbd>
-
-#### <kbd>2021.06.15</kbd> ->  <kbd>发布2.0.5包。修复无法自定义关键字问题。</kbd>
-
-#### <kbd>2021.09.16</kbd> ->  <kbd>发布2.0.6包。增加自动生成字面量按钮。</kbd>
-
-#### <kbd>2021.12.15</kbd> ->  <kbd>支持IDEA 2020.3 发布2.0.7包。修复无法自定义关键字问题。</kbd>
 
 ---
 
