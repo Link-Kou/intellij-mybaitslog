@@ -68,6 +68,7 @@ public class Config {
             put("org.jetbrains.idea.maven.execution", false);
             put("com.intellij.execution.junit", true);
             put("com.intellij.spring.boot.run", true);
+            put("org.jetbrains.plugins.gradle", false);
         }};
 
         public static final ArrayList<String> AddOpens = new ArrayList<String>() {{

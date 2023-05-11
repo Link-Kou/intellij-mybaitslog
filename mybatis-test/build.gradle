@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'io.freefair.lombok' version "8.0.1"
+}
+
+group = 'com.linkkou.mybatis.log'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation project(path: ':mybatis-plugin')
+    testImplementation project(path: ':mybatis-agent')
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+    testImplementation 'com.alibaba:druid:1.2.17'
+    testImplementation('org.springframework.boot:spring-boot-starter:2.7.3') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+    testImplementation 'org.springframework.boot:spring-boot-starter-web:2.7.3'
+    testImplementation('org.springframework.boot:spring-boot-starter-test:2.7.3') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation 'org.springframework.boot:spring-boot-starter-aop:2.7.3'
+    testImplementation 'org.springframework:spring-jdbc:5.3.22'
+    testImplementation 'mysql:mysql-connector-java:8.0.30'
+    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+}
+
+test {
+    useJUnitPlatform()
+    jvmArgs(
+            '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+            '--add-opens', 'java.base/java.util=ALL-UNNAMED'
+    )
+}

@@ -140,7 +140,8 @@ public class LogInterceptor implements Interceptor {
      * @return String
      */
     private String replaceFirst(String originalSql, String propertyName, String parameterValue) {
-        return originalSql.replaceFirst("(\\$|#)\\{\\s*" + propertyName + "*.+}", parameterValue);
+        //(\$|#)\{\s*epNo2((?!\{).)*}
+        return originalSql.replaceFirst("(\\$|#)\\{\\s*" + propertyName + "((?!\\{).)*}", parameterValue);
     }
 
     /**

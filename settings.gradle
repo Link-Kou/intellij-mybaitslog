@@ -2,4 +2,5 @@ rootProject.name = 'plugins-intellij-assistant-mybatislog'
 include 'mybatis-agent'
 include 'mybatis-idea-plugin'
 include 'mybatis-plugin'
+include 'mybatis-test'
 
