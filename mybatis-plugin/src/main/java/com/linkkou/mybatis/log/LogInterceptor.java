@@ -214,7 +214,6 @@ public class LogInterceptor implements Interceptor {
 
     /**
      * 如果是字符串对象则加上单引号返回，如果是日期则也需要转换成字符串形式，如果是其他则直接转换成字符串返回。
-     * todo 需要改进为MyBatis内置的数据解析能力
      *
      * @param configuration 对象
      * @param jdbcType      对象
@@ -241,17 +240,12 @@ public class LogInterceptor implements Interceptor {
      * @return String
      */
     private static String getParameterValue(Object obj) {
-        String value;
+        String value = "";
         if (obj instanceof String) {
             value = "'" + obj + "'";
-        } else if (obj instanceof Date) {
-            DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.DEFAULT, Locale.CHINA);
-            value = "'" + formatter.format(obj) + "'";
         } else {
             if (obj != null) {
                 value = obj.toString();
-            } else {
-                value = "''";
             }
         }
         return value;

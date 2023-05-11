@@ -27,6 +27,7 @@ dependencies {
     }
     testImplementation 'org.springframework.boot:spring-boot-starter-aop:2.7.3'
     testImplementation 'org.springframework:spring-jdbc:5.3.22'
+    testImplementation 'com.baomidou:mybatis-plus-boot-starter:3.5.3.1'
     testImplementation 'mysql:mysql-connector-java:8.0.30'
     testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
 }
