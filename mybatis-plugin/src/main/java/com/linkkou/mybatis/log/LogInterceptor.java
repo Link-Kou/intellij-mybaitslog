@@ -44,6 +44,8 @@ public class LogInterceptor implements Interceptor {
      */
     private static final Integer ARGSNUMBER = 2;
 
+    private final String id;
+
     public static Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss")
             //当Map的key为复杂对象时,需要开启该方法
             .enableComplexMapKeySerialization()
@@ -52,6 +54,9 @@ public class LogInterceptor implements Interceptor {
             //防止特殊字符出现乱码
             .disableHtmlEscaping().create();
 
+    public LogInterceptor(String id) {
+        this.id = id;
+    }
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
@@ -73,7 +78,7 @@ public class LogInterceptor implements Interceptor {
                     final Pair<String, List<Map<String, ?>>> completeSql = getCompleteSql(configuration, boundSql, originalSql);
                     final SqlVO sqlVO = new SqlVO().setId(mappedStatement.getId()).setCompleteSql(completeSql.getValue0()).setParameter(gson.toJson(completeSql.getValue1())).setTotal(size).setOriginalSql(originalSql);
                     final String json = gson.toJson(sqlVO);
-                    System.out.println("==>  SQLStructure: " + json);
+                    RmiLog.log("==>  SQLStructure: " + json, this.id);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

@@ -43,7 +43,7 @@ public class PluginUtil {
                 final File[] fileslib = listFile.listFiles();
                 for (File file : fileslib) {
                     //优化非写死
-                    if ("mybatis-agent-1.0.27-all.jar".equals(file.getName())) {
+                    if (file.getName().contains("mybatis-agent")) {
                         return file.toPath().toString();
                     }
                 }

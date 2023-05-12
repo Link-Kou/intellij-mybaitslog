@@ -31,9 +31,9 @@ public class transformer implements IClassFileTransformer {
     }
 
     @Override
-    public void transform() {
+    public void transform(String  val) {
         for (IClassFileTransformer classFileTransformer : classFileTransformers) {
-            classFileTransformer.transform();
+            classFileTransformer.transform(val);
         }
     }
 }

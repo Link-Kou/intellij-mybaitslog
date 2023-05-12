@@ -15,7 +15,7 @@ public class preAgent {
         final Pair<String, String> with = Pair.with("Start: ", "MyBatis Log EasyPlus");
         System.out.println(with.getValue0() + with.getValue1());
         final transformer transformer = new transformer(inst);
-        transformer.transform();
+        transformer.transform(agentArgs);
     }
 
     //如果代理类没有成功，那么 JVM 将尝试调用该方法

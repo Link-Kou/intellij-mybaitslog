@@ -8,5 +8,5 @@ package com.plugins.mybaitslog;
  * <p><b>date: 2023/3/29 21:50</b></p>
  */
 public interface IClassFileTransformer {
-    void transform();
+    void transform(String val);
 }

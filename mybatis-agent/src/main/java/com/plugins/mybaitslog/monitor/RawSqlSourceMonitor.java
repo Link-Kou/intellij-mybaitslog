@@ -15,7 +15,7 @@ public class RawSqlSourceMonitor implements IClassFileTransformer {
     public final String injectedClassName = "org.apache.ibatis.scripting.defaults.RawSqlSource";
 
     @Override
-    public void transform() {
+    public void transform(String val) {
         ClassPool classPool = ClassPool.getDefault();
         CtClass ctClass = null;
         classPool.insertClassPath(new ClassClassPath(this.getClass()));

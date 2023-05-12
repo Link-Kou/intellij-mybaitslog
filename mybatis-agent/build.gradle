@@ -43,8 +43,9 @@ dependencies {
     implementation 'org.javatuples:javatuples:1.2'
     implementation 'org.javassist:javassist:3.29.2-GA'
     implementation 'com.google.code.gson:gson:2.9.1'
+    implementation project(path: ':mybatis-plugin')
     // compile project(":probe-agent") 另一种引入工程的方式
-    implementation fileTree(dir: 'libs', includes: ['*jar'])
+    //implementation fileTree(dir: 'libs', includes: ['*jar'])
 }
 
 test {

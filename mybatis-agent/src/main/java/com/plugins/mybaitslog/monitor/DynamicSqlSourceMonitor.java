@@ -4,6 +4,8 @@ import com.linkkou.mybatis.log.LogInterceptor;
 import com.plugins.mybaitslog.IClassFileTransformer;
 import javassist.*;
 
+import java.util.Arrays;
+
 /**
  * A <code>DynamicSqlSourceMonitor</code> Class
  *
@@ -16,7 +18,7 @@ public class DynamicSqlSourceMonitor implements IClassFileTransformer {
     public final String injectedClassName = "org.apache.ibatis.plugin.InterceptorChain";
 
     @Override
-    public void transform() {
+    public void transform(String val) {
         ClassPool classPool = ClassPool.getDefault();
         CtClass ctClass = null;
         classPool.insertClassPath(new ClassClassPath(this.getClass()));
@@ -35,9 +37,10 @@ public class DynamicSqlSourceMonitor implements IClassFileTransformer {
             try {
                 //删除类
                 final CtMethod pluginAll = ctClass.getDeclaredMethod("pluginAll");
-                pluginAll.insertBefore("{new com.linkkou.mybatis.log.SubInterceptorChain($0.interceptors);}");
+                String strings = "\"" + val + "\"";
+                pluginAll.insertBefore("{new com.linkkou.mybatis.log.SubInterceptorChain($0.interceptors," + strings + ");}");
                 //写入
-                //ctClass.writeFile();
+                ctClass.writeFile();
                 //加载该类的字节码（不能少）
                 ctClass.toClass(LogInterceptor.class.getClassLoader(), LogInterceptor.class.getProtectionDomain());
                 ctClass.detach();

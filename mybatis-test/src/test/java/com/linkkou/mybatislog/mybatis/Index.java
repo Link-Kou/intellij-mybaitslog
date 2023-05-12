@@ -27,7 +27,7 @@ public class Index {
     static {
         //注入
         final transformer transformer = new transformer(null);
-        transformer.transform();
+        transformer.transform("test");
     }
 
     @Test

@@ -38,11 +38,13 @@ group 'com.plugins.mybaitslog.idea.plugin'
 version '5.0.7.7'
 
 dependencies {
+    implementation project(path: ':mybatis-plugin')
+    //implementation project(path: ':mybatis-agent')
     compileOnly 'org.jetbrains:annotations:24.0.1'
     implementation 'com.google.code.gson:gson:2.9.1'
     compileOnly 'org.projectlombok:lombok:1.18.26'
     annotationProcessor 'org.projectlombok:lombok:1.18.26'
-    // compile project(":probe-agent") 另一种引入工程的方式
+    //compile project(":probe-agent") 另一种引入工程的方式
     implementation fileTree(dir: 'libs', includes: ['*jar'])
 }
 

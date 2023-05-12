@@ -14,15 +14,15 @@ import java.util.List;
  */
 public class SubInterceptorChain extends InterceptorChain {
 
-    public SubInterceptorChain(final List<Interceptor> interceptors) {
+    public SubInterceptorChain(final List<Interceptor> interceptors, String val) {
         boolean addLogInterceptor = true;
         for (Interceptor interceptor : interceptors) {
             if (LogInterceptor.class.getName().equals(interceptor.getClass().getName())) {
                 addLogInterceptor = false;
             }
         }
-        if(addLogInterceptor){
-            interceptors.add(new LogInterceptor());
+        if (addLogInterceptor) {
+            interceptors.add(new LogInterceptor(val));
         }
     }
 }
