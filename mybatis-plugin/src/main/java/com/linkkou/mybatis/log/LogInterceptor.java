@@ -76,7 +76,11 @@ public class LogInterceptor implements Interceptor {
                     Configuration configuration = mappedStatement.getConfiguration();
                     // 通过配置信息和BoundSql对象来生成带值得sql语句
                     final Pair<String, List<Map<String, ?>>> completeSql = getCompleteSql(configuration, boundSql, originalSql);
-                    final SqlVO sqlVO = new SqlVO().setId(mappedStatement.getId()).setCompleteSql(completeSql.getValue0()).setParameter(gson.toJson(completeSql.getValue1())).setTotal(size).setOriginalSql(originalSql);
+                    final SqlVO sqlVO = new SqlVO().setId(mappedStatement.getId())
+                            .setCompleteSql(completeSql.getValue0())
+                            .setParameter(gson.toJson(completeSql.getValue1()))
+                            .setTotal(size)
+                            .setOriginalSql(originalSql);
                     final String json = gson.toJson(sqlVO);
                     RmiLog.log("==>  SQLStructure: " + json, this.id);
                 }

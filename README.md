@@ -32,6 +32,9 @@ IDEA --> Setting --> Plugins --> 搜索 MyBatis Log EasyPlus
 > 版本V5.JKD8以上<br/>
 > 版本V5.插件支持Mybatis版本<b>3.2.0<b/>以上，3.2.0已经是2013发布的。所以更低版本将不在支持<br/>
 
+## <p style="color:red">★★已知问题★★</p>
+> 不支持Gradle，正在想办法中。如有路过大神知道如何解决还请度化本项目一下。
+
 ### Sponsors
 
 <table>

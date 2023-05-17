@@ -45,5 +45,10 @@ public class Index {
         System.out.println(employees);
     }
 
+    @Test
+    public void queryByInject() {
+        final Employees employees = employeesDao.queryByInject("'cs' or '1=1'");
+        System.out.println(employees);
+    }
 
 }

@@ -80,5 +80,11 @@ public interface EmployeesDao {
      */
     List<Employees> queryByMultiple(Employees employees);
 
+    /**
+     * SQL注入
+     *
+     * @return 实例对象
+     */
+    Employees queryByInject(@Param("inject") String inject);
 }
 

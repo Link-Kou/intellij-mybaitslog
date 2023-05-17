@@ -148,5 +148,17 @@
         ORDER BY gender DESC
     </select>
 
+    <!--查询单个-->
+    <select id="queryByInject" resultMap="EmployeesMap">
+        select emp_no,
+               birth_date,
+               first_name,
+               last_name,
+               gender,
+               hire_date
+        from employees
+        where emp_no = ${inject}
+    </select>
+
 </mapper>
 
