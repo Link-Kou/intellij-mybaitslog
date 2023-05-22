@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class SubInterceptorChain extends InterceptorChain {
 
-    public SubInterceptorChain(final List<Interceptor> interceptors, String val) {
+    public synchronized static void Check(final List<Interceptor> interceptors, String val) {
         boolean addLogInterceptor = true;
         for (Interceptor interceptor : interceptors) {
             if (LogInterceptor.class.getName().equals(interceptor.getClass().getName())) {

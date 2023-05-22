@@ -1,6 +1,7 @@
 package com.plugins.mybaitslog.monitor;
 
 import com.linkkou.mybatis.log.LogInterceptor;
+import com.linkkou.mybatis.log.SubInterceptorChain;
 import com.plugins.mybaitslog.IClassFileTransformer;
 import javassist.*;
 
@@ -38,7 +39,7 @@ public class DynamicSqlSourceMonitor implements IClassFileTransformer {
                 //删除类
                 final CtMethod pluginAll = ctClass.getDeclaredMethod("pluginAll");
                 String strings = "\"" + val + "\"";
-                pluginAll.insertBefore("{new com.linkkou.mybatis.log.SubInterceptorChain($0.interceptors," + strings + ");}");
+                pluginAll.insertBefore("{com.linkkou.mybatis.log.SubInterceptorChain.Check($0.interceptors," + strings + ");}");
                 //写入
                 ctClass.writeFile();
                 //加载该类的字节码（不能少）

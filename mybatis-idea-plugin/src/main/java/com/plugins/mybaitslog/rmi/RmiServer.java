@@ -5,7 +5,6 @@ import com.linkkou.mybatis.log.MyBatisLogRmi;
 import com.plugins.mybaitslog.console.PrintlnUtil;
 import org.jetbrains.annotations.NotNull;
 
-import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -49,21 +48,23 @@ public class RmiServer {
         return RMISERVERID.get(project);
     }
 
-    public static void boot(@NotNull Project project) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                CountDownLatch countDownLatch = new CountDownLatch(1);
-                try {
-                    String id = UUID.randomUUID().toString().replace("-", "");
-                    RMISERVERID.put(project, id);
-                    new RmiServer().run(project, id);
-                    countDownLatch.await();
-                } catch (Exception e) {
-                    e.printStackTrace();
+    public static void boot(@NotNull Project project, Boolean run) {
+        if (run) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    CountDownLatch countDownLatch = new CountDownLatch(1);
+                    try {
+                        String id = UUID.randomUUID().toString().replace("-", "");
+                        RMISERVERID.put(project, id);
+                        new RmiServer().run(project, id);
+                        countDownLatch.await();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        }).start();
+            }).start();
+        }
     }
 
     public void run(@NotNull Project project, String id) {

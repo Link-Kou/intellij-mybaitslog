@@ -24,7 +24,8 @@ public class MyBatisLogToolWindow implements ToolWindowFactory {
 
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
-        RmiServer.boot(project);
+        //暂时不启用
+        RmiServer.boot(project,false);
         ConsolePanel consolePanel = new ConsolePanel();
         final JComponent jComponent = consolePanel.getConsolePanel(project);
         final ContentFactory contentFactory = VersionControl.getContentFactory();
