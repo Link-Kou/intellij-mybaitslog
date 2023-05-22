@@ -2,6 +2,7 @@ package com.plugins.mybaitslog.rmi;
 
 import com.intellij.openapi.project.Project;
 import com.linkkou.mybatis.log.MyBatisLogRmi;
+import com.plugins.mybaitslog.Config;
 import com.plugins.mybaitslog.console.PrintlnUtil;
 import org.jetbrains.annotations.NotNull;
 
@@ -48,8 +49,9 @@ public class RmiServer {
         return RMISERVERID.get(project);
     }
 
-    public static void boot(@NotNull Project project, Boolean run) {
-        if (run) {
+    public static void boot(@NotNull Project project) {
+        final boolean runRmi = Config.Idea.getRunRmi();
+        if (runRmi) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {

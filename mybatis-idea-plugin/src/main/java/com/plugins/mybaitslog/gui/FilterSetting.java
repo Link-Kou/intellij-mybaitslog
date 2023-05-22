@@ -37,6 +37,7 @@ public class FilterSetting extends JDialog {
     private JCheckBox checkBox_notification;
     private JCheckBox checkBox_fold;
     private JCheckBox checkBox_welcome;
+    private JCheckBox checkBox_rmi;
 
 
     /**
@@ -53,12 +54,14 @@ public class FilterSetting extends JDialog {
         boolean notification = Config.Idea.getRunNotification();
         boolean welcomeMessage = Config.Idea.getWelcomeMessage();
         boolean whetherfold = Config.Idea.getWhetherfold();
+        boolean runrmi = Config.Idea.getRunRmi();
 
         startupCheckBox.setSelected(startup);
         checkBox_sql.setSelected(formatSql);
         checkBox_notification.setSelected(notification);
         checkBox_fold.setSelected(whetherfold);
         checkBox_welcome.setSelected(welcomeMessage);
+        checkBox_rmi.setSelected(runrmi);
 
         setContentPane(contentPane);
         setModal(true);
@@ -140,6 +143,7 @@ public class FilterSetting extends JDialog {
         Config.Idea.setRunNotification(checkBox_notification.isSelected() ? 1 : 0);
         Config.Idea.setWelcomeMessage(checkBox_welcome.isSelected() ? 1 : 0);
         Config.Idea.setWhetherfold(checkBox_fold.isSelected() ? 1 : 0);
+        Config.Idea.setRunRmi(checkBox_rmi.isSelected() ? 1 : 0);
         onCancel();
     }
 

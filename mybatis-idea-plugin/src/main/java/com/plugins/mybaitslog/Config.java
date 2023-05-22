@@ -54,6 +54,8 @@ public class Config {
          */
         public static final String WHETHERFOLD = PROJECT_ID + "WHETHERFOLD";
 
+        public static final String RMISERVER = PROJECT_ID + "RMISERVER";
+
         public static final String PARAMETERS = "SQLStructure:";
 
         public static final Map<String, String> ColorMap = new HashMap<String, String>() {{
@@ -160,6 +162,23 @@ public class Config {
          */
         public static boolean getWhetherfold() {
             final String value = PropertiesComponent.getInstance().getValue(WHETHERFOLD, "1");
+            return Integer.parseInt(value) == 1;
+        }
+
+        /**
+         * 是否RMI输出
+         *
+         * @param value 值
+         */
+        public static void setRunRmi(int value) {
+            PropertiesComponent.getInstance().setValue(RMISERVER, Integer.toString(value), "1");
+        }
+
+        /**
+         * 是否RMI输出
+         */
+        public static boolean getRunRmi() {
+            final String value = PropertiesComponent.getInstance().getValue(RMISERVER, "1");
             return Integer.parseInt(value) == 1;
         }
 
