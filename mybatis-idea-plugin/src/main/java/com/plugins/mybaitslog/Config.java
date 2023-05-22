@@ -171,14 +171,14 @@ public class Config {
          * @param value 值
          */
         public static void setRunRmi(int value) {
-            PropertiesComponent.getInstance().setValue(RMISERVER, Integer.toString(value), "1");
+            PropertiesComponent.getInstance().setValue(RMISERVER, Integer.toString(value), "0");
         }
 
         /**
          * 是否RMI输出
          */
         public static boolean getRunRmi() {
-            final String value = PropertiesComponent.getInstance().getValue(RMISERVER, "1");
+            final String value = PropertiesComponent.getInstance().getValue(RMISERVER, "0");
             return Integer.parseInt(value) == 1;
         }
 
