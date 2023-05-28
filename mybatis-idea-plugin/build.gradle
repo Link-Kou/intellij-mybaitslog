@@ -35,7 +35,7 @@ allprojects {
 }
 
 group 'com.plugins.mybaitslog.idea.plugin'
-version '5.0.8'
+version '5.0.8.1'
 
 dependencies {
     implementation project(path: ':mybatis-plugin')
