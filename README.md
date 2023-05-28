@@ -31,9 +31,11 @@ IDEA --> Setting --> Plugins --> 搜索 MyBatis Log EasyPlus
 > 版本V5.插件支持IDEA版本2020.1以上<br/>
 > 版本V5.JKD8以上<br/>
 > 版本V5.插件支持Mybatis版本<b>3.2.0<b/>以上，3.2.0已经是2013发布的。所以更低版本将不在支持<br/>
+> 版本V5.插件对MybatisPlus等插件也进行了测试，目前大多数功能已支持<br/>
 
 ## <p style="color:red">★★已知问题★★</p>
 > 不支持Gradle，正在想办法中。如有路过大神知道如何解决还请度化本项目一下。
+> 不支持自定义实现SqlSource，有解决办法测试不理想，在继续想办法中。
 
 ### Sponsors
 
@@ -44,6 +46,8 @@ IDEA --> Setting --> Plugins --> 搜索 MyBatis Log EasyPlus
         </a>
       </td>
 </table>
+
+#### <kbd>2023.05.28</kbd> -> <kbd>对额外的扩展插件进行支持</kbd>
 
 #### <kbd>2023.05.22</kbd> -> <kbd>《IDEA 2021.1 以上》感谢各位社区伙伴的测试反馈,现已修复若干个已知问题</kbd>
 
