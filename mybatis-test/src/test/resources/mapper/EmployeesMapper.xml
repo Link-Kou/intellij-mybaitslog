@@ -157,7 +157,29 @@
                gender,
                hire_date
         from employees
-        where emp_no = ${inject}
+        where emp_no=#{inject}
+    </select>
+
+    <!--查询单个-->
+    <select id="queryByInjectD" resultMap="EmployeesMap">
+        select emp_no,
+               birth_date,
+               first_name,
+               last_name,
+               gender,
+               hire_date
+        from employees
+        where emp_no = '#{inject}'
+    </select>
+
+    <select id="queryByInjectJson" resultMap="EmployeesMap">
+        select
+        COALESCE( sum(substring('trade_way'::jsonb -> 0 ->> 1,'(-?([0-9]*)(.[0-9]+)?)')::NUMERIC ),0) as amount,
+        gender,hire_date
+        from employees
+        <where>
+            emp_no= '#{inject}'
+        </where>
     </select>
 
 </mapper>

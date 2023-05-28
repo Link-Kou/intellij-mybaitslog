@@ -31,7 +31,12 @@ import java.util.*;
  *
  * @author lk
  */
-@Intercepts({@Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class}), @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class}), @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}), @Signature(type = Executor.class, method = "queryCursor", args = {MappedStatement.class, Object.class, RowBounds.class})})
+@Intercepts({
+        @Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class}),
+        @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class}),
+        @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}),
+        @Signature(type = Executor.class, method = "queryCursor", args = {MappedStatement.class, Object.class, RowBounds.class})
+})
 public class LogInterceptor implements Interceptor {
 
     /**
@@ -60,11 +65,6 @@ public class LogInterceptor implements Interceptor {
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
-        final Object proceed = invocation.proceed();
-        int size = 0;
-        if (proceed instanceof List) {
-            size = ((List<?>) proceed).size();
-        }
         if (invocation.getArgs().length >= ARGSNUMBER) {
             final Pair<MappedStatement, Object> args = getArgs(invocation);
             MappedStatement mappedStatement = args.getValue0();
@@ -79,7 +79,6 @@ public class LogInterceptor implements Interceptor {
                     final SqlVO sqlVO = new SqlVO().setId(mappedStatement.getId())
                             .setCompleteSql(completeSql.getValue0())
                             .setParameter(gson.toJson(completeSql.getValue1()))
-                            .setTotal(size)
                             .setOriginalSql(originalSql);
                     final String json = gson.toJson(sqlVO);
                     RmiLog.log("==>  SQLStructure: " + json, this.id);
@@ -88,7 +87,7 @@ public class LogInterceptor implements Interceptor {
                 e.printStackTrace();
             }
         }
-        return proceed;
+        return invocation.proceed();
     }
 
     private Pair<MappedStatement, Object> getArgs(Invocation invocation) {
@@ -168,6 +167,9 @@ public class LogInterceptor implements Interceptor {
         if (sqlSource instanceof RawSqlSource) {
             return getRawSqlSource(sqlSource);
         }
+        //(\'|\")(.*?)\?(.*?)+(\'|\")
+        //(?!(\'|\"))\?(?!(\'|\"))
+        //自定义SQL的拦截
         return null;
     }
 

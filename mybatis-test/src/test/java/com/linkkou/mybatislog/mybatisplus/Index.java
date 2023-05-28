@@ -3,6 +3,7 @@ package com.linkkou.mybatislog.mybatisplus;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.linkkou.mybatislog.mybatisplus.boot.App;
 import com.linkkou.mybatislog.orm.dao.EmployeesDao;
 import com.linkkou.mybatislog.orm.dao.UserMapper;
@@ -46,6 +47,7 @@ public class Index {
         userMapper.selectCount(Wrappers.<EmployeesTable>lambdaQuery()
                 .eq(EmployeesTable::getEmpNo, 12));
     }
+
 
     @Test
     public void doTest3() {

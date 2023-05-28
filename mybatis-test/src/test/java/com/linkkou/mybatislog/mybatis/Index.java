@@ -38,6 +38,12 @@ public class Index {
     }
 
     @Test
+    public void queryByJson() {
+        final Employees employees = employeesDao.queryByInjectJson("12");
+        System.out.println(employees);
+    }
+
+    @Test
     public void queryByMultiple() {
         final Employees employees = new Employees();
         employees.setEmpNo(12);
@@ -49,6 +55,12 @@ public class Index {
     @Test
     public void queryByInject() {
         final Employees employees = employeesDao.queryByInject("'cs' or '1=1'");
+        System.out.println(employees);
+    }
+
+    @Test
+    public void queryByInjectD() {
+        final Employees employees = employeesDao.queryByInjectD("111");
         System.out.println(employees);
     }
 

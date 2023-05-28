@@ -22,6 +22,4 @@ public class SqlVO {
 
     private String parameter;
 
-    private Integer total;
-
 }

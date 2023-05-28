@@ -1,6 +1,7 @@
 package com.linkkou.mybatislog.mybatis.boot.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.linkkou.mybatislog.mybatis.boot.plugins.QueryPaginatorInterceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -53,6 +54,7 @@ public class EnableDataSourceImpl {
     public SqlSessionFactory buildSqlSessionFactory(@Qualifier(DATASOURCE_NAME) DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
+        //sqlSessionFactoryBean.setPlugins(new QueryPaginatorInterceptor());
         sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(MAPPER_LOCATION));
         return sqlSessionFactoryBean.getObject();
     }

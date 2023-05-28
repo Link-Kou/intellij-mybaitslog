@@ -41,7 +41,7 @@ public class DynamicSqlSourceMonitor implements IClassFileTransformer {
                 String strings = "\"" + val + "\"";
                 pluginAll.insertBefore("{com.linkkou.mybatis.log.SubInterceptorChain.Check($0.interceptors," + strings + ");}");
                 //写入
-                ctClass.writeFile();
+                //ctClass.writeFile();
                 //加载该类的字节码（不能少）
                 ctClass.toClass(LogInterceptor.class.getClassLoader(), LogInterceptor.class.getProtectionDomain());
                 ctClass.detach();

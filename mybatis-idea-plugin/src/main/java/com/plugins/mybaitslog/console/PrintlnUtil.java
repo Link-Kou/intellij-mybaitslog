@@ -73,19 +73,15 @@ public class PrintlnUtil {
             final SqlVO sqlVO = restoreSql(currentLine);
             if (null != sqlVO) {
                 String completesql = sqlVO.getCompleteSql().replaceAll("\t|\r|\n", "");
-                //final String originalSql = sqlVO.getOriginalSql().replaceAll("\t|\r|\n", "");
                 final String id = sqlVO.getId();
                 final String parameter = sqlVO.getParameter();
-                final Integer total = sqlVO.getTotal();
                 if (Config.Idea.getFormatSql()) {
                     completesql = new BasicFormatter().format(completesql);
                 }
                 //序号
                 PrintlnUtil.println(project, Config.SQL_START_LINE + id + "\n", ConsoleViewContentType.USER_INPUT);
                 PrintlnUtil.printlnSqlType(project, Config.SQL_MIDDLE_LINE, completesql + "\n");
-                //PrintlnUtil.printlnSqlType(project, Config.SQL_MIDDLE_LINE, originalSql + "\n");
                 PrintlnUtil.printlnSqlType(project, Config.SQL_MIDDLE_LINE, parameter + "\n");
-                PrintlnUtil.printlnSqlType(project, Config.SQL_MIDDLE_LINE, "total:" + total + "\n");
                 PrintlnUtil.println(project, Config.SQL_END_LINE + "\n", ConsoleViewContentType.USER_INPUT);
             }
         }

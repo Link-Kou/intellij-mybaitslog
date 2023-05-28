@@ -22,16 +22,17 @@ public class SubInterceptorChain extends InterceptorChain {
         for (Interceptor interceptor : interceptors) {
             if (LogInterceptor.class.getName().equals(interceptor.getClass().getName())) {
                 addLogInterceptor = false;
+                break;
             }
             index += 1;
         }
         //保证插件作为最后执行
         if (addLogInterceptor) {
-            interceptors.add(size, new LogInterceptor(val));
+            interceptors.add(0, new LogInterceptor(val));
         } else {
-            if (index < size) {
+            if (index != 0) {
                 // 交换位置
-                Collections.swap(interceptors, index, size - 1);
+                Collections.swap(interceptors, 0, index);
             }
         }
     }

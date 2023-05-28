@@ -1,5 +1,6 @@
 package com.linkkou.mybatislog.orm.dao;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.linkkou.mybatislog.orm.domain.Employees;
 import com.linkkou.mybatislog.orm.entity.Pageable;
 import org.apache.ibatis.annotations.Param;
@@ -86,5 +87,14 @@ public interface EmployeesDao {
      * @return 实例对象
      */
     Employees queryByInject(@Param("inject") String inject);
+    Employees queryByInjectD(@Param("inject") String inject);
+
+    /**
+     * JSON
+     * @param inject
+     * @return
+     */
+    Employees queryByInjectJson(@Param("inject") String inject);
+
 }
 
