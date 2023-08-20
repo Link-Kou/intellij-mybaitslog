@@ -22,7 +22,6 @@ import org.apache.ibatis.type.TypeHandler;
 import org.javatuples.Pair;
 
 import java.lang.reflect.Field;
-import java.text.DateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 
@@ -82,7 +81,7 @@ public class LogInterceptor implements Interceptor {
                             .setParameter(gson.toJson(completeSql.getValue1()))
                             .setOriginalSql(originalSql);
                     final String json = gson.toJson(sqlVO);
-                    RmiLog.log("==>  SQLStructure: " + json, this.id);
+                    PrintlnLog.log("==>  SQLStructure: " + json, this.id);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

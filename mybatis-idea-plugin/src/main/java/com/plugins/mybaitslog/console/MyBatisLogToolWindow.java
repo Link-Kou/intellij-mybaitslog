@@ -7,7 +7,7 @@ import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
 import com.plugins.mybaitslog.VersionControl;
 import com.plugins.mybaitslog.icons.Icons;
-import com.plugins.mybaitslog.rmi.RmiServer;
+import com.plugins.mybaitslog.unix.UnixServer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -24,7 +24,7 @@ public class MyBatisLogToolWindow implements ToolWindowFactory {
 
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
-        RmiServer.boot(project);
+        UnixServer.boot(project);
         ConsolePanel consolePanel = new ConsolePanel();
         final JComponent jComponent = consolePanel.getConsolePanel(project);
         final ContentFactory contentFactory = VersionControl.getContentFactory();

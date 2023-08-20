@@ -35,7 +35,7 @@ allprojects {
 }
 
 group 'com.plugins.mybaitslog.idea.plugin'
-version '5.0.8.1'
+version '5.0.8.2'
 
 dependencies {
     implementation project(path: ':mybatis-plugin')
@@ -50,8 +50,8 @@ dependencies {
 
 /*测试关闭*/
 java {
-    sourceCompatibility = "1.8"
-    targetCompatibility = "1.8"
+    sourceCompatibility = "8"
+    targetCompatibility = "8"
 }
 
 /*https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html#intellij-platform-based-products-of-recent-ide-versions*/

@@ -6,17 +6,11 @@ import com.intellij.execution.configurations.ParametersList;
 import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.execution.configurations.RunProfile;
 import com.intellij.execution.runners.JavaProgramPatcher;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.StoragePathMacros;
-import com.intellij.openapi.module.ModuleManager;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.projectRoots.JavaSdk;
 import com.intellij.openapi.projectRoots.JavaSdkVersion;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.diagnostic.Logger;
-import com.plugins.mybaitslog.rmi.RmiServer;
-import org.jetbrains.annotations.NotNull;
+import com.plugins.mybaitslog.unix.UnixServer;
 
 import java.util.*;
 
@@ -44,7 +38,7 @@ public class PerRun extends JavaProgramPatcher {
         String id = null;
         if (configuration instanceof RunConfiguration) {
             final RunConfiguration runConfiguration = (RunConfiguration) configuration;
-            id = RmiServer.getId(runConfiguration.getProject());
+            id = UnixServer.getId(runConfiguration.getProject());
         }
         //
         Sdk jdk = javaParameters.getJdk();
