@@ -24,6 +24,7 @@ import org.javatuples.Pair;
 import java.lang.reflect.Field;
 import java.text.DateFormat;
 import java.util.*;
+import java.util.regex.Matcher;
 
 
 /**
@@ -149,7 +150,7 @@ public class LogInterceptor implements Interceptor {
      */
     private String replaceFirst(String originalSql, String propertyName, String parameterValue) {
         //(\$|#)\{\s*epNo2((?!\{).)*}
-        return originalSql.replaceFirst("(\\$|#)\\{\\s*" + propertyName + "((?!\\{).)*}", parameterValue);
+        return originalSql.replaceFirst("(\\$|#)\\{\\s*" + Matcher.quoteReplacement(propertyName) + "((?!\\{).)*}", Matcher.quoteReplacement(parameterValue));
     }
 
     /**

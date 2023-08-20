@@ -6,6 +6,7 @@ import com.linkkou.mybatislog.orm.entity.Pageable;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -88,6 +89,8 @@ public interface EmployeesDao {
      */
     Employees queryByInject(@Param("inject") String inject);
     Employees queryByInjectD(@Param("inject") String inject);
+
+    Employees queryByInjectLocalDate(@Param("inject") LocalDate inject);
 
     /**
      * JSON

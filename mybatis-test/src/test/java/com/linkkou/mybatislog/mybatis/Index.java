@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
@@ -61,6 +62,20 @@ public class Index {
     @Test
     public void queryByInjectD() {
         final Employees employees = employeesDao.queryByInjectD("111");
+        System.out.println(employees);
+    }
+
+ @Test
+    public void queryByInjectE() {
+        final Employees employees = employeesDao.queryByInjectD("[httpServerRequest[ org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterRequest@67b80766]]");
+        System.out.println(employees);
+    }
+
+
+    @Test
+    public void queryByInjectLocalDate() {
+        final LocalDate now = LocalDate.now();
+        final Employees employees = employeesDao.queryByInjectLocalDate(now);
         System.out.println(employees);
     }
 
